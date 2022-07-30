@@ -17,3 +17,4 @@ Route::get('settings/{setting_type}',[SettingsController::class,'index'])->name(
 Route::post('settings-store',[SettingsController::class,'store'])->name('settings.store');
 
 Route::get('module-explorer',[ModuleExplorer::class,'explorer'])->name('module.explorer');
+Route::post('module-download',[ModuleExplorer::class,'module_download'])->name('module.download');
