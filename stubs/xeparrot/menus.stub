@@ -1,0 +1,11 @@
+<?php
+
+Menu::create('$STUDLY_NAME$', function($menu) {
+    // URL, Title, Attributes
+
+    $menu->dropdown('$STUDLY_NAME$', function ($sub) {
+        $sub->url('admin/$LOWER_NAME$', 'Articles');
+    }, [
+        'icon'=> 'c-sidebar-nav-icon cil-book'
+    ]);
+});

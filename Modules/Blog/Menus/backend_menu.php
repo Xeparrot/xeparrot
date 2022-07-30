@@ -2,7 +2,7 @@
 
 
 
-Menu::create('navbar', function($menu) {
+Menu::create('Blog', function($menu) {
     // URL, Title, Attributes
 
     $menu->dropdown('Blog', function ($sub) {
@@ -10,4 +10,7 @@ Menu::create('navbar', function($menu) {
     }, [
         'icon'=> 'c-sidebar-nav-icon cil-book'
     ]);
+
+
 });
+

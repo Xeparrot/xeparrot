@@ -13,7 +13,11 @@
             <x-utils.link class="c-sidebar-nav-link" :href="route('admin.dashboard')" :active="activeClass(Route::is('admin.dashboard'), 'c-active')" icon="c-sidebar-nav-icon cil-speedometer" :text="__('Dashboard')" />
         </li>
 
-        {!!  Menu::render('navbar','coreui') !!}
+        @foreach(Module::all() as $moduleItem)
+            {!!  Menu::render($moduleItem->getName(),'coreui') !!}
+        @endforeach
+
+
 
         @if (
             $logged_in_user->hasAllAccess() ||

@@ -31,6 +31,7 @@ return [
         'files' => [
             'routes/web' => 'Routes/web.php',
             'routes/api' => 'Routes/api.php',
+            'menus' => 'Menus/backend_menu.php',
             'views/index' => 'Resources/views/index.blade.php',
             'views/master' => 'Resources/views/layouts/master.blade.php',
             'scaffold/config' => 'Config/config.php',
@@ -42,6 +43,7 @@ return [
         ],
         'replacements' => [
             'routes/web' => ['LOWER_NAME', 'STUDLY_NAME'],
+            'menus' => ['LOWER_NAME', 'STUDLY_NAME'],
             'routes/api' => ['LOWER_NAME'],
             'webpack' => ['LOWER_NAME'],
             'json' => ['LOWER_NAME', 'STUDLY_NAME', 'MODULE_NAMESPACE', 'PROVIDER_NAMESPACE'],
@@ -128,6 +130,7 @@ return [
             'resource' => ['path' => 'Transformers', 'generate' => false],
             'component-view' => ['path' => 'Resources/views/components', 'generate' => false],
             'component-class' => ['path' => 'View/Components', 'generate' => false],
+            'menus' => ['path' => 'Menus', 'generate' => true],
         ],
     ],
 
@@ -186,6 +189,7 @@ return [
         App\Console\ModuleCommands\ResourceMakeCommand::class,
         App\Console\ModuleCommands\TestMakeCommand::class,
         App\Console\ModuleCommands\LaravelModulesV6Migrator::class,
+        App\Console\ModuleCommands\MenuMakeCommand::class
     ],
 
     /*
