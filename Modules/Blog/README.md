@@ -1,2 +1,0 @@
-# xemodule-blog
-Blog Module
