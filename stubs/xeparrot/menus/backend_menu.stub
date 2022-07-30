@@ -1,0 +1,17 @@
+<?php
+
+Menu::create('navbar', function($menu) {
+    // URL, Title, Attributes
+    $menu->url('home', 'Home', [
+        'target' => 'blank',
+        'icon'=>'c-sidebar-nav-icon cil-speedometer'
+    ]);
+
+    $menu->dropdown('Settings', function ($sub) {
+        $sub->url('/settings/design', 'Design');
+        $sub->divider();
+        $sub->url('logout', 'Logout');
+    }, [
+        'icon'=> 'c-sidebar-nav-icon cil-list'
+    ]);
+});
