@@ -3,7 +3,7 @@
 use App\Http\Controllers\Backend\DashboardController;
 use Tabuna\Breadcrumbs\Trail;
 use App\Http\Controllers\Backend\SettingsController;
-
+use App\Http\Controllers\Backend\ModuleExplorer;
 // All route names are prefixed with 'admin.'.
 Route::redirect('/', '/admin/dashboard', 301);
 Route::get('dashboard', [DashboardController::class, 'index'])
@@ -16,3 +16,4 @@ Route::get('dashboard', [DashboardController::class, 'index'])
 Route::get('settings/{setting_type}',[SettingsController::class,'index'])->name('settings.index');
 Route::post('settings-store',[SettingsController::class,'store'])->name('settings.store');
 
+Route::get('module-explorer',[ModuleExplorer::class,'explorer'])->name('module.explorer');
