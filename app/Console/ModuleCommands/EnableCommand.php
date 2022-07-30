@@ -13,7 +13,7 @@ class EnableCommand extends Command
      *
      * @var string
      */
-    protected $name = 'xeparrot:enable';
+    protected $name = 'xemodule:enable';
 
     /**
      * The console command description.

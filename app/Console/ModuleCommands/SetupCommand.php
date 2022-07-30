@@ -11,7 +11,7 @@ class SetupCommand extends Command
      *
      * @var string
      */
-    protected $name = 'xeparrot:setup';
+    protected $name = 'xemodule:setup';
 
     /**
      * The console command description.

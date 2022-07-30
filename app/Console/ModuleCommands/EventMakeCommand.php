@@ -20,7 +20,7 @@ class EventMakeCommand extends GeneratorCommand
      *
      * @var string
      */
-    protected $name = 'xeparrot:make-event';
+    protected $name = 'xemodule:make-event';
 
     /**
      * The console command description.

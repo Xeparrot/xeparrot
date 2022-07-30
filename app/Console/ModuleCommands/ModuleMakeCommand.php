@@ -15,7 +15,7 @@ class ModuleMakeCommand extends Command
      *
      * @var string
      */
-    protected $name = 'xeparrot:make';
+    protected $name = 'xemodule:module-make';
 
     /**
      * The console command description.

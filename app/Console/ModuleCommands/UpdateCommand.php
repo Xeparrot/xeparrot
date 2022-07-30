@@ -15,7 +15,7 @@ class UpdateCommand extends Command
      *
      * @var string
      */
-    protected $name = 'xeparrot:update';
+    protected $name = 'xemodule:update';
 
     /**
      * The console command description.

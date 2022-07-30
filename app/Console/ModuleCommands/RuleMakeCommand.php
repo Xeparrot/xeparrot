@@ -25,7 +25,7 @@ class RuleMakeCommand extends GeneratorCommand
      *
      * @var string
      */
-    protected $name = 'xeparrot:make-rule';
+    protected $name = 'xemodule:make-rule';
 
     /**
      * The console command description.

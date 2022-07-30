@@ -13,7 +13,7 @@ class DumpCommand extends Command
      *
      * @var string
      */
-    protected $name = 'xeparrot:dump';
+    protected $name = 'xemodule:dump';
 
     /**
      * The console command description.

@@ -25,7 +25,7 @@ class PolicyMakeCommand extends GeneratorCommand
      *
      * @var string
      */
-    protected $name = 'xeparrot:make-policy';
+    protected $name = 'xemodule:make-policy';
 
     /**
      * The console command description.

@@ -23,7 +23,7 @@ class SeedCommand extends Command
      *
      * @var string
      */
-    protected $name = 'xeparrot:seed';
+    protected $name = 'xemodule:seed';
 
     /**
      * The console command description.

@@ -11,7 +11,7 @@ class UnUseCommand extends Command
      *
      * @var string
      */
-    protected $name = 'xeparrot:unuse';
+    protected $name = 'xemodule:unuse';
 
     /**
      * The console command description.

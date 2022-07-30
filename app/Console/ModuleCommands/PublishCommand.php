@@ -14,7 +14,7 @@ class PublishCommand extends Command
      *
      * @var string
      */
-    protected $name = 'xeparrot:publish';
+    protected $name = 'xemodule:publish';
 
     /**
      * The console command description.

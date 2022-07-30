@@ -19,7 +19,7 @@ class JobMakeCommand extends GeneratorCommand
      *
      * @var string
      */
-    protected $name = 'xeparrot:make-job';
+    protected $name = 'xemodule:make-job';
 
     /**
      * The console command description.

@@ -15,7 +15,7 @@ class InstallCommand extends Command
      *
      * @var string
      */
-    protected $name = 'xeparrot:install';
+    protected $name = 'xemodule:install';
 
     /**
      * The console command description.

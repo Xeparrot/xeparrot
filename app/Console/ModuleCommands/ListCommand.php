@@ -13,7 +13,7 @@ class ListCommand extends Command
      *
      * @var string
      */
-    protected $name = 'xeparrot:list';
+    protected $name = 'xemodule:list';
 
     /**
      * The console command description.

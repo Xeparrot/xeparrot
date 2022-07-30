@@ -22,7 +22,7 @@ class ListenerMakeCommand extends GeneratorCommand
      *
      * @var string
      */
-    protected $name = 'xeparrot:make-listener';
+    protected $name = 'xemodule:make-listener';
 
     /**
      * The console command description.

@@ -14,7 +14,7 @@ class PublishMigrationCommand extends Command
      *
      * @var string
      */
-    protected $name = 'xeparrot:publish-migration';
+    protected $name = 'xemodule:publish-migration';
 
     /**
      * The console command description.

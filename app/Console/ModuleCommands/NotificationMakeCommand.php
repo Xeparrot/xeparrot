@@ -18,7 +18,7 @@ final class NotificationMakeCommand extends GeneratorCommand
      *
      * @var string
      */
-    protected $name = 'xeparrot:make-notification';
+    protected $name = 'xemodule:make-notification';
 
     protected $argumentName = 'name';
 

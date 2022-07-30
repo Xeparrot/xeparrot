@@ -25,7 +25,7 @@ class ComponentClassMakeCommand extends GeneratorCommand
      *
      * @var string
      */
-    protected $name = 'xeparrot:make-component';
+    protected $name = 'xemodule:make-component';
 
     /**
      * The console command description.

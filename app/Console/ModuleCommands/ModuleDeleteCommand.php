@@ -7,7 +7,7 @@ use Symfony\Component\Console\Input\InputArgument;
 
 class ModuleDeleteCommand extends Command
 {
-    protected $name = 'xeparrot:delete';
+    protected $name = 'xemodule:delete';
     protected $description = 'Delete a module from the application';
 
     public function handle() : int

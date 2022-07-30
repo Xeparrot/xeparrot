@@ -21,7 +21,7 @@ class MigrationMakeCommand extends GeneratorCommand
      *
      * @var string
      */
-    protected $name = 'xeparrot:make-migration';
+    protected $name = 'xemodule:make-migration';
 
     /**
      * The console command description.

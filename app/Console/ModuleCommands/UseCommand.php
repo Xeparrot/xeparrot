@@ -13,7 +13,7 @@ class UseCommand extends Command
      *
      * @var string
      */
-    protected $name = 'xeparrot:use';
+    protected $name = 'xemodule:use';
 
     /**
      * The console command description.

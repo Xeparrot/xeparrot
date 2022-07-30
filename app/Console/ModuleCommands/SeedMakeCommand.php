@@ -22,7 +22,7 @@ class SeedMakeCommand extends GeneratorCommand
      *
      * @var string
      */
-    protected $name = 'xeparrot:make-seed';
+    protected $name = 'xemodule:make-seed';
 
     /**
      * The console command description.

@@ -18,7 +18,7 @@ class MailMakeCommand extends GeneratorCommand
      *
      * @var string
      */
-    protected $name = 'xeparrot:make-mail';
+    protected $name = 'xemodule:make-mail';
 
     /**
      * The console command description.

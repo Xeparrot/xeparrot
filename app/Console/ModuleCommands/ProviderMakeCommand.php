@@ -27,7 +27,7 @@ class ProviderMakeCommand extends GeneratorCommand
      *
      * @var string
      */
-    protected $name = 'xeparrot:make-provider';
+    protected $name = 'xemodule:make-provider';
 
     /**
      * The console command description.

@@ -14,7 +14,7 @@ class DisableCommand extends Command
      *
      * @var string
      */
-    protected $name = 'xeparrot:disable';
+    protected $name = 'xemodule:disable';
 
     /**
      * The console command description.

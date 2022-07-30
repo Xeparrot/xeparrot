@@ -25,7 +25,7 @@ class MiddlewareMakeCommand extends GeneratorCommand
      *
      * @var string
      */
-    protected $name = 'xeparrot:make-middleware';
+    protected $name = 'xemodule:make-middleware';
 
     /**
      * The console command description.

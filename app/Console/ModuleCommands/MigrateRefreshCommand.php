@@ -16,7 +16,7 @@ class MigrateRefreshCommand extends Command
      *
      * @var string
      */
-    protected $name = 'xeparrot:migrate-refresh';
+    protected $name = 'xemodule:migrate-refresh';
 
     /**
      * The console command description.

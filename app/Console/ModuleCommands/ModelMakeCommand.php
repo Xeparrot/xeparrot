@@ -26,7 +26,7 @@ class ModelMakeCommand extends GeneratorCommand
      *
      * @var string
      */
-    protected $name = 'xeparrot:make-model';
+    protected $name = 'xemodule:make-model';
 
     /**
      * The console command description.

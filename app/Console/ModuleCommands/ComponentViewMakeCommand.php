@@ -25,7 +25,7 @@ class ComponentViewMakeCommand extends GeneratorCommand
      *
      * @var string
      */
-    protected $name = 'xeparrot:make-component-view';
+    protected $name = 'xemodule:make-component-view';
 
     /**
      * The console command description.

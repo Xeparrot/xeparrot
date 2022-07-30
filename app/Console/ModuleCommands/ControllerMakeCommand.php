@@ -26,7 +26,7 @@ class ControllerMakeCommand extends GeneratorCommand
      *
      * @var string
      */
-    protected $name = 'xeparrot:make-controller';
+    protected $name = 'xemodule:make-controller';
 
     /**
      * The console command description.

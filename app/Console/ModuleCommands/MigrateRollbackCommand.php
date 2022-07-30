@@ -17,7 +17,7 @@ class MigrateRollbackCommand extends Command
      *
      * @var string
      */
-    protected $name = 'xeparrot:migrate-rollback';
+    protected $name = 'xemodule:migrate-rollback';
 
     /**
      * The console command description.

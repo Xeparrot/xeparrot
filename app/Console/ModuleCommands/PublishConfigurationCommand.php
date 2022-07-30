@@ -14,7 +14,7 @@ class PublishConfigurationCommand extends Command
      *
      * @var string
      */
-    protected $name = 'xeparrot:publish-config';
+    protected $name = 'xemodule:publish-config';
 
     /**
      * The console command description.

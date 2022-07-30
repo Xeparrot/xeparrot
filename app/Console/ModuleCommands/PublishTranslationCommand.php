@@ -14,7 +14,7 @@ class PublishTranslationCommand extends Command
      *
      * @var string
      */
-    protected $name = 'xeparrot:publish-translation';
+    protected $name = 'xemodule:publish-translation';
 
     /**
      * The console command description.

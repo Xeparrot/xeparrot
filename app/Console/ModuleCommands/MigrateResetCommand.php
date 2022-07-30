@@ -17,7 +17,7 @@ class MigrateResetCommand extends Command
      *
      * @var string
      */
-    protected $name = 'xeparrot:migrate-reset';
+    protected $name = 'xemodule:migrate-reset';
 
     /**
      * The console command description.

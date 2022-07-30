@@ -20,7 +20,7 @@ class RouteProviderMakeCommand extends GeneratorCommand
      *
      * @var string
      */
-    protected $name = 'xeparrot:route-provider';
+    protected $name = 'xemodule:route-provider';
 
     /**
      * The command description.

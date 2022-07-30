@@ -25,7 +25,7 @@ class FactoryMakeCommand extends GeneratorCommand
      *
      * @var string
      */
-    protected $name = 'xeparrot:make-factory';
+    protected $name = 'xemodule:make-factory';
 
     /**
      * The console command description.

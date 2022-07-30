@@ -15,7 +15,7 @@ class MigrateStatusCommand extends Command
      *
      * @var string
      */
-    protected $name = 'xeparrot:migrate-status';
+    protected $name = 'xemodule:migrate-status';
 
     /**
      * The console command description.

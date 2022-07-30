@@ -26,7 +26,7 @@ class AdupCommandMakeCommand extends EngineCore
      *
      * @var string
      */
-    protected $name = 'xeparrot:make-command';
+    protected $name = 'xemodule:make-command';
 
     /**
      * The console command description.

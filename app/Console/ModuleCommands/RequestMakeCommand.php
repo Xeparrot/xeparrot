@@ -25,7 +25,7 @@ class RequestMakeCommand extends GeneratorCommand
      *
      * @var string
      */
-    protected $name = 'xeparrot:make-request';
+    protected $name = 'xemodule:make-request';
 
     /**
      * The console command description.
