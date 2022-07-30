@@ -24,7 +24,7 @@
         "laravel/ui": "^3.0",
         "livewire/livewire": "^2.0",
         "nwidart/laravel-menus": "^7.0",
-        "nwidart/laravel-modules": "^9.0",
+        "nwidart/laravel-modules": "^9.0.4",
         "rappasoft/laravel-livewire-tables": "^1.0",
         "rappasoft/lockout": "^3.0",
         "spatie/laravel-activitylog": "^3.14",
