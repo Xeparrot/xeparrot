@@ -17,6 +17,8 @@
             {!!  Menu::render($moduleItem->getName(),'coreui') !!}
         @endforeach
 
+        {!!  Menu::render('sidebar_core','coreui') !!}
+
 
 
         @if (
