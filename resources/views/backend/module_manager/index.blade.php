@@ -15,6 +15,8 @@
                                 <h4>{{$moduleItem->name}}</h4>
                                 <small>{{$moduleItem->description}}</small><br><br>
                                 <input type="hidden" name="module_repo" value="{{$moduleItem->repo}}">
+                                <input type="hidden" name="module_author" value="{{$moduleItem->author}}">
+                                <input type="hidden" name="module_name" value="{{$moduleItem->name}}">
 
                                 @if(Module::find($moduleItem->name))
                                     <input type="hidden" name="install_status" value="uninstall">
@@ -23,7 +25,7 @@
                                     <input type="hidden" name="install_status" value="install">
                                     <button type="submit" class="btn btn-primary">Download</button>
                                 @endif
-                                
+
                                 <a href="#" class="btn btn-primary">Documentation</a>
                             </form>
                         </div>

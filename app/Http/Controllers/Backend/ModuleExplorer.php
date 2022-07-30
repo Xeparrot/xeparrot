@@ -22,15 +22,25 @@ class ModuleExplorer extends Controller
     public function module_download(Request $request)
     {
         $moduleRepo = $request->module_repo;
+        $moduleName = $request->module_name;
+        $moduleAuthor = $request->module_author;
 
-        $git = new GitService(base_path('Modules'));
+        if($request->install_status == 'install'){
+            $git = new GitService(base_path('Modules'));
 
-        $author     = 'Xeparrot';
-        $repository = 'Blog';
-        $branch     = 'main';
+            $author     = $moduleAuthor;
+            $repository = $moduleName;
+            $branch     = 'main';
+            $path = $git->clone($author, $repository, $branch);
+            $module = Module::find($moduleName);
+            $module->enable();
+
+        }else{
+            $module = Module::find($moduleName);
+            $module->delete();
+        }
 
 
-        $path = $git->clone($author, $repository, $branch);
 
 
       return back();

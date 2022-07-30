@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "19f93757229fbe75c65e8bbdcd21437a",
+    "content-hash": "b90876a5dddeb5c470b66636e0ca3beb",
     "packages": [
         {
             "name": "arcanedev/log-viewer",
@@ -7708,6 +7708,50 @@
                 }
             ],
             "time": "2022-01-24T18:55:24+00:00"
+        },
+        {
+            "name": "wbadrh/git-dl",
+            "version": "1.1.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/drhino/git-dl.git",
+                "reference": "5b2fbde7e062097a7aad1346ab51108e6d7c32ff"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/drhino/git-dl/zipball/5b2fbde7e062097a7aad1346ab51108e6d7c32ff",
+                "reference": "5b2fbde7e062097a7aad1346ab51108e6d7c32ff",
+                "shasum": ""
+            },
+            "require": {
+                "ext-zip": "*",
+                "league/flysystem": "^1.1.4 || ^3.0"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-0": {
+                    "GitDownload": ""
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "description": "Clone a Github repository with PHP & ZipArchive. Without using Git or exec()!",
+            "homepage": "https://github.com/drhino/git-dl",
+            "keywords": [
+                "clone",
+                "download",
+                "git",
+                "github",
+                "repository",
+                "ziparchive"
+            ],
+            "support": {
+                "issues": "https://github.com/drhino/git-dl/issues",
+                "source": "https://github.com/drhino/git-dl/tree/1.1.0"
+            },
+            "time": "2022-06-26T01:12:16+00:00"
         },
         {
             "name": "webmozart/assert",
