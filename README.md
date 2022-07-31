@@ -4,7 +4,6 @@
 </div>
 
 
-
 [![UnitTesting](https://github.com/Xeparrot/xeparrot/actions/workflows/main.yml/badge.svg)](https://github.com/Xeparrot/xeparrot/actions/workflows/main.yml) [![Tests](https://camo.githubusercontent.com/76f12a58798ac587a2f5147b3e3917f09fd083a23ffa5febbe91ad18d2537ea9/68747470733a2f2f696d672e736869656c64732e696f2f62616467652f73656d7665722d322e302e302d626c7565)](https://github.com/Xeparrot/xeparrot/actions/workflows/main.yml)
 
 
@@ -38,4 +37,19 @@ If you only have NPM installed you have to run this command from the root of the
 If you have Yarn installed, run this instead from the root of the project:
 
     yarn
+    
+### Completed Features
+    
+- [ ] Customer Management
+- [x] User Management
+- [x] Role Management
+- [x] Permission Management
+- [x] Logo and Concept
+- [x] Action and Unit Testing
+- [x] Module Management
+- [x] Module Management (Store)
+- [ ] Invoice Management
+- [ ] Payment Management
+- [ ] Theme (Style System) System
+- [ ] Store Services
     
