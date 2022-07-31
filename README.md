@@ -1,3 +1,8 @@
+
+<div align="center">
+  <img src="https://raw.githubusercontent.com/Xeparrot/xeparrot/main/public/logo.png" style="width:300px;"/>
+</div>
+
 # Xeparrot
 Module based client management platform
 
