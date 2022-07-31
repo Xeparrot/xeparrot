@@ -30,7 +30,8 @@
         "spatie/laravel-activitylog": "^3.14",
         "spatie/laravel-permission": "^3.11",
         "tabuna/breadcrumbs": "^2.2",
-        "wbadrh/git-dl": "^1.1"
+        "wbadrh/git-dl": "^1.1",
+        "yajra/laravel-datatables-oracle": "^9.0"
     },
     "require-dev": {
         "barryvdh/laravel-debugbar": "^3.2",
