@@ -3,13 +3,11 @@
   <img src="https://raw.githubusercontent.com/Xeparrot/xeparrot/main/public/logo.png" style="width:300px;"/>
 </div>
 
-# Xeparrot
-Module based client management platform
 
 [![Tests](https://github.com/Xeparrot/xeparrot/actions/workflows/main.yml/badge.svg)](https://github.com/Xeparrot/xeparrot/actions/workflows/main.yml)
 
 
- 
+ Build professional and great looking invoices, Service Management, Attach files and send directly to your clients including the invoice PDF. Invoice with different tax based on item. Create recurring invoices who will be regenerated automatically based on your setup for recurring invoice (every X months). You can set recurring starting from 1 month to 12 months
 
 ## Installation
 
