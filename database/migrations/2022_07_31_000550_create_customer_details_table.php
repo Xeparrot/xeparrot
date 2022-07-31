@@ -38,7 +38,6 @@ class CreateCustomerDetailsTable extends Migration
             $table->text('shipping_zipcode')->nullable();
             $table->text('billing_country')->nullable();
             $table->text('shipping_country')->nullable();
-
             $table->timestamps();
         });
     }

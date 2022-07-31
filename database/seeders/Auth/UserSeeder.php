@@ -41,6 +41,15 @@ class UserSeeder extends Seeder
             ]);
         }
 
+        User::create([
+            'type' => User::TYPE_CUSTOMER,
+            'name' => 'customer@customer.com',
+            'email' => 'customer@customer.com',
+            'password' => 'secret',
+            'email_verified_at' => now(),
+            'active' => true,
+        ]);
+
         $this->enableForeignKeys();
     }
 }

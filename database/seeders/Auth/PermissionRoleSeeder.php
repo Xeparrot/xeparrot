@@ -29,6 +29,8 @@ class PermissionRoleSeeder extends Seeder
             'name' => 'Administrator',
         ]);
 
+
+
         // Non Grouped Permissions
         //
 
