@@ -434,6 +434,19 @@ class SettingsSeeder extends Seeder
             null,'true');
 
 
+        create_settings(
+            'default_theme',
+            null,
+            'system',
+            'Theme & Style',
+            null,
+            null,
+            null,
+            null,
+            null,'false');
+
+
+
 
 
 

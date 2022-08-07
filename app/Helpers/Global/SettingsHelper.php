@@ -60,6 +60,12 @@ if (! function_exists('create_settings')) {
         return $getCatery;
     }
 
+    function getSetting($key)
+    {
+        $getSettings = Settings::where('key',$key)->first();
+        return $getSettings->value;
+    }
+
 
 
 }

@@ -12,6 +12,7 @@ class HomeController
      */
     public function index()
     {
-        return view('frontend.index');
+        $settings = default_theme_view_path('index');
+        return view($settings);
     }
 }

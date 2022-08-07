@@ -3,6 +3,8 @@
 namespace App\Http\Controllers\Backend;
 
 use App\Http\Controllers\Controller;
+use App\Models\Models\Settings;
+use App\Services\ThemeService;
 use Illuminate\Http\Request;
 
 class SettingsController extends Controller
@@ -115,6 +117,15 @@ class SettingsController extends Controller
 
     public function store(Request $request)
     {
-        dd($request);
+        $filterRequest = $request->except(['_token']);
+
+        foreach ($filterRequest as $key => $item)
+        {
+            Settings::where('key',$key)->update([
+                'value' => $item
+            ]);
+        }
+
+        return back();
     }
 }

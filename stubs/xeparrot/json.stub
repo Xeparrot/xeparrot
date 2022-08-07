@@ -2,6 +2,7 @@
     "name": "$STUDLY_NAME$",
     "alias": "$LOWER_NAME$",
     "description": "",
+    "type": "module",
     "keywords": [],
     "priority": 0,
     "providers": [

@@ -150,7 +150,7 @@ class SettingsEngineService
     public static function getSettingsCategies()
     {
       $categies=  Settings::select('settings_category')
-          ->whereNotIn('settings_category', ['General'])
+          ->whereNotIn('settings_category', ['General','Theme & Style'])
           ->distinct()
           ->get();
       return $categies;

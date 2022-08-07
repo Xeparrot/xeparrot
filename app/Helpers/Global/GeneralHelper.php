@@ -52,3 +52,25 @@ if (! function_exists('homeRoute')) {
     }
 }
 
+
+
+
+
+if (! function_exists('default_theme_view_path')) {
+    /**
+     * Return the route to the "home" page depending on authentication/authorization status.
+     *
+     * @return string
+     */
+    function default_theme_view_path($viewpath)
+    {
+        if(getSetting('default_theme')){
+            return  strtolower(getSetting('default_theme').'::'.$viewpath);
+        }else{
+            return strtolower($viewpath);
+        }
+    }
+}
+
+
+

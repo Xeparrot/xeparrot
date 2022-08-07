@@ -67,6 +67,7 @@ class ModuleMakeCommand extends Command
     protected function getOptions()
     {
         return [
+            ['theme', 't', InputOption::VALUE_NONE, 'Generate a theme module'],
             ['plain', 'p', InputOption::VALUE_NONE, 'Generate a plain module (without some resources).'],
             ['api', null, InputOption::VALUE_NONE, 'Generate an api module.'],
             ['web', null, InputOption::VALUE_NONE, 'Generate a web module.'],
@@ -84,6 +85,12 @@ class ModuleMakeCommand extends Command
     {
         $isPlain = $this->option('plain');
         $isApi = $this->option('api');
+        $isTheme = $this->options('theme');
+
+        if($isTheme)
+        {
+            return 'theme';
+        }
 
         if ($isPlain && $isApi) {
             return 'web';
