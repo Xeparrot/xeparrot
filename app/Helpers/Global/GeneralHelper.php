@@ -65,7 +65,13 @@ if (! function_exists('default_theme_view_path')) {
     function default_theme_view_path($viewpath)
     {
         if(getSetting('default_theme')){
-            return  strtolower(getSetting('default_theme').'::'.$viewpath);
+            $module = Module::find(getSetting('default_theme'));
+            if($module){
+                return  strtolower(getSetting('default_theme').'::'.$viewpath);
+            }else{
+                return strtolower($viewpath);
+            }
+
         }else{
             return strtolower($viewpath);
         }
