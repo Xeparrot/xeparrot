@@ -79,8 +79,8 @@
 
     @stack('before-scripts')
 
-    <script src="{{ url('js/manifest.js') }}"></script>
-    <script src="{{ url('js/vendor.js') }}"></script>
+    <script src="{{ mix('js/manifest.js') }}"></script>
+    <script src="{{ mix('js/vendor.js') }}"></script>
     <script src="{{ mix('js/backend.js') }}"></script>
 
 
