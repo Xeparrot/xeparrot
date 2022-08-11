@@ -4,7 +4,8 @@
 </div>
 
 
-[![UnitTesting](https://github.com/Xeparrot/xeparrot/actions/workflows/main.yml/badge.svg)](https://github.com/Xeparrot/xeparrot/actions/workflows/main.yml) [![Tests](https://camo.githubusercontent.com/76f12a58798ac587a2f5147b3e3917f09fd083a23ffa5febbe91ad18d2537ea9/68747470733a2f2f696d672e736869656c64732e696f2f62616467652f73656d7665722d322e302e302d626c7565)](https://github.com/Xeparrot/xeparrot/actions/workflows/main.yml)
+[![UnitTesting](https://github.com/Xeparrot/xeparrot/actions/workflows/main.yml/badge.svg)](https://github.com/Xeparrot/xeparrot/actions/workflows/main.yml) [![Tests](https://camo.githubusercontent.com/76f12a58798ac587a2f5147b3e3917f09fd083a23ffa5febbe91ad18d2537ea9/68747470733a2f2f696d672e736869656c64732e696f2f62616467652f73656d7665722d322e302e302d626c7565)](https://github.com/Xeparrot/xeparrot/actions/workflows/main.yml) [![Dependency Review](https://github.com/Xeparrot/xeparrot/actions/workflows/dependency-review.yml/badge.svg)](https://github.com/Xeparrot/xeparrot/actions/workflows/dependency-review.yml) [![Documentation Status](https://readthedocs.org/projects/xeparrot/badge/?version=latest)](https://xeparrot.readthedocs.io/en/latest/?badge=latest)
+
 
 
  Build professional and great looking invoices, Service Management, Attach files and send directly to your clients including the invoice PDF. Invoice with different tax based on item. Create recurring invoices who will be regenerated automatically based on your setup for recurring invoice (every X months). You can set recurring starting from 1 month to 12 months
