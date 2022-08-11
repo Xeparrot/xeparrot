@@ -8,3 +8,4 @@ require('@coreui/coreui');
 
 // Boilerplate
 require('../plugins');
+
