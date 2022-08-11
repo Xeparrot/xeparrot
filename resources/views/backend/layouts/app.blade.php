@@ -27,8 +27,8 @@
     <link rel="stylesheet" href="{{url('css/vendors.css')}}">
 
     <script>
-        var AIZ = AIZ || {};
-        AIZ.local = {
+        var XEM = XEM || {};
+        XEM.local = {
             nothing_selected: 'Nothing selected',
             nothing_found: 'Nothing found',
             choose_file: 'Choose file',

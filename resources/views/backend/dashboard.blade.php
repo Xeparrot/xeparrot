@@ -19,7 +19,7 @@
                                     <label>Image
                                         <span class="text-danger">*</span>
                                     </label>
-                                    <div class="input-group" data-toggle="aizuploader" data-type="image">
+                                    <div class="input-group" data-toggle="xemuploader" data-type="image">
                                         <div class="input-group-prepend">
                                             <div class="input-group-text bg-soft-secondary font-weight-medium">Browse</div>
                                         </div>

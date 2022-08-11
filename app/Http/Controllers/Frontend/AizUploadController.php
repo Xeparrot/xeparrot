@@ -52,7 +52,7 @@ class AizUploadController extends Controller
 
 
     public function show_uploader(Request $request){
-        return view('uploader.aiz-uploader');
+        return view('uploader.xem-uploader');
     }
     public function upload(Request $request){
         $type = array(
@@ -92,13 +92,13 @@ class AizUploadController extends Controller
             "xlsx"=>"document"
         );
 
-        if($request->hasFile('aiz_file')){
+        if($request->hasFile('xem_file')){
             $upload = new Upload;
-            $extension = strtolower($request->file('aiz_file')->getClientOriginalExtension());
+            $extension = strtolower($request->file('xem_file')->getClientOriginalExtension());
 
             if(isset($type[$extension])){
                 $upload->file_original_name = null;
-                $arr = explode('.', $request->file('aiz_file')->getClientOriginalName());
+                $arr = explode('.', $request->file('xem_file')->getClientOriginalName());
                 for($i=0; $i < count($arr)-1; $i++){
                     if($i == 0){
                         $upload->file_original_name .= $arr[$i];
@@ -108,12 +108,12 @@ class AizUploadController extends Controller
                     }
                 }
 
-                $path = $request->file('aiz_file')->store('uploads/all', 'local');
-                $size = $request->file('aiz_file')->getSize();
+                $path = $request->file('xem_file')->store('uploads/all', 'local');
+                $size = $request->file('xem_file')->getSize();
 
                 if($type[$extension] == 'image'){
                     try {
-                        $img = Image::make($request->file('aiz_file')->getRealPath())->encode();
+                        $img = Image::make($request->file('xem_file')->getRealPath())->encode();
                         $height = $img->height();
                         $width = $img->width();
                         if($width > $height && $width > 1500){
