@@ -12,7 +12,7 @@
  
 ## Documentation
 
-## [Developer Documentation](https://xeparrot.github.io/xeparrot/#api-reference)
+### [Developer Documentation](https://xeparrot.github.io/xeparrot/#api-reference)
 
 ## Installation
 
