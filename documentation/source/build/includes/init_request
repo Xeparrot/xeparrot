@@ -1,0 +1,1363 @@
+<h1 id='init-request'>Init Request</h1>
+<p>This endpoint is used for app initiation, and when this endpoint is called it will provide all the required details to serve the initial interface.</p>
+<h3 id='method'>Method</h3>
+<p><code>Method: GET</code></p>
+<h3 id='endpoint'>Endpoint</h3>
+<p><code>https://v3-shopper-api.adup.io/api/v1/init</code></p>
+<h3 id='query-parameters'>Query Parameters</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>mode</td>
+<td>string</td>
+<td>Yes</td>
+<td>Currently support fastcheckout &amp; autofill modes</td>
+</tr>
+<tr>
+<td>shop_id</td>
+<td>init</td>
+<td>No</td>
+<td>Required for fastcheckout mode. Shop ID of the visiting shop</td>
+</tr>
+<tr>
+<td>products</td>
+<td>sting</td>
+<td>No</td>
+<td>Required for fastcheckout mode. Comma separated string of all product SKUs</td>
+</tr>
+</tbody></table>
+<h3 id='response'>Response</h3>
+<aside class="success">
+    if you using Bearer authentication you will get the shopper object on this response
+</aside>
+<div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">--location</span> <span class="nt">--request</span> GET <span class="s1">'https://v3-shopper-api.adup.io/api/v1/init?mode=fastcheckout&amp;shop_id=1&amp;products=sku1,sku2'</span>
+</code></pre></div><div class="highlight"><pre class="highlight javascript tab-javascript"><code><span class="c1">// WARNING: For GET requests, body is set to null by browsers.</span>
+
+<span class="kd">var</span> <span class="nx">xhr</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">XMLHttpRequest</span><span class="p">();</span>
+<span class="nx">xhr</span><span class="p">.</span><span class="nx">withCredentials</span> <span class="o">=</span> <span class="kc">true</span><span class="p">;</span>
+
+<span class="nx">xhr</span><span class="p">.</span><span class="nx">addEventListener</span><span class="p">(</span><span class="dl">"</span><span class="s2">readystatechange</span><span class="dl">"</span><span class="p">,</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+  <span class="k">if</span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">readyState</span> <span class="o">===</span> <span class="mi">4</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">responseText</span><span class="p">);</span>
+  <span class="p">}</span>
+<span class="p">});</span>
+
+<span class="nx">xhr</span><span class="p">.</span><span class="nx">open</span><span class="p">(</span><span class="dl">"</span><span class="s2">GET</span><span class="dl">"</span><span class="p">,</span> <span class="dl">"</span><span class="s2">https://v3-shopper-api.adup.io/api/v1/init?mode=fastcheckout&amp;shop_id=1&amp;products=sku1,sku2</span><span class="dl">"</span><span class="p">);</span>
+
+<span class="nx">xhr</span><span class="p">.</span><span class="nx">send</span><span class="p">();</span>
+</code></pre></div>
+<blockquote>
+<p>The above command returns JSON structured like this:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="nl">"result"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"shop"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"products"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+            </span><span class="p">{</span><span class="w">
+                </span><span class="nl">"9a19b2d7-49de-3481-8cc7-92c638df3ac8"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+                    </span><span class="nl">"product_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+                    </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"variant"</span><span class="p">,</span><span class="w">
+                    </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Jerald"</span><span class="p">,</span><span class="w">
+                    </span><span class="nl">"slug"</span><span class="p">:</span><span class="w"> </span><span class="s2">"temporibus-laboriosam-facere-et-voluptas-modi-aut"</span><span class="p">,</span><span class="w">
+                    </span><span class="nl">"image"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://via.placeholder.com/640x480.png/002266?text=magni"</span><span class="p">,</span><span class="w">
+                    </span><span class="nl">"currency"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+                    </span><span class="nl">"display_price"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+                    </span><span class="nl">"variants"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+                        </span><span class="p">{</span><span class="w">
+                            </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+                            </span><span class="nl">"title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"SpringGreen"</span><span class="p">,</span><span class="w">
+                            </span><span class="nl">"currency"</span><span class="p">:</span><span class="w"> </span><span class="s2">"MRU"</span><span class="p">,</span><span class="w">
+                            </span><span class="nl">"price"</span><span class="p">:</span><span class="w"> </span><span class="mi">100</span><span class="w">
+                        </span><span class="p">},</span><span class="w">
+                        </span><span class="p">{</span><span class="w">
+                            </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w">
+                            </span><span class="nl">"title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ForestGreen"</span><span class="p">,</span><span class="w">
+                            </span><span class="nl">"currency"</span><span class="p">:</span><span class="w"> </span><span class="s2">"PGK"</span><span class="p">,</span><span class="w">
+                            </span><span class="nl">"price"</span><span class="p">:</span><span class="w"> </span><span class="mi">100</span><span class="w">
+                        </span><span class="p">}</span><span class="w">
+                    </span><span class="p">]</span><span class="w">
+                </span><span class="p">}</span><span class="w">
+            </span><span class="p">},</span><span class="w">
+            </span><span class="p">{</span><span class="w">
+                </span><span class="nl">"9dcee36a-f311-376e-acba-35d7e124f6b8"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+                    </span><span class="nl">"product_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w">
+                    </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"variant"</span><span class="p">,</span><span class="w">
+                    </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Weldon"</span><span class="p">,</span><span class="w">
+                    </span><span class="nl">"slug"</span><span class="p">:</span><span class="w"> </span><span class="s2">"culpa-quidem-minus-repudiandae"</span><span class="p">,</span><span class="w">
+                    </span><span class="nl">"image"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://via.placeholder.com/640x480.png/0088bb?text=quasi"</span><span class="p">,</span><span class="w">
+                    </span><span class="nl">"currency"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+                    </span><span class="nl">"display_price"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+                    </span><span class="nl">"variants"</span><span class="p">:</span><span class="w"> </span><span class="p">[]</span><span class="w">
+                </span><span class="p">}</span><span class="w">
+            </span><span class="p">}</span><span class="w">
+        </span><span class="p">],</span><span class="w">
+        </span><span class="nl">"user_data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+            </span><span class="nl">"device_ip"</span><span class="p">:</span><span class="w"> </span><span class="s2">"127.0.0.1"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"device_country"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"browser_language"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"browser_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"is_bot"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"os"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="nl">"app_data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+            </span><span class="nl">"static_base_url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"http://localhost:8000"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"api_version"</span><span class="p">:</span><span class="w"> </span><span class="s2">"v1.0"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"countries"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+                </span><span class="nl">"AF"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+                    </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Afghanistan"</span><span class="p">,</span><span class="w">
+                    </span><span class="nl">"dial_code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"+93"</span><span class="p">,</span><span class="w">
+                    </span><span class="nl">"flag"</span><span class="p">:</span><span class="w"> </span><span class="s2">"🇦🇫"</span><span class="w">
+                </span><span class="p">},</span><span class="w">
+                </span><span class="nl">"AX"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+                    </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Aland Islands"</span><span class="p">,</span><span class="w">
+                    </span><span class="nl">"dial_code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"+358"</span><span class="p">,</span><span class="w">
+                    </span><span class="nl">"flag"</span><span class="p">:</span><span class="w"> </span><span class="s2">"🇦🇽"</span><span class="w">
+                </span><span class="p">},</span><span class="w">
+                </span><span class="nl">"AL"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+                    </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Albania"</span><span class="p">,</span><span class="w">
+                    </span><span class="nl">"dial_code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"+355"</span><span class="p">,</span><span class="w">
+                    </span><span class="nl">"flag"</span><span class="p">:</span><span class="w"> </span><span class="s2">"🇦🇱"</span><span class="w">
+                </span><span class="p">},</span><span class="w">
+                </span><span class="nl">"DZ"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+                    </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Algeria"</span><span class="p">,</span><span class="w">
+                    </span><span class="nl">"dial_code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"+213"</span><span class="p">,</span><span class="w">
+                    </span><span class="nl">"flag"</span><span class="p">:</span><span class="w"> </span><span class="s2">"🇩🇿"</span><span class="w">
+                </span><span class="p">},</span><span class="w">
+                </span><span class="nl">"AS"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+                    </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"American Samoa"</span><span class="p">,</span><span class="w">
+                    </span><span class="nl">"dial_code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"+1684"</span><span class="p">,</span><span class="w">
+                    </span><span class="nl">"flag"</span><span class="p">:</span><span class="w"> </span><span class="s2">"🇦🇸"</span><span class="w">
+                </span><span class="p">},</span><span class="w">
+                </span><span class="nl">"AD"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+                    </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Andorra"</span><span class="p">,</span><span class="w">
+                    </span><span class="nl">"dial_code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"+376"</span><span class="p">,</span><span class="w">
+                    </span><span class="nl">"flag"</span><span class="p">:</span><span class="w"> </span><span class="s2">"🇦🇩"</span><span class="w">
+                </span><span class="p">},</span><span class="w">
+                </span><span class="nl">"AO"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+                    </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Angola"</span><span class="p">,</span><span class="w">
+                    </span><span class="nl">"dial_code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"+244"</span><span class="p">,</span><span class="w">
+                    </span><span class="nl">"flag"</span><span class="p">:</span><span class="w"> </span><span class="s2">"🇦🇴"</span><span class="w">
+                </span><span class="p">},</span><span class="w">
+                </span><span class="nl">"AI"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+                    </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Anguilla"</span><span class="p">,</span><span class="w">
+                    </span><span class="nl">"dial_code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"+1264"</span><span class="p">,</span><span class="w">
+                    </span><span class="nl">"flag"</span><span class="p">:</span><span class="w"> </span><span class="s2">"🇦🇮"</span><span class="w">
+                </span><span class="p">},</span><span class="w">
+                </span><span class="nl">"AQ"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+                    </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Antarctica"</span><span class="p">,</span><span class="w">
+                    </span><span class="nl">"dial_code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"+672"</span><span class="p">,</span><span class="w">
+                    </span><span class="nl">"flag"</span><span class="p">:</span><span class="w"> </span><span class="s2">"🇦🇶"</span><span class="w">
+                </span><span class="p">},</span><span class="w">
+                </span><span class="nl">"AG"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+                    </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Antigua and Barbuda"</span><span class="p">,</span><span class="w">
+                    </span><span class="nl">"dial_code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"+1268"</span><span class="p">,</span><span class="w">
+                    </span><span class="nl">"flag"</span><span class="p">:</span><span class="w"> </span><span class="s2">"🇦🇬"</span><span class="w">
+                </span><span class="p">},</span><span class="w">
+                </span><span class="nl">"AR"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+                    </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Argentina"</span><span class="p">,</span><span class="w">
+                    </span><span class="nl">"dial_code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"+54"</span><span class="p">,</span><span class="w">
+                    </span><span class="nl">"flag"</span><span class="p">:</span><span class="w"> </span><span class="s2">"🇦🇷"</span><span class="w">
+                </span><span class="p">},</span><span class="w">
+                </span><span class="nl">"AM"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+                    </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Armenia"</span><span class="p">,</span><span class="w">
+                    </span><span class="nl">"dial_code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"+374"</span><span class="p">,</span><span class="w">
+                    </span><span class="nl">"flag"</span><span class="p">:</span><span class="w"> </span><span class="s2">"🇦🇲"</span><span class="w">
+                </span><span class="p">},</span><span class="w">
+                </span><span class="nl">"AW"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+                    </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Aruba"</span><span class="p">,</span><span class="w">
+                    </span><span class="nl">"dial_code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"+297"</span><span class="p">,</span><span class="w">
+                    </span><span class="nl">"flag"</span><span class="p">:</span><span class="w"> </span><span class="s2">"🇦🇼"</span><span class="w">
+                </span><span class="p">},</span><span class="w">
+                </span><span class="nl">"AU"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+                    </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Australia"</span><span class="p">,</span><span class="w">
+                    </span><span class="nl">"dial_code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"+61"</span><span class="p">,</span><span class="w">
+                    </span><span class="nl">"flag"</span><span class="p">:</span><span class="w"> </span><span class="s2">"🇦🇺"</span><span class="w">
+                </span><span class="p">},</span><span class="w">
+                </span><span class="nl">"AT"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+                    </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Austria"</span><span class="p">,</span><span class="w">
+                    </span><span class="nl">"dial_code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"+43"</span><span class="p">,</span><span class="w">
+                    </span><span class="nl">"flag"</span><span class="p">:</span><span class="w"> </span><span class="s2">"🇦🇹"</span><span class="w">
+                </span><span class="p">},</span><span class="w">
+                </span><span class="nl">"AZ"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+                    </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Azerbaijan"</span><span class="p">,</span><span class="w">
+                    </span><span class="nl">"dial_code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"+994"</span><span class="p">,</span><span class="w">
+                    </span><span class="nl">"flag"</span><span class="p">:</span><span class="w"> </span><span class="s2">"🇦🇿"</span><span class="w">
+                </span><span class="p">},</span><span class="w">
+                </span><span class="nl">"BS"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+                    </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Bahamas"</span><span class="p">,</span><span class="w">
+                    </span><span class="nl">"dial_code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"+1242"</span><span class="p">,</span><span class="w">
+                    </span><span class="nl">"flag"</span><span class="p">:</span><span class="w"> </span><span class="s2">"🇧🇸"</span><span class="w">
+                </span><span class="p">},</span><span class="w">
+                </span><span class="nl">"BH"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+                    </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Bahrain"</span><span class="p">,</span><span class="w">
+                    </span><span class="nl">"dial_code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"+973"</span><span class="p">,</span><span class="w">
+                    </span><span class="nl">"flag"</span><span class="p">:</span><span class="w"> </span><span class="s2">"🇧🇭"</span><span class="w">
+                </span><span class="p">},</span><span class="w">
+                </span><span class="nl">"BD"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+                    </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Bangladesh"</span><span class="p">,</span><span class="w">
+                    </span><span class="nl">"dial_code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"+880"</span><span class="p">,</span><span class="w">
+                    </span><span class="nl">"flag"</span><span class="p">:</span><span class="w"> </span><span class="s2">"🇧🇩"</span><span class="w">
+                </span><span class="p">},</span><span class="w">
+                </span><span class="nl">"BB"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+                    </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Barbados"</span><span class="p">,</span><span class="w">
+                    </span><span class="nl">"dial_code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"+1246"</span><span class="p">,</span><span class="w">
+                    </span><span class="nl">"flag"</span><span class="p">:</span><span class="w"> </span><span class="s2">"🇧🇧"</span><span class="w">
+                </span><span class="p">},</span><span class="w">
+                </span><span class="nl">"BY"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+                    </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Belarus"</span><span class="p">,</span><span class="w">
+                    </span><span class="nl">"dial_code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"+375"</span><span class="p">,</span><span class="w">
+                    </span><span class="nl">"flag"</span><span class="p">:</span><span class="w"> </span><span class="s2">"🇧🇾"</span><span class="w">
+                </span><span class="p">},</span><span class="w">
+                </span><span class="nl">"BE"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+                    </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Belgium"</span><span class="p">,</span><span class="w">
+                    </span><span class="nl">"dial_code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"+32"</span><span class="p">,</span><span class="w">
+                    </span><span class="nl">"flag"</span><span class="p">:</span><span class="w"> </span><span class="s2">"🇧🇪"</span><span class="w">
+                </span><span class="p">},</span><span class="w">
+                </span><span class="nl">"BZ"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+                    </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Belize"</span><span class="p">,</span><span class="w">
+                    </span><span class="nl">"dial_code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"+501"</span><span class="p">,</span><span class="w">
+                    </span><span class="nl">"flag"</span><span class="p">:</span><span class="w"> </span><span class="s2">"🇧🇿"</span><span class="w">
+                </span><span class="p">},</span><span class="w">
+                </span><span class="nl">"BJ"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+                    </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Benin"</span><span class="p">,</span><span class="w">
+                    </span><span class="nl">"dial_code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"+229"</span><span class="p">,</span><span class="w">
+                    </span><span class="nl">"flag"</span><span class="p">:</span><span class="w"> </span><span class="s2">"🇧🇯"</span><span class="w">
+                </span><span class="p">},</span><span class="w">
+                </span><span class="nl">"BM"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+                    </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Bermuda"</span><span class="p">,</span><span class="w">
+                    </span><span class="nl">"dial_code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"+1441"</span><span class="p">,</span><span class="w">
+                    </span><span class="nl">"flag"</span><span class="p">:</span><span class="w"> </span><span class="s2">"🇧🇲"</span><span class="w">
+                </span><span class="p">},</span><span class="w">
+                </span><span class="nl">"BT"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+                    </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Bhutan"</span><span class="p">,</span><span class="w">
+                    </span><span class="nl">"dial_code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"+975"</span><span class="p">,</span><span class="w">
+                    </span><span class="nl">"flag"</span><span class="p">:</span><span class="w"> </span><span class="s2">"🇧🇹"</span><span class="w">
+                </span><span class="p">},</span><span class="w">
+                </span><span class="nl">"BO"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+                    </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Bolivia, Plurinational State of bolivia"</span><span class="p">,</span><span class="w">
+                    </span><span class="nl">"dial_code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"+591"</span><span class="p">,</span><span class="w">
+                    </span><span class="nl">"flag"</span><span class="p">:</span><span class="w"> </span><span class="s2">"🇧🇴"</span><span class="w">
+                </span><span class="p">},</span><span class="w">
+                </span><span class="nl">"BA"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+                    </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Bosnia and Herzegovina"</span><span class="p">,</span><span class="w">
+                    </span><span class="nl">"dial_code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"+387"</span><span class="p">,</span><span class="w">
+                    </span><span class="nl">"flag"</span><span class="p">:</span><span class="w"> </span><span class="s2">"🇧🇦"</span><span class="w">
+                </span><span class="p">},</span><span class="w">
+                </span><span class="nl">"BW"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+                    </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Botswana"</span><span class="p">,</span><span class="w">
+                    </span><span class="nl">"dial_code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"+267"</span><span class="p">,</span><span class="w">
+                    </span><span class="nl">"flag"</span><span class="p">:</span><span class="w"> </span><span class="s2">"🇧🇼"</span><span class="w">
+                </span><span class="p">},</span><span class="w">
+                </span><span class="nl">"BV"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+                    </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Bouvet Island"</span><span class="p">,</span><span class="w">
+                    </span><span class="nl">"dial_code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"+47"</span><span class="p">,</span><span class="w">
+                    </span><span class="nl">"flag"</span><span class="p">:</span><span class="w"> </span><span class="s2">"🇧🇻"</span><span class="w">
+                </span><span class="p">},</span><span class="w">
+                </span><span class="nl">"BR"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+                    </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Brazil"</span><span class="p">,</span><span class="w">
+                    </span><span class="nl">"dial_code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"+55"</span><span class="p">,</span><span class="w">
+                    </span><span class="nl">"flag"</span><span class="p">:</span><span class="w"> </span><span class="s2">"🇧🇷"</span><span class="w">
+                </span><span class="p">},</span><span class="w">
+                </span><span class="nl">"IO"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+                    </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"British Indian Ocean Territory"</span><span class="p">,</span><span class="w">
+                    </span><span class="nl">"dial_code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"+246"</span><span class="p">,</span><span class="w">
+                    </span><span class="nl">"flag"</span><span class="p">:</span><span class="w"> </span><span class="s2">"🇮🇴"</span><span class="w">
+                </span><span class="p">},</span><span class="w">
+                </span><span class="nl">"BN"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+                    </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Brunei Darussalam"</span><span class="p">,</span><span class="w">
+                    </span><span class="nl">"dial_code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"+673"</span><span class="p">,</span><span class="w">
+                    </span><span class="nl">"flag"</span><span class="p">:</span><span class="w"> </span><span class="s2">"🇧🇳"</span><span class="w">
+                </span><span class="p">},</span><span class="w">
+                </span><span class="nl">"BG"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+                    </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Bulgaria"</span><span class="p">,</span><span class="w">
+                    </span><span class="nl">"dial_code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"+359"</span><span class="p">,</span><span class="w">
+                    </span><span class="nl">"flag"</span><span class="p">:</span><span class="w"> </span><span class="s2">"🇧🇬"</span><span class="w">
+                </span><span class="p">},</span><span class="w">
+                </span><span class="nl">"BF"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+                    </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Burkina Faso"</span><span class="p">,</span><span class="w">
+                    </span><span class="nl">"dial_code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"+226"</span><span class="p">,</span><span class="w">
+                    </span><span class="nl">"flag"</span><span class="p">:</span><span class="w"> </span><span class="s2">"🇧🇫"</span><span class="w">
+                </span><span class="p">},</span><span class="w">
+                </span><span class="nl">"BI"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+                    </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Burundi"</span><span class="p">,</span><span class="w">
+                    </span><span class="nl">"dial_code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"+257"</span><span class="p">,</span><span class="w">
+                    </span><span class="nl">"flag"</span><span class="p">:</span><span class="w"> </span><span class="s2">"🇧🇮"</span><span class="w">
+                </span><span class="p">},</span><span class="w">
+                </span><span class="nl">"KH"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+                    </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Cambodia"</span><span class="p">,</span><span class="w">
+                    </span><span class="nl">"dial_code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"+855"</span><span class="p">,</span><span class="w">
+                    </span><span class="nl">"flag"</span><span class="p">:</span><span class="w"> </span><span class="s2">"🇰🇭"</span><span class="w">
+                </span><span class="p">},</span><span class="w">
+                </span><span class="nl">"CM"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+                    </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Cameroon"</span><span class="p">,</span><span class="w">
+                    </span><span class="nl">"dial_code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"+237"</span><span class="p">,</span><span class="w">
+                    </span><span class="nl">"flag"</span><span class="p">:</span><span class="w"> </span><span class="s2">"🇨🇲"</span><span class="w">
+                </span><span class="p">},</span><span class="w">
+                </span><span class="nl">"CA"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+                    </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Canada"</span><span class="p">,</span><span class="w">
+                    </span><span class="nl">"dial_code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"+1"</span><span class="p">,</span><span class="w">
+                    </span><span class="nl">"flag"</span><span class="p">:</span><span class="w"> </span><span class="s2">"🇨🇦"</span><span class="w">
+                </span><span class="p">},</span><span class="w">
+                </span><span class="nl">"CV"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+                    </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Cape Verde"</span><span class="p">,</span><span class="w">
+                    </span><span class="nl">"dial_code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"+238"</span><span class="p">,</span><span class="w">
+                    </span><span class="nl">"flag"</span><span class="p">:</span><span class="w"> </span><span class="s2">"🇨🇻"</span><span class="w">
+                </span><span class="p">},</span><span class="w">
+                </span><span class="nl">"KY"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+                    </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Cayman Islands"</span><span class="p">,</span><span class="w">
+                    </span><span class="nl">"dial_code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"+345"</span><span class="p">,</span><span class="w">
+                    </span><span class="nl">"flag"</span><span class="p">:</span><span class="w"> </span><span class="s2">"🇰🇾"</span><span class="w">
+                </span><span class="p">},</span><span class="w">
+                </span><span class="nl">"CF"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+                    </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Central African Republic"</span><span class="p">,</span><span class="w">
+                    </span><span class="nl">"dial_code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"+236"</span><span class="p">,</span><span class="w">
+                    </span><span class="nl">"flag"</span><span class="p">:</span><span class="w"> </span><span class="s2">"🇨🇫"</span><span class="w">
+                </span><span class="p">},</span><span class="w">
+                </span><span class="nl">"TD"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+                    </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Chad"</span><span class="p">,</span><span class="w">
+                    </span><span class="nl">"dial_code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"+235"</span><span class="p">,</span><span class="w">
+                    </span><span class="nl">"flag"</span><span class="p">:</span><span class="w"> </span><span class="s2">"🇹🇩"</span><span class="w">
+                </span><span class="p">},</span><span class="w">
+                </span><span class="nl">"CL"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+                    </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Chile"</span><span class="p">,</span><span class="w">
+                    </span><span class="nl">"dial_code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"+56"</span><span class="p">,</span><span class="w">
+                    </span><span class="nl">"flag"</span><span class="p">:</span><span class="w"> </span><span class="s2">"🇨🇱"</span><span class="w">
+                </span><span class="p">},</span><span class="w">
+                </span><span class="nl">"CN"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+                    </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"China"</span><span class="p">,</span><span class="w">
+                    </span><span class="nl">"dial_code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"+86"</span><span class="p">,</span><span class="w">
+                    </span><span class="nl">"flag"</span><span class="p">:</span><span class="w"> </span><span class="s2">"🇨🇳"</span><span class="w">
+                </span><span class="p">},</span><span class="w">
+                </span><span class="nl">"CX"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+                    </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Christmas Island"</span><span class="p">,</span><span class="w">
+                    </span><span class="nl">"dial_code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"+61"</span><span class="p">,</span><span class="w">
+                    </span><span class="nl">"flag"</span><span class="p">:</span><span class="w"> </span><span class="s2">"🇨🇽"</span><span class="w">
+                </span><span class="p">},</span><span class="w">
+                </span><span class="nl">"CC"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+                    </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Cocos (Keeling) Islands"</span><span class="p">,</span><span class="w">
+                    </span><span class="nl">"dial_code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"+61"</span><span class="p">,</span><span class="w">
+                    </span><span class="nl">"flag"</span><span class="p">:</span><span class="w"> </span><span class="s2">"🇨🇨"</span><span class="w">
+                </span><span class="p">},</span><span class="w">
+                </span><span class="nl">"CO"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+                    </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Colombia"</span><span class="p">,</span><span class="w">
+                    </span><span class="nl">"dial_code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"+57"</span><span class="p">,</span><span class="w">
+                    </span><span class="nl">"flag"</span><span class="p">:</span><span class="w"> </span><span class="s2">"🇨🇴"</span><span class="w">
+                </span><span class="p">},</span><span class="w">
+                </span><span class="nl">"KM"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+                    </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Comoros"</span><span class="p">,</span><span class="w">
+                    </span><span class="nl">"dial_code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"+269"</span><span class="p">,</span><span class="w">
+                    </span><span class="nl">"flag"</span><span class="p">:</span><span class="w"> </span><span class="s2">"🇰🇲"</span><span class="w">
+                </span><span class="p">},</span><span class="w">
+                </span><span class="nl">"CG"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+                    </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Congo"</span><span class="p">,</span><span class="w">
+                    </span><span class="nl">"dial_code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"+242"</span><span class="p">,</span><span class="w">
+                    </span><span class="nl">"flag"</span><span class="p">:</span><span class="w"> </span><span class="s2">"🇨🇬"</span><span class="w">
+                </span><span class="p">},</span><span class="w">
+                </span><span class="nl">"CD"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+                    </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Congo, The Democratic Republic of the Congo"</span><span class="p">,</span><span class="w">
+                    </span><span class="nl">"dial_code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"+243"</span><span class="p">,</span><span class="w">
+                    </span><span class="nl">"flag"</span><span class="p">:</span><span class="w"> </span><span class="s2">"🇨🇩"</span><span class="w">
+                </span><span class="p">},</span><span class="w">
+                </span><span class="nl">"CK"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+                    </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Cook Islands"</span><span class="p">,</span><span class="w">
+                    </span><span class="nl">"dial_code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"+682"</span><span class="p">,</span><span class="w">
+                    </span><span class="nl">"flag"</span><span class="p">:</span><span class="w"> </span><span class="s2">"🇨🇰"</span><span class="w">
+                </span><span class="p">},</span><span class="w">
+                </span><span class="nl">"CR"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+                    </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Costa Rica"</span><span class="p">,</span><span class="w">
+                    </span><span class="nl">"dial_code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"+506"</span><span class="p">,</span><span class="w">
+                    </span><span class="nl">"flag"</span><span class="p">:</span><span class="w"> </span><span class="s2">"🇨🇷"</span><span class="w">
+                </span><span class="p">},</span><span class="w">
+                </span><span class="nl">"CI"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+                    </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Cote d'Ivoire"</span><span class="p">,</span><span class="w">
+                    </span><span class="nl">"dial_code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"+225"</span><span class="p">,</span><span class="w">
+                    </span><span class="nl">"flag"</span><span class="p">:</span><span class="w"> </span><span class="s2">"🇨🇮"</span><span class="w">
+                </span><span class="p">},</span><span class="w">
+                </span><span class="nl">"HR"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+                    </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Croatia"</span><span class="p">,</span><span class="w">
+                    </span><span class="nl">"dial_code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"+385"</span><span class="p">,</span><span class="w">
+                    </span><span class="nl">"flag"</span><span class="p">:</span><span class="w"> </span><span class="s2">"🇭🇷"</span><span class="w">
+                </span><span class="p">},</span><span class="w">
+                </span><span class="nl">"CU"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+                    </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Cuba"</span><span class="p">,</span><span class="w">
+                    </span><span class="nl">"dial_code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"+53"</span><span class="p">,</span><span class="w">
+                    </span><span class="nl">"flag"</span><span class="p">:</span><span class="w"> </span><span class="s2">"🇨🇺"</span><span class="w">
+                </span><span class="p">},</span><span class="w">
+                </span><span class="nl">"CY"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+                    </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Cyprus"</span><span class="p">,</span><span class="w">
+                    </span><span class="nl">"dial_code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"+357"</span><span class="p">,</span><span class="w">
+                    </span><span class="nl">"flag"</span><span class="p">:</span><span class="w"> </span><span class="s2">"🇨🇾"</span><span class="w">
+                </span><span class="p">},</span><span class="w">
+                </span><span class="nl">"CZ"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+                    </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Czech Republic"</span><span class="p">,</span><span class="w">
+                    </span><span class="nl">"dial_code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"+420"</span><span class="p">,</span><span class="w">
+                    </span><span class="nl">"flag"</span><span class="p">:</span><span class="w"> </span><span class="s2">"🇨🇿"</span><span class="w">
+                </span><span class="p">},</span><span class="w">
+                </span><span class="nl">"DK"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+                    </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Denmark"</span><span class="p">,</span><span class="w">
+                    </span><span class="nl">"dial_code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"+45"</span><span class="p">,</span><span class="w">
+                    </span><span class="nl">"flag"</span><span class="p">:</span><span class="w"> </span><span class="s2">"🇩🇰"</span><span class="w">
+                </span><span class="p">},</span><span class="w">
+                </span><span class="nl">"DJ"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+                    </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Djibouti"</span><span class="p">,</span><span class="w">
+                    </span><span class="nl">"dial_code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"+253"</span><span class="p">,</span><span class="w">
+                    </span><span class="nl">"flag"</span><span class="p">:</span><span class="w"> </span><span class="s2">"🇩🇯"</span><span class="w">
+                </span><span class="p">},</span><span class="w">
+                </span><span class="nl">"DM"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+                    </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Dominica"</span><span class="p">,</span><span class="w">
+                    </span><span class="nl">"dial_code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"+1767"</span><span class="p">,</span><span class="w">
+                    </span><span class="nl">"flag"</span><span class="p">:</span><span class="w"> </span><span class="s2">"🇩🇲"</span><span class="w">
+                </span><span class="p">},</span><span class="w">
+                </span><span class="nl">"DO"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+                    </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Dominican Republic"</span><span class="p">,</span><span class="w">
+                    </span><span class="nl">"dial_code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"+1849"</span><span class="p">,</span><span class="w">
+                    </span><span class="nl">"flag"</span><span class="p">:</span><span class="w"> </span><span class="s2">"🇩🇴"</span><span class="w">
+                </span><span class="p">},</span><span class="w">
+                </span><span class="nl">"EC"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+                    </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Ecuador"</span><span class="p">,</span><span class="w">
+                    </span><span class="nl">"dial_code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"+593"</span><span class="p">,</span><span class="w">
+                    </span><span class="nl">"flag"</span><span class="p">:</span><span class="w"> </span><span class="s2">"🇪🇨"</span><span class="w">
+                </span><span class="p">},</span><span class="w">
+                </span><span class="nl">"EG"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+                    </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Egypt"</span><span class="p">,</span><span class="w">
+                    </span><span class="nl">"dial_code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"+20"</span><span class="p">,</span><span class="w">
+                    </span><span class="nl">"flag"</span><span class="p">:</span><span class="w"> </span><span class="s2">"🇪🇬"</span><span class="w">
+                </span><span class="p">},</span><span class="w">
+                </span><span class="nl">"SV"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+                    </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"El Salvador"</span><span class="p">,</span><span class="w">
+                    </span><span class="nl">"dial_code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"+503"</span><span class="p">,</span><span class="w">
+                    </span><span class="nl">"flag"</span><span class="p">:</span><span class="w"> </span><span class="s2">"🇸🇻"</span><span class="w">
+                </span><span class="p">},</span><span class="w">
+                </span><span class="nl">"GQ"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+                    </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Equatorial Guinea"</span><span class="p">,</span><span class="w">
+                    </span><span class="nl">"dial_code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"+240"</span><span class="p">,</span><span class="w">
+                    </span><span class="nl">"flag"</span><span class="p">:</span><span class="w"> </span><span class="s2">"🇬🇶"</span><span class="w">
+                </span><span class="p">},</span><span class="w">
+                </span><span class="nl">"ER"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+                    </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Eritrea"</span><span class="p">,</span><span class="w">
+                    </span><span class="nl">"dial_code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"+291"</span><span class="p">,</span><span class="w">
+                    </span><span class="nl">"flag"</span><span class="p">:</span><span class="w"> </span><span class="s2">"🇪🇷"</span><span class="w">
+                </span><span class="p">},</span><span class="w">
+                </span><span class="nl">"EE"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+                    </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Estonia"</span><span class="p">,</span><span class="w">
+                    </span><span class="nl">"dial_code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"+372"</span><span class="p">,</span><span class="w">
+                    </span><span class="nl">"flag"</span><span class="p">:</span><span class="w"> </span><span class="s2">"🇪🇪"</span><span class="w">
+                </span><span class="p">},</span><span class="w">
+                </span><span class="nl">"ET"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+                    </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Ethiopia"</span><span class="p">,</span><span class="w">
+                    </span><span class="nl">"dial_code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"+251"</span><span class="p">,</span><span class="w">
+                    </span><span class="nl">"flag"</span><span class="p">:</span><span class="w"> </span><span class="s2">"🇪🇹"</span><span class="w">
+                </span><span class="p">},</span><span class="w">
+                </span><span class="nl">"FK"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+                    </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Falkland Islands (Malvinas)"</span><span class="p">,</span><span class="w">
+                    </span><span class="nl">"dial_code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"+500"</span><span class="p">,</span><span class="w">
+                    </span><span class="nl">"flag"</span><span class="p">:</span><span class="w"> </span><span class="s2">"🇫🇰"</span><span class="w">
+                </span><span class="p">},</span><span class="w">
+                </span><span class="nl">"FO"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+                    </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Faroe Islands"</span><span class="p">,</span><span class="w">
+                    </span><span class="nl">"dial_code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"+298"</span><span class="p">,</span><span class="w">
+                    </span><span class="nl">"flag"</span><span class="p">:</span><span class="w"> </span><span class="s2">"🇫🇴"</span><span class="w">
+                </span><span class="p">},</span><span class="w">
+                </span><span class="nl">"FJ"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+                    </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Fiji"</span><span class="p">,</span><span class="w">
+                    </span><span class="nl">"dial_code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"+679"</span><span class="p">,</span><span class="w">
+                    </span><span class="nl">"flag"</span><span class="p">:</span><span class="w"> </span><span class="s2">"🇫🇯"</span><span class="w">
+                </span><span class="p">},</span><span class="w">
+                </span><span class="nl">"FI"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+                    </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Finland"</span><span class="p">,</span><span class="w">
+                    </span><span class="nl">"dial_code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"+358"</span><span class="p">,</span><span class="w">
+                    </span><span class="nl">"flag"</span><span class="p">:</span><span class="w"> </span><span class="s2">"🇫🇮"</span><span class="w">
+                </span><span class="p">},</span><span class="w">
+                </span><span class="nl">"FR"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+                    </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"France"</span><span class="p">,</span><span class="w">
+                    </span><span class="nl">"dial_code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"+33"</span><span class="p">,</span><span class="w">
+                    </span><span class="nl">"flag"</span><span class="p">:</span><span class="w"> </span><span class="s2">"🇫🇷"</span><span class="w">
+                </span><span class="p">},</span><span class="w">
+                </span><span class="nl">"GF"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+                    </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"French Guiana"</span><span class="p">,</span><span class="w">
+                    </span><span class="nl">"dial_code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"+594"</span><span class="p">,</span><span class="w">
+                    </span><span class="nl">"flag"</span><span class="p">:</span><span class="w"> </span><span class="s2">"🇬🇫"</span><span class="w">
+                </span><span class="p">},</span><span class="w">
+                </span><span class="nl">"PF"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+                    </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"French Polynesia"</span><span class="p">,</span><span class="w">
+                    </span><span class="nl">"dial_code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"+689"</span><span class="p">,</span><span class="w">
+                    </span><span class="nl">"flag"</span><span class="p">:</span><span class="w"> </span><span class="s2">"🇵🇫"</span><span class="w">
+                </span><span class="p">},</span><span class="w">
+                </span><span class="nl">"TF"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+                    </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"French Southern Territories"</span><span class="p">,</span><span class="w">
+                    </span><span class="nl">"dial_code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"+262"</span><span class="p">,</span><span class="w">
+                    </span><span class="nl">"flag"</span><span class="p">:</span><span class="w"> </span><span class="s2">"🇹🇫"</span><span class="w">
+                </span><span class="p">},</span><span class="w">
+                </span><span class="nl">"GA"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+                    </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Gabon"</span><span class="p">,</span><span class="w">
+                    </span><span class="nl">"dial_code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"+241"</span><span class="p">,</span><span class="w">
+                    </span><span class="nl">"flag"</span><span class="p">:</span><span class="w"> </span><span class="s2">"🇬🇦"</span><span class="w">
+                </span><span class="p">},</span><span class="w">
+                </span><span class="nl">"GM"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+                    </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Gambia"</span><span class="p">,</span><span class="w">
+                    </span><span class="nl">"dial_code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"+220"</span><span class="p">,</span><span class="w">
+                    </span><span class="nl">"flag"</span><span class="p">:</span><span class="w"> </span><span class="s2">"🇬🇲"</span><span class="w">
+                </span><span class="p">},</span><span class="w">
+                </span><span class="nl">"GE"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+                    </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Georgia"</span><span class="p">,</span><span class="w">
+                    </span><span class="nl">"dial_code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"+995"</span><span class="p">,</span><span class="w">
+                    </span><span class="nl">"flag"</span><span class="p">:</span><span class="w"> </span><span class="s2">"🇬🇪"</span><span class="w">
+                </span><span class="p">},</span><span class="w">
+                </span><span class="nl">"DE"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+                    </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Germany"</span><span class="p">,</span><span class="w">
+                    </span><span class="nl">"dial_code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"+49"</span><span class="p">,</span><span class="w">
+                    </span><span class="nl">"flag"</span><span class="p">:</span><span class="w"> </span><span class="s2">"🇩🇪"</span><span class="w">
+                </span><span class="p">},</span><span class="w">
+                </span><span class="nl">"GH"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+                    </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Ghana"</span><span class="p">,</span><span class="w">
+                    </span><span class="nl">"dial_code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"+233"</span><span class="p">,</span><span class="w">
+                    </span><span class="nl">"flag"</span><span class="p">:</span><span class="w"> </span><span class="s2">"🇬🇭"</span><span class="w">
+                </span><span class="p">},</span><span class="w">
+                </span><span class="nl">"GI"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+                    </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Gibraltar"</span><span class="p">,</span><span class="w">
+                    </span><span class="nl">"dial_code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"+350"</span><span class="p">,</span><span class="w">
+                    </span><span class="nl">"flag"</span><span class="p">:</span><span class="w"> </span><span class="s2">"🇬🇮"</span><span class="w">
+                </span><span class="p">},</span><span class="w">
+                </span><span class="nl">"GR"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+                    </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Greece"</span><span class="p">,</span><span class="w">
+                    </span><span class="nl">"dial_code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"+30"</span><span class="p">,</span><span class="w">
+                    </span><span class="nl">"flag"</span><span class="p">:</span><span class="w"> </span><span class="s2">"🇬🇷"</span><span class="w">
+                </span><span class="p">},</span><span class="w">
+                </span><span class="nl">"GL"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+                    </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Greenland"</span><span class="p">,</span><span class="w">
+                    </span><span class="nl">"dial_code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"+299"</span><span class="p">,</span><span class="w">
+                    </span><span class="nl">"flag"</span><span class="p">:</span><span class="w"> </span><span class="s2">"🇬🇱"</span><span class="w">
+                </span><span class="p">},</span><span class="w">
+                </span><span class="nl">"GD"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+                    </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Grenada"</span><span class="p">,</span><span class="w">
+                    </span><span class="nl">"dial_code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"+1473"</span><span class="p">,</span><span class="w">
+                    </span><span class="nl">"flag"</span><span class="p">:</span><span class="w"> </span><span class="s2">"🇬🇩"</span><span class="w">
+                </span><span class="p">},</span><span class="w">
+                </span><span class="nl">"GP"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+                    </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Guadeloupe"</span><span class="p">,</span><span class="w">
+                    </span><span class="nl">"dial_code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"+590"</span><span class="p">,</span><span class="w">
+                    </span><span class="nl">"flag"</span><span class="p">:</span><span class="w"> </span><span class="s2">"🇬🇵"</span><span class="w">
+                </span><span class="p">},</span><span class="w">
+                </span><span class="nl">"GU"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+                    </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Guam"</span><span class="p">,</span><span class="w">
+                    </span><span class="nl">"dial_code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"+1671"</span><span class="p">,</span><span class="w">
+                    </span><span class="nl">"flag"</span><span class="p">:</span><span class="w"> </span><span class="s2">"🇬🇺"</span><span class="w">
+                </span><span class="p">},</span><span class="w">
+                </span><span class="nl">"GT"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+                    </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Guatemala"</span><span class="p">,</span><span class="w">
+                    </span><span class="nl">"dial_code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"+502"</span><span class="p">,</span><span class="w">
+                    </span><span class="nl">"flag"</span><span class="p">:</span><span class="w"> </span><span class="s2">"🇬🇹"</span><span class="w">
+                </span><span class="p">},</span><span class="w">
+                </span><span class="nl">"GG"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+                    </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Guernsey"</span><span class="p">,</span><span class="w">
+                    </span><span class="nl">"dial_code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"+44"</span><span class="p">,</span><span class="w">
+                    </span><span class="nl">"flag"</span><span class="p">:</span><span class="w"> </span><span class="s2">"🇬🇬"</span><span class="w">
+                </span><span class="p">},</span><span class="w">
+                </span><span class="nl">"GN"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+                    </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Guinea"</span><span class="p">,</span><span class="w">
+                    </span><span class="nl">"dial_code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"+224"</span><span class="p">,</span><span class="w">
+                    </span><span class="nl">"flag"</span><span class="p">:</span><span class="w"> </span><span class="s2">"🇬🇳"</span><span class="w">
+                </span><span class="p">},</span><span class="w">
+                </span><span class="nl">"GW"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+                    </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Guinea-Bissau"</span><span class="p">,</span><span class="w">
+                    </span><span class="nl">"dial_code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"+245"</span><span class="p">,</span><span class="w">
+                    </span><span class="nl">"flag"</span><span class="p">:</span><span class="w"> </span><span class="s2">"🇬🇼"</span><span class="w">
+                </span><span class="p">},</span><span class="w">
+                </span><span class="nl">"GY"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+                    </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Guyana"</span><span class="p">,</span><span class="w">
+                    </span><span class="nl">"dial_code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"+592"</span><span class="p">,</span><span class="w">
+                    </span><span class="nl">"flag"</span><span class="p">:</span><span class="w"> </span><span class="s2">"🇬🇾"</span><span class="w">
+                </span><span class="p">},</span><span class="w">
+                </span><span class="nl">"HT"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+                    </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Haiti"</span><span class="p">,</span><span class="w">
+                    </span><span class="nl">"dial_code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"+509"</span><span class="p">,</span><span class="w">
+                    </span><span class="nl">"flag"</span><span class="p">:</span><span class="w"> </span><span class="s2">"🇭🇹"</span><span class="w">
+                </span><span class="p">},</span><span class="w">
+                </span><span class="nl">"HM"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+                    </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Heard Island and Mcdonald Islands"</span><span class="p">,</span><span class="w">
+                    </span><span class="nl">"dial_code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"+672"</span><span class="p">,</span><span class="w">
+                    </span><span class="nl">"flag"</span><span class="p">:</span><span class="w"> </span><span class="s2">"🇭🇲"</span><span class="w">
+                </span><span class="p">},</span><span class="w">
+                </span><span class="nl">"VA"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+                    </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Holy See (Vatican City State)"</span><span class="p">,</span><span class="w">
+                    </span><span class="nl">"dial_code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"+379"</span><span class="p">,</span><span class="w">
+                    </span><span class="nl">"flag"</span><span class="p">:</span><span class="w"> </span><span class="s2">"🇻🇦"</span><span class="w">
+                </span><span class="p">},</span><span class="w">
+                </span><span class="nl">"HN"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+                    </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Honduras"</span><span class="p">,</span><span class="w">
+                    </span><span class="nl">"dial_code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"+504"</span><span class="p">,</span><span class="w">
+                    </span><span class="nl">"flag"</span><span class="p">:</span><span class="w"> </span><span class="s2">"🇭🇳"</span><span class="w">
+                </span><span class="p">},</span><span class="w">
+                </span><span class="nl">"HK"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+                    </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Hong Kong"</span><span class="p">,</span><span class="w">
+                    </span><span class="nl">"dial_code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"+852"</span><span class="p">,</span><span class="w">
+                    </span><span class="nl">"flag"</span><span class="p">:</span><span class="w"> </span><span class="s2">"🇭🇰"</span><span class="w">
+                </span><span class="p">},</span><span class="w">
+                </span><span class="nl">"HU"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+                    </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Hungary"</span><span class="p">,</span><span class="w">
+                    </span><span class="nl">"dial_code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"+36"</span><span class="p">,</span><span class="w">
+                    </span><span class="nl">"flag"</span><span class="p">:</span><span class="w"> </span><span class="s2">"🇭🇺"</span><span class="w">
+                </span><span class="p">},</span><span class="w">
+                </span><span class="nl">"IS"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+                    </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Iceland"</span><span class="p">,</span><span class="w">
+                    </span><span class="nl">"dial_code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"+354"</span><span class="p">,</span><span class="w">
+                    </span><span class="nl">"flag"</span><span class="p">:</span><span class="w"> </span><span class="s2">"🇮🇸"</span><span class="w">
+                </span><span class="p">},</span><span class="w">
+                </span><span class="nl">"IN"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+                    </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"India"</span><span class="p">,</span><span class="w">
+                    </span><span class="nl">"dial_code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"+91"</span><span class="p">,</span><span class="w">
+                    </span><span class="nl">"flag"</span><span class="p">:</span><span class="w"> </span><span class="s2">"🇮🇳"</span><span class="w">
+                </span><span class="p">},</span><span class="w">
+                </span><span class="nl">"ID"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+                    </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Indonesia"</span><span class="p">,</span><span class="w">
+                    </span><span class="nl">"dial_code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"+62"</span><span class="p">,</span><span class="w">
+                    </span><span class="nl">"flag"</span><span class="p">:</span><span class="w"> </span><span class="s2">"🇮🇩"</span><span class="w">
+                </span><span class="p">},</span><span class="w">
+                </span><span class="nl">"IR"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+                    </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Iran, Islamic Republic of Persian Gulf"</span><span class="p">,</span><span class="w">
+                    </span><span class="nl">"dial_code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"+98"</span><span class="p">,</span><span class="w">
+                    </span><span class="nl">"flag"</span><span class="p">:</span><span class="w"> </span><span class="s2">"🇮🇷"</span><span class="w">
+                </span><span class="p">},</span><span class="w">
+                </span><span class="nl">"IQ"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+                    </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Iraq"</span><span class="p">,</span><span class="w">
+                    </span><span class="nl">"dial_code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"+964"</span><span class="p">,</span><span class="w">
+                    </span><span class="nl">"flag"</span><span class="p">:</span><span class="w"> </span><span class="s2">"🇮🇶"</span><span class="w">
+                </span><span class="p">},</span><span class="w">
+                </span><span class="nl">"IE"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+                    </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Ireland"</span><span class="p">,</span><span class="w">
+                    </span><span class="nl">"dial_code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"+353"</span><span class="p">,</span><span class="w">
+                    </span><span class="nl">"flag"</span><span class="p">:</span><span class="w"> </span><span class="s2">"🇮🇪"</span><span class="w">
+                </span><span class="p">},</span><span class="w">
+                </span><span class="nl">"IM"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+                    </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Isle of Man"</span><span class="p">,</span><span class="w">
+                    </span><span class="nl">"dial_code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"+44"</span><span class="p">,</span><span class="w">
+                    </span><span class="nl">"flag"</span><span class="p">:</span><span class="w"> </span><span class="s2">"🇮🇲"</span><span class="w">
+                </span><span class="p">},</span><span class="w">
+                </span><span class="nl">"IL"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+                    </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Israel"</span><span class="p">,</span><span class="w">
+                    </span><span class="nl">"dial_code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"+972"</span><span class="p">,</span><span class="w">
+                    </span><span class="nl">"flag"</span><span class="p">:</span><span class="w"> </span><span class="s2">"🇮🇱"</span><span class="w">
+                </span><span class="p">},</span><span class="w">
+                </span><span class="nl">"IT"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+                    </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Italy"</span><span class="p">,</span><span class="w">
+                    </span><span class="nl">"dial_code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"+39"</span><span class="p">,</span><span class="w">
+                    </span><span class="nl">"flag"</span><span class="p">:</span><span class="w"> </span><span class="s2">"🇮🇹"</span><span class="w">
+                </span><span class="p">},</span><span class="w">
+                </span><span class="nl">"JM"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+                    </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Jamaica"</span><span class="p">,</span><span class="w">
+                    </span><span class="nl">"dial_code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"+1876"</span><span class="p">,</span><span class="w">
+                    </span><span class="nl">"flag"</span><span class="p">:</span><span class="w"> </span><span class="s2">"🇯🇲"</span><span class="w">
+                </span><span class="p">},</span><span class="w">
+                </span><span class="nl">"JP"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+                    </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Japan"</span><span class="p">,</span><span class="w">
+                    </span><span class="nl">"dial_code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"+81"</span><span class="p">,</span><span class="w">
+                    </span><span class="nl">"flag"</span><span class="p">:</span><span class="w"> </span><span class="s2">"🇯🇵"</span><span class="w">
+                </span><span class="p">},</span><span class="w">
+                </span><span class="nl">"JE"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+                    </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Jersey"</span><span class="p">,</span><span class="w">
+                    </span><span class="nl">"dial_code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"+44"</span><span class="p">,</span><span class="w">
+                    </span><span class="nl">"flag"</span><span class="p">:</span><span class="w"> </span><span class="s2">"🇯🇪"</span><span class="w">
+                </span><span class="p">},</span><span class="w">
+                </span><span class="nl">"JO"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+                    </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Jordan"</span><span class="p">,</span><span class="w">
+                    </span><span class="nl">"dial_code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"+962"</span><span class="p">,</span><span class="w">
+                    </span><span class="nl">"flag"</span><span class="p">:</span><span class="w"> </span><span class="s2">"🇯🇴"</span><span class="w">
+                </span><span class="p">},</span><span class="w">
+                </span><span class="nl">"KZ"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+                    </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Kazakhstan"</span><span class="p">,</span><span class="w">
+                    </span><span class="nl">"dial_code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"+7"</span><span class="p">,</span><span class="w">
+                    </span><span class="nl">"flag"</span><span class="p">:</span><span class="w"> </span><span class="s2">"🇰🇿"</span><span class="w">
+                </span><span class="p">},</span><span class="w">
+                </span><span class="nl">"KE"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+                    </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Kenya"</span><span class="p">,</span><span class="w">
+                    </span><span class="nl">"dial_code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"+254"</span><span class="p">,</span><span class="w">
+                    </span><span class="nl">"flag"</span><span class="p">:</span><span class="w"> </span><span class="s2">"🇰🇪"</span><span class="w">
+                </span><span class="p">},</span><span class="w">
+                </span><span class="nl">"KI"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+                    </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Kiribati"</span><span class="p">,</span><span class="w">
+                    </span><span class="nl">"dial_code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"+686"</span><span class="p">,</span><span class="w">
+                    </span><span class="nl">"flag"</span><span class="p">:</span><span class="w"> </span><span class="s2">"🇰🇮"</span><span class="w">
+                </span><span class="p">},</span><span class="w">
+                </span><span class="nl">"KP"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+                    </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Korea, Democratic People's Republic of Korea"</span><span class="p">,</span><span class="w">
+                    </span><span class="nl">"dial_code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"+850"</span><span class="p">,</span><span class="w">
+                    </span><span class="nl">"flag"</span><span class="p">:</span><span class="w"> </span><span class="s2">"🇰🇵"</span><span class="w">
+                </span><span class="p">},</span><span class="w">
+                </span><span class="nl">"KR"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+                    </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Korea, Republic of South Korea"</span><span class="p">,</span><span class="w">
+                    </span><span class="nl">"dial_code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"+82"</span><span class="p">,</span><span class="w">
+                    </span><span class="nl">"flag"</span><span class="p">:</span><span class="w"> </span><span class="s2">"🇰🇷"</span><span class="w">
+                </span><span class="p">},</span><span class="w">
+                </span><span class="nl">"XK"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+                    </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Kosovo"</span><span class="p">,</span><span class="w">
+                    </span><span class="nl">"dial_code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"+383"</span><span class="p">,</span><span class="w">
+                    </span><span class="nl">"flag"</span><span class="p">:</span><span class="w"> </span><span class="s2">"🇽🇰"</span><span class="w">
+                </span><span class="p">},</span><span class="w">
+                </span><span class="nl">"KW"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+                    </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Kuwait"</span><span class="p">,</span><span class="w">
+                    </span><span class="nl">"dial_code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"+965"</span><span class="p">,</span><span class="w">
+                    </span><span class="nl">"flag"</span><span class="p">:</span><span class="w"> </span><span class="s2">"🇰🇼"</span><span class="w">
+                </span><span class="p">},</span><span class="w">
+                </span><span class="nl">"KG"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+                    </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Kyrgyzstan"</span><span class="p">,</span><span class="w">
+                    </span><span class="nl">"dial_code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"+996"</span><span class="p">,</span><span class="w">
+                    </span><span class="nl">"flag"</span><span class="p">:</span><span class="w"> </span><span class="s2">"🇰🇬"</span><span class="w">
+                </span><span class="p">},</span><span class="w">
+                </span><span class="nl">"LA"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+                    </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Laos"</span><span class="p">,</span><span class="w">
+                    </span><span class="nl">"dial_code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"+856"</span><span class="p">,</span><span class="w">
+                    </span><span class="nl">"flag"</span><span class="p">:</span><span class="w"> </span><span class="s2">"🇱🇦"</span><span class="w">
+                </span><span class="p">},</span><span class="w">
+                </span><span class="nl">"LV"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+                    </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Latvia"</span><span class="p">,</span><span class="w">
+                    </span><span class="nl">"dial_code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"+371"</span><span class="p">,</span><span class="w">
+                    </span><span class="nl">"flag"</span><span class="p">:</span><span class="w"> </span><span class="s2">"🇱🇻"</span><span class="w">
+                </span><span class="p">},</span><span class="w">
+                </span><span class="nl">"LB"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+                    </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Lebanon"</span><span class="p">,</span><span class="w">
+                    </span><span class="nl">"dial_code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"+961"</span><span class="p">,</span><span class="w">
+                    </span><span class="nl">"flag"</span><span class="p">:</span><span class="w"> </span><span class="s2">"🇱🇧"</span><span class="w">
+                </span><span class="p">},</span><span class="w">
+                </span><span class="nl">"LS"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+                    </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Lesotho"</span><span class="p">,</span><span class="w">
+                    </span><span class="nl">"dial_code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"+266"</span><span class="p">,</span><span class="w">
+                    </span><span class="nl">"flag"</span><span class="p">:</span><span class="w"> </span><span class="s2">"🇱🇸"</span><span class="w">
+                </span><span class="p">},</span><span class="w">
+                </span><span class="nl">"LR"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+                    </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Liberia"</span><span class="p">,</span><span class="w">
+                    </span><span class="nl">"dial_code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"+231"</span><span class="p">,</span><span class="w">
+                    </span><span class="nl">"flag"</span><span class="p">:</span><span class="w"> </span><span class="s2">"🇱🇷"</span><span class="w">
+                </span><span class="p">},</span><span class="w">
+                </span><span class="nl">"LY"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+                    </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Libyan Arab Jamahiriya"</span><span class="p">,</span><span class="w">
+                    </span><span class="nl">"dial_code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"+218"</span><span class="p">,</span><span class="w">
+                    </span><span class="nl">"flag"</span><span class="p">:</span><span class="w"> </span><span class="s2">"🇱🇾"</span><span class="w">
+                </span><span class="p">},</span><span class="w">
+                </span><span class="nl">"LI"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+                    </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Liechtenstein"</span><span class="p">,</span><span class="w">
+                    </span><span class="nl">"dial_code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"+423"</span><span class="p">,</span><span class="w">
+                    </span><span class="nl">"flag"</span><span class="p">:</span><span class="w"> </span><span class="s2">"🇱🇮"</span><span class="w">
+                </span><span class="p">},</span><span class="w">
+                </span><span class="nl">"LT"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+                    </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Lithuania"</span><span class="p">,</span><span class="w">
+                    </span><span class="nl">"dial_code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"+370"</span><span class="p">,</span><span class="w">
+                    </span><span class="nl">"flag"</span><span class="p">:</span><span class="w"> </span><span class="s2">"🇱🇹"</span><span class="w">
+                </span><span class="p">},</span><span class="w">
+                </span><span class="nl">"LU"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+                    </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Luxembourg"</span><span class="p">,</span><span class="w">
+                    </span><span class="nl">"dial_code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"+352"</span><span class="p">,</span><span class="w">
+                    </span><span class="nl">"flag"</span><span class="p">:</span><span class="w"> </span><span class="s2">"🇱🇺"</span><span class="w">
+                </span><span class="p">},</span><span class="w">
+                </span><span class="nl">"MO"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+                    </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Macao"</span><span class="p">,</span><span class="w">
+                    </span><span class="nl">"dial_code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"+853"</span><span class="p">,</span><span class="w">
+                    </span><span class="nl">"flag"</span><span class="p">:</span><span class="w"> </span><span class="s2">"🇲🇴"</span><span class="w">
+                </span><span class="p">},</span><span class="w">
+                </span><span class="nl">"MK"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+                    </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Macedonia"</span><span class="p">,</span><span class="w">
+                    </span><span class="nl">"dial_code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"+389"</span><span class="p">,</span><span class="w">
+                    </span><span class="nl">"flag"</span><span class="p">:</span><span class="w"> </span><span class="s2">"🇲🇰"</span><span class="w">
+                </span><span class="p">},</span><span class="w">
+                </span><span class="nl">"MG"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+                    </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Madagascar"</span><span class="p">,</span><span class="w">
+                    </span><span class="nl">"dial_code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"+261"</span><span class="p">,</span><span class="w">
+                    </span><span class="nl">"flag"</span><span class="p">:</span><span class="w"> </span><span class="s2">"🇲🇬"</span><span class="w">
+                </span><span class="p">},</span><span class="w">
+                </span><span class="nl">"MW"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+                    </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Malawi"</span><span class="p">,</span><span class="w">
+                    </span><span class="nl">"dial_code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"+265"</span><span class="p">,</span><span class="w">
+                    </span><span class="nl">"flag"</span><span class="p">:</span><span class="w"> </span><span class="s2">"🇲🇼"</span><span class="w">
+                </span><span class="p">},</span><span class="w">
+                </span><span class="nl">"MY"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+                    </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Malaysia"</span><span class="p">,</span><span class="w">
+                    </span><span class="nl">"dial_code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"+60"</span><span class="p">,</span><span class="w">
+                    </span><span class="nl">"flag"</span><span class="p">:</span><span class="w"> </span><span class="s2">"🇲🇾"</span><span class="w">
+                </span><span class="p">},</span><span class="w">
+                </span><span class="nl">"MV"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+                    </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Maldives"</span><span class="p">,</span><span class="w">
+                    </span><span class="nl">"dial_code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"+960"</span><span class="p">,</span><span class="w">
+                    </span><span class="nl">"flag"</span><span class="p">:</span><span class="w"> </span><span class="s2">"🇲🇻"</span><span class="w">
+                </span><span class="p">},</span><span class="w">
+                </span><span class="nl">"ML"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+                    </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Mali"</span><span class="p">,</span><span class="w">
+                    </span><span class="nl">"dial_code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"+223"</span><span class="p">,</span><span class="w">
+                    </span><span class="nl">"flag"</span><span class="p">:</span><span class="w"> </span><span class="s2">"🇲🇱"</span><span class="w">
+                </span><span class="p">},</span><span class="w">
+                </span><span class="nl">"MT"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+                    </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Malta"</span><span class="p">,</span><span class="w">
+                    </span><span class="nl">"dial_code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"+356"</span><span class="p">,</span><span class="w">
+                    </span><span class="nl">"flag"</span><span class="p">:</span><span class="w"> </span><span class="s2">"🇲🇹"</span><span class="w">
+                </span><span class="p">},</span><span class="w">
+                </span><span class="nl">"MH"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+                    </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Marshall Islands"</span><span class="p">,</span><span class="w">
+                    </span><span class="nl">"dial_code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"+692"</span><span class="p">,</span><span class="w">
+                    </span><span class="nl">"flag"</span><span class="p">:</span><span class="w"> </span><span class="s2">"🇲🇭"</span><span class="w">
+                </span><span class="p">},</span><span class="w">
+                </span><span class="nl">"MQ"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+                    </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Martinique"</span><span class="p">,</span><span class="w">
+                    </span><span class="nl">"dial_code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"+596"</span><span class="p">,</span><span class="w">
+                    </span><span class="nl">"flag"</span><span class="p">:</span><span class="w"> </span><span class="s2">"🇲🇶"</span><span class="w">
+                </span><span class="p">},</span><span class="w">
+                </span><span class="nl">"MR"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+                    </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Mauritania"</span><span class="p">,</span><span class="w">
+                    </span><span class="nl">"dial_code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"+222"</span><span class="p">,</span><span class="w">
+                    </span><span class="nl">"flag"</span><span class="p">:</span><span class="w"> </span><span class="s2">"🇲🇷"</span><span class="w">
+                </span><span class="p">},</span><span class="w">
+                </span><span class="nl">"MU"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+                    </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Mauritius"</span><span class="p">,</span><span class="w">
+                    </span><span class="nl">"dial_code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"+230"</span><span class="p">,</span><span class="w">
+                    </span><span class="nl">"flag"</span><span class="p">:</span><span class="w"> </span><span class="s2">"🇲🇺"</span><span class="w">
+                </span><span class="p">},</span><span class="w">
+                </span><span class="nl">"YT"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+                    </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Mayotte"</span><span class="p">,</span><span class="w">
+                    </span><span class="nl">"dial_code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"+262"</span><span class="p">,</span><span class="w">
+                    </span><span class="nl">"flag"</span><span class="p">:</span><span class="w"> </span><span class="s2">"🇾🇹"</span><span class="w">
+                </span><span class="p">},</span><span class="w">
+                </span><span class="nl">"MX"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+                    </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Mexico"</span><span class="p">,</span><span class="w">
+                    </span><span class="nl">"dial_code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"+52"</span><span class="p">,</span><span class="w">
+                    </span><span class="nl">"flag"</span><span class="p">:</span><span class="w"> </span><span class="s2">"🇲🇽"</span><span class="w">
+                </span><span class="p">},</span><span class="w">
+                </span><span class="nl">"FM"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+                    </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Micronesia, Federated States of Micronesia"</span><span class="p">,</span><span class="w">
+                    </span><span class="nl">"dial_code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"+691"</span><span class="p">,</span><span class="w">
+                    </span><span class="nl">"flag"</span><span class="p">:</span><span class="w"> </span><span class="s2">"🇫🇲"</span><span class="w">
+                </span><span class="p">},</span><span class="w">
+                </span><span class="nl">"MD"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+                    </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Moldova"</span><span class="p">,</span><span class="w">
+                    </span><span class="nl">"dial_code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"+373"</span><span class="p">,</span><span class="w">
+                    </span><span class="nl">"flag"</span><span class="p">:</span><span class="w"> </span><span class="s2">"🇲🇩"</span><span class="w">
+                </span><span class="p">},</span><span class="w">
+                </span><span class="nl">"MC"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+                    </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Monaco"</span><span class="p">,</span><span class="w">
+                    </span><span class="nl">"dial_code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"+377"</span><span class="p">,</span><span class="w">
+                    </span><span class="nl">"flag"</span><span class="p">:</span><span class="w"> </span><span class="s2">"🇲🇨"</span><span class="w">
+                </span><span class="p">},</span><span class="w">
+                </span><span class="nl">"MN"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+                    </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Mongolia"</span><span class="p">,</span><span class="w">
+                    </span><span class="nl">"dial_code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"+976"</span><span class="p">,</span><span class="w">
+                    </span><span class="nl">"flag"</span><span class="p">:</span><span class="w"> </span><span class="s2">"🇲🇳"</span><span class="w">
+                </span><span class="p">},</span><span class="w">
+                </span><span class="nl">"ME"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+                    </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Montenegro"</span><span class="p">,</span><span class="w">
+                    </span><span class="nl">"dial_code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"+382"</span><span class="p">,</span><span class="w">
+                    </span><span class="nl">"flag"</span><span class="p">:</span><span class="w"> </span><span class="s2">"🇲🇪"</span><span class="w">
+                </span><span class="p">},</span><span class="w">
+                </span><span class="nl">"MS"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+                    </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Montserrat"</span><span class="p">,</span><span class="w">
+                    </span><span class="nl">"dial_code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"+1664"</span><span class="p">,</span><span class="w">
+                    </span><span class="nl">"flag"</span><span class="p">:</span><span class="w"> </span><span class="s2">"🇲🇸"</span><span class="w">
+                </span><span class="p">},</span><span class="w">
+                </span><span class="nl">"MA"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+                    </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Morocco"</span><span class="p">,</span><span class="w">
+                    </span><span class="nl">"dial_code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"+212"</span><span class="p">,</span><span class="w">
+                    </span><span class="nl">"flag"</span><span class="p">:</span><span class="w"> </span><span class="s2">"🇲🇦"</span><span class="w">
+                </span><span class="p">},</span><span class="w">
+                </span><span class="nl">"MZ"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+                    </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Mozambique"</span><span class="p">,</span><span class="w">
+                    </span><span class="nl">"dial_code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"+258"</span><span class="p">,</span><span class="w">
+                    </span><span class="nl">"flag"</span><span class="p">:</span><span class="w"> </span><span class="s2">"🇲🇿"</span><span class="w">
+                </span><span class="p">},</span><span class="w">
+                </span><span class="nl">"MM"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+                    </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Myanmar"</span><span class="p">,</span><span class="w">
+                    </span><span class="nl">"dial_code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"+95"</span><span class="p">,</span><span class="w">
+                    </span><span class="nl">"flag"</span><span class="p">:</span><span class="w"> </span><span class="s2">"🇲🇲"</span><span class="w">
+                </span><span class="p">},</span><span class="w">
+                </span><span class="nl">"NA"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+                    </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Namibia"</span><span class="p">,</span><span class="w">
+                    </span><span class="nl">"dial_code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"+264"</span><span class="p">,</span><span class="w">
+                    </span><span class="nl">"flag"</span><span class="p">:</span><span class="w"> </span><span class="s2">"🇳🇦"</span><span class="w">
+                </span><span class="p">},</span><span class="w">
+                </span><span class="nl">"NR"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+                    </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Nauru"</span><span class="p">,</span><span class="w">
+                    </span><span class="nl">"dial_code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"+674"</span><span class="p">,</span><span class="w">
+                    </span><span class="nl">"flag"</span><span class="p">:</span><span class="w"> </span><span class="s2">"🇳🇷"</span><span class="w">
+                </span><span class="p">},</span><span class="w">
+                </span><span class="nl">"NP"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+                    </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Nepal"</span><span class="p">,</span><span class="w">
+                    </span><span class="nl">"dial_code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"+977"</span><span class="p">,</span><span class="w">
+                    </span><span class="nl">"flag"</span><span class="p">:</span><span class="w"> </span><span class="s2">"🇳🇵"</span><span class="w">
+                </span><span class="p">},</span><span class="w">
+                </span><span class="nl">"NL"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+                    </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Netherlands"</span><span class="p">,</span><span class="w">
+                    </span><span class="nl">"dial_code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"+31"</span><span class="p">,</span><span class="w">
+                    </span><span class="nl">"flag"</span><span class="p">:</span><span class="w"> </span><span class="s2">"🇳🇱"</span><span class="w">
+                </span><span class="p">},</span><span class="w">
+                </span><span class="nl">"AN"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+                    </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Netherlands Antilles"</span><span class="p">,</span><span class="w">
+                    </span><span class="nl">"dial_code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"+599"</span><span class="p">,</span><span class="w">
+                    </span><span class="nl">"flag"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="w">
+                </span><span class="p">},</span><span class="w">
+                </span><span class="nl">"NC"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+                    </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"New Caledonia"</span><span class="p">,</span><span class="w">
+                    </span><span class="nl">"dial_code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"+687"</span><span class="p">,</span><span class="w">
+                    </span><span class="nl">"flag"</span><span class="p">:</span><span class="w"> </span><span class="s2">"🇳🇨"</span><span class="w">
+                </span><span class="p">},</span><span class="w">
+                </span><span class="nl">"NZ"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+                    </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"New Zealand"</span><span class="p">,</span><span class="w">
+                    </span><span class="nl">"dial_code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"+64"</span><span class="p">,</span><span class="w">
+                    </span><span class="nl">"flag"</span><span class="p">:</span><span class="w"> </span><span class="s2">"🇳🇿"</span><span class="w">
+                </span><span class="p">},</span><span class="w">
+                </span><span class="nl">"NI"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+                    </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Nicaragua"</span><span class="p">,</span><span class="w">
+                    </span><span class="nl">"dial_code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"+505"</span><span class="p">,</span><span class="w">
+                    </span><span class="nl">"flag"</span><span class="p">:</span><span class="w"> </span><span class="s2">"🇳🇮"</span><span class="w">
+                </span><span class="p">},</span><span class="w">
+                </span><span class="nl">"NE"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+                    </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Niger"</span><span class="p">,</span><span class="w">
+                    </span><span class="nl">"dial_code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"+227"</span><span class="p">,</span><span class="w">
+                    </span><span class="nl">"flag"</span><span class="p">:</span><span class="w"> </span><span class="s2">"🇳🇪"</span><span class="w">
+                </span><span class="p">},</span><span class="w">
+                </span><span class="nl">"NG"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+                    </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Nigeria"</span><span class="p">,</span><span class="w">
+                    </span><span class="nl">"dial_code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"+234"</span><span class="p">,</span><span class="w">
+                    </span><span class="nl">"flag"</span><span class="p">:</span><span class="w"> </span><span class="s2">"🇳🇬"</span><span class="w">
+                </span><span class="p">},</span><span class="w">
+                </span><span class="nl">"NU"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+                    </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Niue"</span><span class="p">,</span><span class="w">
+                    </span><span class="nl">"dial_code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"+683"</span><span class="p">,</span><span class="w">
+                    </span><span class="nl">"flag"</span><span class="p">:</span><span class="w"> </span><span class="s2">"🇳🇺"</span><span class="w">
+                </span><span class="p">},</span><span class="w">
+                </span><span class="nl">"NF"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+                    </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Norfolk Island"</span><span class="p">,</span><span class="w">
+                    </span><span class="nl">"dial_code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"+672"</span><span class="p">,</span><span class="w">
+                    </span><span class="nl">"flag"</span><span class="p">:</span><span class="w"> </span><span class="s2">"🇳🇫"</span><span class="w">
+                </span><span class="p">},</span><span class="w">
+                </span><span class="nl">"MP"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+                    </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Northern Mariana Islands"</span><span class="p">,</span><span class="w">
+                    </span><span class="nl">"dial_code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"+1670"</span><span class="p">,</span><span class="w">
+                    </span><span class="nl">"flag"</span><span class="p">:</span><span class="w"> </span><span class="s2">"🇲🇵"</span><span class="w">
+                </span><span class="p">},</span><span class="w">
+                </span><span class="nl">"NO"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+                    </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Norway"</span><span class="p">,</span><span class="w">
+                    </span><span class="nl">"dial_code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"+47"</span><span class="p">,</span><span class="w">
+                    </span><span class="nl">"flag"</span><span class="p">:</span><span class="w"> </span><span class="s2">"🇳🇴"</span><span class="w">
+                </span><span class="p">},</span><span class="w">
+                </span><span class="nl">"OM"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+                    </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Oman"</span><span class="p">,</span><span class="w">
+                    </span><span class="nl">"dial_code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"+968"</span><span class="p">,</span><span class="w">
+                    </span><span class="nl">"flag"</span><span class="p">:</span><span class="w"> </span><span class="s2">"🇴🇲"</span><span class="w">
+                </span><span class="p">},</span><span class="w">
+                </span><span class="nl">"PK"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+                    </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Pakistan"</span><span class="p">,</span><span class="w">
+                    </span><span class="nl">"dial_code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"+92"</span><span class="p">,</span><span class="w">
+                    </span><span class="nl">"flag"</span><span class="p">:</span><span class="w"> </span><span class="s2">"🇵🇰"</span><span class="w">
+                </span><span class="p">},</span><span class="w">
+                </span><span class="nl">"PW"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+                    </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Palau"</span><span class="p">,</span><span class="w">
+                    </span><span class="nl">"dial_code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"+680"</span><span class="p">,</span><span class="w">
+                    </span><span class="nl">"flag"</span><span class="p">:</span><span class="w"> </span><span class="s2">"🇵🇼"</span><span class="w">
+                </span><span class="p">},</span><span class="w">
+                </span><span class="nl">"PS"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+                    </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Palestinian Territory, Occupied"</span><span class="p">,</span><span class="w">
+                    </span><span class="nl">"dial_code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"+970"</span><span class="p">,</span><span class="w">
+                    </span><span class="nl">"flag"</span><span class="p">:</span><span class="w"> </span><span class="s2">"🇵🇸"</span><span class="w">
+                </span><span class="p">},</span><span class="w">
+                </span><span class="nl">"PA"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+                    </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Panama"</span><span class="p">,</span><span class="w">
+                    </span><span class="nl">"dial_code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"+507"</span><span class="p">,</span><span class="w">
+                    </span><span class="nl">"flag"</span><span class="p">:</span><span class="w"> </span><span class="s2">"🇵🇦"</span><span class="w">
+                </span><span class="p">},</span><span class="w">
+                </span><span class="nl">"PG"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+                    </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Papua New Guinea"</span><span class="p">,</span><span class="w">
+                    </span><span class="nl">"dial_code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"+675"</span><span class="p">,</span><span class="w">
+                    </span><span class="nl">"flag"</span><span class="p">:</span><span class="w"> </span><span class="s2">"🇵🇬"</span><span class="w">
+                </span><span class="p">},</span><span class="w">
+                </span><span class="nl">"PY"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+                    </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Paraguay"</span><span class="p">,</span><span class="w">
+                    </span><span class="nl">"dial_code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"+595"</span><span class="p">,</span><span class="w">
+                    </span><span class="nl">"flag"</span><span class="p">:</span><span class="w"> </span><span class="s2">"🇵🇾"</span><span class="w">
+                </span><span class="p">},</span><span class="w">
+                </span><span class="nl">"PE"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+                    </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Peru"</span><span class="p">,</span><span class="w">
+                    </span><span class="nl">"dial_code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"+51"</span><span class="p">,</span><span class="w">
+                    </span><span class="nl">"flag"</span><span class="p">:</span><span class="w"> </span><span class="s2">"🇵🇪"</span><span class="w">
+                </span><span class="p">},</span><span class="w">
+                </span><span class="nl">"PH"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+                    </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Philippines"</span><span class="p">,</span><span class="w">
+                    </span><span class="nl">"dial_code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"+63"</span><span class="p">,</span><span class="w">
+                    </span><span class="nl">"flag"</span><span class="p">:</span><span class="w"> </span><span class="s2">"🇵🇭"</span><span class="w">
+                </span><span class="p">},</span><span class="w">
+                </span><span class="nl">"PN"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+                    </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Pitcairn"</span><span class="p">,</span><span class="w">
+                    </span><span class="nl">"dial_code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"+64"</span><span class="p">,</span><span class="w">
+                    </span><span class="nl">"flag"</span><span class="p">:</span><span class="w"> </span><span class="s2">"🇵🇳"</span><span class="w">
+                </span><span class="p">},</span><span class="w">
+                </span><span class="nl">"PL"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+                    </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Poland"</span><span class="p">,</span><span class="w">
+                    </span><span class="nl">"dial_code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"+48"</span><span class="p">,</span><span class="w">
+                    </span><span class="nl">"flag"</span><span class="p">:</span><span class="w"> </span><span class="s2">"🇵🇱"</span><span class="w">
+                </span><span class="p">},</span><span class="w">
+                </span><span class="nl">"PT"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+                    </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Portugal"</span><span class="p">,</span><span class="w">
+                    </span><span class="nl">"dial_code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"+351"</span><span class="p">,</span><span class="w">
+                    </span><span class="nl">"flag"</span><span class="p">:</span><span class="w"> </span><span class="s2">"🇵🇹"</span><span class="w">
+                </span><span class="p">},</span><span class="w">
+                </span><span class="nl">"PR"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+                    </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Puerto Rico"</span><span class="p">,</span><span class="w">
+                    </span><span class="nl">"dial_code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"+1939"</span><span class="p">,</span><span class="w">
+                    </span><span class="nl">"flag"</span><span class="p">:</span><span class="w"> </span><span class="s2">"🇵🇷"</span><span class="w">
+                </span><span class="p">},</span><span class="w">
+                </span><span class="nl">"QA"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+                    </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Qatar"</span><span class="p">,</span><span class="w">
+                    </span><span class="nl">"dial_code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"+974"</span><span class="p">,</span><span class="w">
+                    </span><span class="nl">"flag"</span><span class="p">:</span><span class="w"> </span><span class="s2">"🇶🇦"</span><span class="w">
+                </span><span class="p">},</span><span class="w">
+                </span><span class="nl">"RO"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+                    </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Romania"</span><span class="p">,</span><span class="w">
+                    </span><span class="nl">"dial_code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"+40"</span><span class="p">,</span><span class="w">
+                    </span><span class="nl">"flag"</span><span class="p">:</span><span class="w"> </span><span class="s2">"🇷🇴"</span><span class="w">
+                </span><span class="p">},</span><span class="w">
+                </span><span class="nl">"RU"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+                    </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Russia"</span><span class="p">,</span><span class="w">
+                    </span><span class="nl">"dial_code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"+7"</span><span class="p">,</span><span class="w">
+                    </span><span class="nl">"flag"</span><span class="p">:</span><span class="w"> </span><span class="s2">"🇷🇺"</span><span class="w">
+                </span><span class="p">},</span><span class="w">
+                </span><span class="nl">"RW"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+                    </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Rwanda"</span><span class="p">,</span><span class="w">
+                    </span><span class="nl">"dial_code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"+250"</span><span class="p">,</span><span class="w">
+                    </span><span class="nl">"flag"</span><span class="p">:</span><span class="w"> </span><span class="s2">"🇷🇼"</span><span class="w">
+                </span><span class="p">},</span><span class="w">
+                </span><span class="nl">"RE"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+                    </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Reunion"</span><span class="p">,</span><span class="w">
+                    </span><span class="nl">"dial_code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"+262"</span><span class="p">,</span><span class="w">
+                    </span><span class="nl">"flag"</span><span class="p">:</span><span class="w"> </span><span class="s2">"🇷🇪"</span><span class="w">
+                </span><span class="p">},</span><span class="w">
+                </span><span class="nl">"BL"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+                    </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Saint Barthelemy"</span><span class="p">,</span><span class="w">
+                    </span><span class="nl">"dial_code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"+590"</span><span class="p">,</span><span class="w">
+                    </span><span class="nl">"flag"</span><span class="p">:</span><span class="w"> </span><span class="s2">"🇧🇱"</span><span class="w">
+                </span><span class="p">},</span><span class="w">
+                </span><span class="nl">"SH"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+                    </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Saint Helena, Ascension and Tristan Da Cunha"</span><span class="p">,</span><span class="w">
+                    </span><span class="nl">"dial_code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"+290"</span><span class="p">,</span><span class="w">
+                    </span><span class="nl">"flag"</span><span class="p">:</span><span class="w"> </span><span class="s2">"🇸🇭"</span><span class="w">
+                </span><span class="p">},</span><span class="w">
+                </span><span class="nl">"KN"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+                    </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Saint Kitts and Nevis"</span><span class="p">,</span><span class="w">
+                    </span><span class="nl">"dial_code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"+1869"</span><span class="p">,</span><span class="w">
+                    </span><span class="nl">"flag"</span><span class="p">:</span><span class="w"> </span><span class="s2">"🇰🇳"</span><span class="w">
+                </span><span class="p">},</span><span class="w">
+                </span><span class="nl">"LC"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+                    </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Saint Lucia"</span><span class="p">,</span><span class="w">
+                    </span><span class="nl">"dial_code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"+1758"</span><span class="p">,</span><span class="w">
+                    </span><span class="nl">"flag"</span><span class="p">:</span><span class="w"> </span><span class="s2">"🇱🇨"</span><span class="w">
+                </span><span class="p">},</span><span class="w">
+                </span><span class="nl">"MF"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+                    </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Saint Martin"</span><span class="p">,</span><span class="w">
+                    </span><span class="nl">"dial_code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"+590"</span><span class="p">,</span><span class="w">
+                    </span><span class="nl">"flag"</span><span class="p">:</span><span class="w"> </span><span class="s2">"🇲🇫"</span><span class="w">
+                </span><span class="p">},</span><span class="w">
+                </span><span class="nl">"PM"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+                    </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Saint Pierre and Miquelon"</span><span class="p">,</span><span class="w">
+                    </span><span class="nl">"dial_code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"+508"</span><span class="p">,</span><span class="w">
+                    </span><span class="nl">"flag"</span><span class="p">:</span><span class="w"> </span><span class="s2">"🇵🇲"</span><span class="w">
+                </span><span class="p">},</span><span class="w">
+                </span><span class="nl">"VC"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+                    </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Saint Vincent and the Grenadines"</span><span class="p">,</span><span class="w">
+                    </span><span class="nl">"dial_code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"+1784"</span><span class="p">,</span><span class="w">
+                    </span><span class="nl">"flag"</span><span class="p">:</span><span class="w"> </span><span class="s2">"🇻🇨"</span><span class="w">
+                </span><span class="p">},</span><span class="w">
+                </span><span class="nl">"WS"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+                    </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Samoa"</span><span class="p">,</span><span class="w">
+                    </span><span class="nl">"dial_code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"+685"</span><span class="p">,</span><span class="w">
+                    </span><span class="nl">"flag"</span><span class="p">:</span><span class="w"> </span><span class="s2">"🇼🇸"</span><span class="w">
+                </span><span class="p">},</span><span class="w">
+                </span><span class="nl">"SM"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+                    </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"San Marino"</span><span class="p">,</span><span class="w">
+                    </span><span class="nl">"dial_code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"+378"</span><span class="p">,</span><span class="w">
+                    </span><span class="nl">"flag"</span><span class="p">:</span><span class="w"> </span><span class="s2">"🇸🇲"</span><span class="w">
+                </span><span class="p">},</span><span class="w">
+                </span><span class="nl">"ST"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+                    </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Sao Tome and Principe"</span><span class="p">,</span><span class="w">
+                    </span><span class="nl">"dial_code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"+239"</span><span class="p">,</span><span class="w">
+                    </span><span class="nl">"flag"</span><span class="p">:</span><span class="w"> </span><span class="s2">"🇸🇹"</span><span class="w">
+                </span><span class="p">},</span><span class="w">
+                </span><span class="nl">"SA"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+                    </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Saudi Arabia"</span><span class="p">,</span><span class="w">
+                    </span><span class="nl">"dial_code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"+966"</span><span class="p">,</span><span class="w">
+                    </span><span class="nl">"flag"</span><span class="p">:</span><span class="w"> </span><span class="s2">"🇸🇦"</span><span class="w">
+                </span><span class="p">},</span><span class="w">
+                </span><span class="nl">"SN"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+                    </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Senegal"</span><span class="p">,</span><span class="w">
+                    </span><span class="nl">"dial_code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"+221"</span><span class="p">,</span><span class="w">
+                    </span><span class="nl">"flag"</span><span class="p">:</span><span class="w"> </span><span class="s2">"🇸🇳"</span><span class="w">
+                </span><span class="p">},</span><span class="w">
+                </span><span class="nl">"RS"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+                    </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Serbia"</span><span class="p">,</span><span class="w">
+                    </span><span class="nl">"dial_code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"+381"</span><span class="p">,</span><span class="w">
+                    </span><span class="nl">"flag"</span><span class="p">:</span><span class="w"> </span><span class="s2">"🇷🇸"</span><span class="w">
+                </span><span class="p">},</span><span class="w">
+                </span><span class="nl">"SC"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+                    </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Seychelles"</span><span class="p">,</span><span class="w">
+                    </span><span class="nl">"dial_code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"+248"</span><span class="p">,</span><span class="w">
+                    </span><span class="nl">"flag"</span><span class="p">:</span><span class="w"> </span><span class="s2">"🇸🇨"</span><span class="w">
+                </span><span class="p">},</span><span class="w">
+                </span><span class="nl">"SL"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+                    </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Sierra Leone"</span><span class="p">,</span><span class="w">
+                    </span><span class="nl">"dial_code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"+232"</span><span class="p">,</span><span class="w">
+                    </span><span class="nl">"flag"</span><span class="p">:</span><span class="w"> </span><span class="s2">"🇸🇱"</span><span class="w">
+                </span><span class="p">},</span><span class="w">
+                </span><span class="nl">"SG"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+                    </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Singapore"</span><span class="p">,</span><span class="w">
+                    </span><span class="nl">"dial_code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"+65"</span><span class="p">,</span><span class="w">
+                    </span><span class="nl">"flag"</span><span class="p">:</span><span class="w"> </span><span class="s2">"🇸🇬"</span><span class="w">
+                </span><span class="p">},</span><span class="w">
+                </span><span class="nl">"SK"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+                    </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Slovakia"</span><span class="p">,</span><span class="w">
+                    </span><span class="nl">"dial_code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"+421"</span><span class="p">,</span><span class="w">
+                    </span><span class="nl">"flag"</span><span class="p">:</span><span class="w"> </span><span class="s2">"🇸🇰"</span><span class="w">
+                </span><span class="p">},</span><span class="w">
+                </span><span class="nl">"SI"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+                    </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Slovenia"</span><span class="p">,</span><span class="w">
+                    </span><span class="nl">"dial_code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"+386"</span><span class="p">,</span><span class="w">
+                    </span><span class="nl">"flag"</span><span class="p">:</span><span class="w"> </span><span class="s2">"🇸🇮"</span><span class="w">
+                </span><span class="p">},</span><span class="w">
+                </span><span class="nl">"SB"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+                    </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Solomon Islands"</span><span class="p">,</span><span class="w">
+                    </span><span class="nl">"dial_code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"+677"</span><span class="p">,</span><span class="w">
+                    </span><span class="nl">"flag"</span><span class="p">:</span><span class="w"> </span><span class="s2">"🇸🇧"</span><span class="w">
+                </span><span class="p">},</span><span class="w">
+                </span><span class="nl">"SO"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+                    </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Somalia"</span><span class="p">,</span><span class="w">
+                    </span><span class="nl">"dial_code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"+252"</span><span class="p">,</span><span class="w">
+                    </span><span class="nl">"flag"</span><span class="p">:</span><span class="w"> </span><span class="s2">"🇸🇴"</span><span class="w">
+                </span><span class="p">},</span><span class="w">
+                </span><span class="nl">"ZA"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+                    </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"South Africa"</span><span class="p">,</span><span class="w">
+                    </span><span class="nl">"dial_code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"+27"</span><span class="p">,</span><span class="w">
+                    </span><span class="nl">"flag"</span><span class="p">:</span><span class="w"> </span><span class="s2">"🇿🇦"</span><span class="w">
+                </span><span class="p">},</span><span class="w">
+                </span><span class="nl">"SS"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+                    </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"South Sudan"</span><span class="p">,</span><span class="w">
+                    </span><span class="nl">"dial_code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"+211"</span><span class="p">,</span><span class="w">
+                    </span><span class="nl">"flag"</span><span class="p">:</span><span class="w"> </span><span class="s2">"🇸🇸"</span><span class="w">
+                </span><span class="p">},</span><span class="w">
+                </span><span class="nl">"GS"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+                    </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"South Georgia and the South Sandwich Islands"</span><span class="p">,</span><span class="w">
+                    </span><span class="nl">"dial_code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"+500"</span><span class="p">,</span><span class="w">
+                    </span><span class="nl">"flag"</span><span class="p">:</span><span class="w"> </span><span class="s2">"🇬🇸"</span><span class="w">
+                </span><span class="p">},</span><span class="w">
+                </span><span class="nl">"ES"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+                    </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Spain"</span><span class="p">,</span><span class="w">
+                    </span><span class="nl">"dial_code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"+34"</span><span class="p">,</span><span class="w">
+                    </span><span class="nl">"flag"</span><span class="p">:</span><span class="w"> </span><span class="s2">"🇪🇸"</span><span class="w">
+                </span><span class="p">},</span><span class="w">
+                </span><span class="nl">"LK"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+                    </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Sri Lanka"</span><span class="p">,</span><span class="w">
+                    </span><span class="nl">"dial_code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"+94"</span><span class="p">,</span><span class="w">
+                    </span><span class="nl">"flag"</span><span class="p">:</span><span class="w"> </span><span class="s2">"🇱🇰"</span><span class="w">
+                </span><span class="p">},</span><span class="w">
+                </span><span class="nl">"SD"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+                    </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Sudan"</span><span class="p">,</span><span class="w">
+                    </span><span class="nl">"dial_code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"+249"</span><span class="p">,</span><span class="w">
+                    </span><span class="nl">"flag"</span><span class="p">:</span><span class="w"> </span><span class="s2">"🇸🇩"</span><span class="w">
+                </span><span class="p">},</span><span class="w">
+                </span><span class="nl">"SR"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+                    </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Suriname"</span><span class="p">,</span><span class="w">
+                    </span><span class="nl">"dial_code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"+597"</span><span class="p">,</span><span class="w">
+                    </span><span class="nl">"flag"</span><span class="p">:</span><span class="w"> </span><span class="s2">"🇸🇷"</span><span class="w">
+                </span><span class="p">},</span><span class="w">
+                </span><span class="nl">"SJ"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+                    </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Svalbard and Jan Mayen"</span><span class="p">,</span><span class="w">
+                    </span><span class="nl">"dial_code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"+47"</span><span class="p">,</span><span class="w">
+                    </span><span class="nl">"flag"</span><span class="p">:</span><span class="w"> </span><span class="s2">"🇸🇯"</span><span class="w">
+                </span><span class="p">},</span><span class="w">
+                </span><span class="nl">"SZ"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+                    </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Swaziland"</span><span class="p">,</span><span class="w">
+                    </span><span class="nl">"dial_code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"+268"</span><span class="p">,</span><span class="w">
+                    </span><span class="nl">"flag"</span><span class="p">:</span><span class="w"> </span><span class="s2">"🇸🇿"</span><span class="w">
+                </span><span class="p">},</span><span class="w">
+                </span><span class="nl">"SE"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+                    </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Sweden"</span><span class="p">,</span><span class="w">
+                    </span><span class="nl">"dial_code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"+46"</span><span class="p">,</span><span class="w">
+                    </span><span class="nl">"flag"</span><span class="p">:</span><span class="w"> </span><span class="s2">"🇸🇪"</span><span class="w">
+                </span><span class="p">},</span><span class="w">
+                </span><span class="nl">"CH"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+                    </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Switzerland"</span><span class="p">,</span><span class="w">
+                    </span><span class="nl">"dial_code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"+41"</span><span class="p">,</span><span class="w">
+                    </span><span class="nl">"flag"</span><span class="p">:</span><span class="w"> </span><span class="s2">"🇨🇭"</span><span class="w">
+                </span><span class="p">},</span><span class="w">
+                </span><span class="nl">"SY"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+                    </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Syrian Arab Republic"</span><span class="p">,</span><span class="w">
+                    </span><span class="nl">"dial_code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"+963"</span><span class="p">,</span><span class="w">
+                    </span><span class="nl">"flag"</span><span class="p">:</span><span class="w"> </span><span class="s2">"🇸🇾"</span><span class="w">
+                </span><span class="p">},</span><span class="w">
+                </span><span class="nl">"TW"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+                    </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Taiwan"</span><span class="p">,</span><span class="w">
+                    </span><span class="nl">"dial_code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"+886"</span><span class="p">,</span><span class="w">
+                    </span><span class="nl">"flag"</span><span class="p">:</span><span class="w"> </span><span class="s2">"🇹🇼"</span><span class="w">
+                </span><span class="p">},</span><span class="w">
+                </span><span class="nl">"TJ"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+                    </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Tajikistan"</span><span class="p">,</span><span class="w">
+                    </span><span class="nl">"dial_code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"+992"</span><span class="p">,</span><span class="w">
+                    </span><span class="nl">"flag"</span><span class="p">:</span><span class="w"> </span><span class="s2">"🇹🇯"</span><span class="w">
+                </span><span class="p">},</span><span class="w">
+                </span><span class="nl">"TZ"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+                    </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Tanzania, United Republic of Tanzania"</span><span class="p">,</span><span class="w">
+                    </span><span class="nl">"dial_code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"+255"</span><span class="p">,</span><span class="w">
+                    </span><span class="nl">"flag"</span><span class="p">:</span><span class="w"> </span><span class="s2">"🇹🇿"</span><span class="w">
+                </span><span class="p">},</span><span class="w">
+                </span><span class="nl">"TH"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+                    </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Thailand"</span><span class="p">,</span><span class="w">
+                    </span><span class="nl">"dial_code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"+66"</span><span class="p">,</span><span class="w">
+                    </span><span class="nl">"flag"</span><span class="p">:</span><span class="w"> </span><span class="s2">"🇹🇭"</span><span class="w">
+                </span><span class="p">},</span><span class="w">
+                </span><span class="nl">"TL"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+                    </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Timor-Leste"</span><span class="p">,</span><span class="w">
+                    </span><span class="nl">"dial_code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"+670"</span><span class="p">,</span><span class="w">
+                    </span><span class="nl">"flag"</span><span class="p">:</span><span class="w"> </span><span class="s2">"🇹🇱"</span><span class="w">
+                </span><span class="p">},</span><span class="w">
+                </span><span class="nl">"TG"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+                    </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Togo"</span><span class="p">,</span><span class="w">
+                    </span><span class="nl">"dial_code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"+228"</span><span class="p">,</span><span class="w">
+                    </span><span class="nl">"flag"</span><span class="p">:</span><span class="w"> </span><span class="s2">"🇹🇬"</span><span class="w">
+                </span><span class="p">},</span><span class="w">
+                </span><span class="nl">"TK"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+                    </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Tokelau"</span><span class="p">,</span><span class="w">
+                    </span><span class="nl">"dial_code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"+690"</span><span class="p">,</span><span class="w">
+                    </span><span class="nl">"flag"</span><span class="p">:</span><span class="w"> </span><span class="s2">"🇹🇰"</span><span class="w">
+                </span><span class="p">},</span><span class="w">
+                </span><span class="nl">"TO"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+                    </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Tonga"</span><span class="p">,</span><span class="w">
+                    </span><span class="nl">"dial_code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"+676"</span><span class="p">,</span><span class="w">
+                    </span><span class="nl">"flag"</span><span class="p">:</span><span class="w"> </span><span class="s2">"🇹🇴"</span><span class="w">
+                </span><span class="p">},</span><span class="w">
+                </span><span class="nl">"TT"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+                    </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Trinidad and Tobago"</span><span class="p">,</span><span class="w">
+                    </span><span class="nl">"dial_code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"+1868"</span><span class="p">,</span><span class="w">
+                    </span><span class="nl">"flag"</span><span class="p">:</span><span class="w"> </span><span class="s2">"🇹🇹"</span><span class="w">
+                </span><span class="p">},</span><span class="w">
+                </span><span class="nl">"TN"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+                    </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Tunisia"</span><span class="p">,</span><span class="w">
+                    </span><span class="nl">"dial_code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"+216"</span><span class="p">,</span><span class="w">
+                    </span><span class="nl">"flag"</span><span class="p">:</span><span class="w"> </span><span class="s2">"🇹🇳"</span><span class="w">
+                </span><span class="p">},</span><span class="w">
+                </span><span class="nl">"TR"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+                    </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Turkey"</span><span class="p">,</span><span class="w">
+                    </span><span class="nl">"dial_code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"+90"</span><span class="p">,</span><span class="w">
+                    </span><span class="nl">"flag"</span><span class="p">:</span><span class="w"> </span><span class="s2">"🇹🇷"</span><span class="w">
+                </span><span class="p">},</span><span class="w">
+                </span><span class="nl">"TM"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+                    </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Turkmenistan"</span><span class="p">,</span><span class="w">
+                    </span><span class="nl">"dial_code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"+993"</span><span class="p">,</span><span class="w">
+                    </span><span class="nl">"flag"</span><span class="p">:</span><span class="w"> </span><span class="s2">"🇹🇲"</span><span class="w">
+                </span><span class="p">},</span><span class="w">
+                </span><span class="nl">"TC"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+                    </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Turks and Caicos Islands"</span><span class="p">,</span><span class="w">
+                    </span><span class="nl">"dial_code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"+1649"</span><span class="p">,</span><span class="w">
+                    </span><span class="nl">"flag"</span><span class="p">:</span><span class="w"> </span><span class="s2">"🇹🇨"</span><span class="w">
+                </span><span class="p">},</span><span class="w">
+                </span><span class="nl">"TV"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+                    </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Tuvalu"</span><span class="p">,</span><span class="w">
+                    </span><span class="nl">"dial_code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"+688"</span><span class="p">,</span><span class="w">
+                    </span><span class="nl">"flag"</span><span class="p">:</span><span class="w"> </span><span class="s2">"🇹🇻"</span><span class="w">
+                </span><span class="p">},</span><span class="w">
+                </span><span class="nl">"UG"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+                    </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Uganda"</span><span class="p">,</span><span class="w">
+                    </span><span class="nl">"dial_code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"+256"</span><span class="p">,</span><span class="w">
+                    </span><span class="nl">"flag"</span><span class="p">:</span><span class="w"> </span><span class="s2">"🇺🇬"</span><span class="w">
+                </span><span class="p">},</span><span class="w">
+                </span><span class="nl">"UA"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+                    </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Ukraine"</span><span class="p">,</span><span class="w">
+                    </span><span class="nl">"dial_code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"+380"</span><span class="p">,</span><span class="w">
+                    </span><span class="nl">"flag"</span><span class="p">:</span><span class="w"> </span><span class="s2">"🇺🇦"</span><span class="w">
+                </span><span class="p">},</span><span class="w">
+                </span><span class="nl">"AE"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+                    </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"United Arab Emirates"</span><span class="p">,</span><span class="w">
+                    </span><span class="nl">"dial_code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"+971"</span><span class="p">,</span><span class="w">
+                    </span><span class="nl">"flag"</span><span class="p">:</span><span class="w"> </span><span class="s2">"🇦🇪"</span><span class="w">
+                </span><span class="p">},</span><span class="w">
+                </span><span class="nl">"GB"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+                    </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"United Kingdom"</span><span class="p">,</span><span class="w">
+                    </span><span class="nl">"dial_code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"+44"</span><span class="p">,</span><span class="w">
+                    </span><span class="nl">"flag"</span><span class="p">:</span><span class="w"> </span><span class="s2">"🇬🇧"</span><span class="w">
+                </span><span class="p">},</span><span class="w">
+                </span><span class="nl">"US"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+                    </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"United States"</span><span class="p">,</span><span class="w">
+                    </span><span class="nl">"dial_code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"+1"</span><span class="p">,</span><span class="w">
+                    </span><span class="nl">"flag"</span><span class="p">:</span><span class="w"> </span><span class="s2">"🇺🇸"</span><span class="w">
+                </span><span class="p">},</span><span class="w">
+                </span><span class="nl">"UY"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+                    </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Uruguay"</span><span class="p">,</span><span class="w">
+                    </span><span class="nl">"dial_code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"+598"</span><span class="p">,</span><span class="w">
+                    </span><span class="nl">"flag"</span><span class="p">:</span><span class="w"> </span><span class="s2">"🇺🇾"</span><span class="w">
+                </span><span class="p">},</span><span class="w">
+                </span><span class="nl">"UZ"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+                    </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Uzbekistan"</span><span class="p">,</span><span class="w">
+                    </span><span class="nl">"dial_code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"+998"</span><span class="p">,</span><span class="w">
+                    </span><span class="nl">"flag"</span><span class="p">:</span><span class="w"> </span><span class="s2">"🇺🇿"</span><span class="w">
+                </span><span class="p">},</span><span class="w">
+                </span><span class="nl">"VU"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+                    </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Vanuatu"</span><span class="p">,</span><span class="w">
+                    </span><span class="nl">"dial_code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"+678"</span><span class="p">,</span><span class="w">
+                    </span><span class="nl">"flag"</span><span class="p">:</span><span class="w"> </span><span class="s2">"🇻🇺"</span><span class="w">
+                </span><span class="p">},</span><span class="w">
+                </span><span class="nl">"VE"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+                    </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Venezuela, Bolivarian Republic of Venezuela"</span><span class="p">,</span><span class="w">
+                    </span><span class="nl">"dial_code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"+58"</span><span class="p">,</span><span class="w">
+                    </span><span class="nl">"flag"</span><span class="p">:</span><span class="w"> </span><span class="s2">"🇻🇪"</span><span class="w">
+                </span><span class="p">},</span><span class="w">
+                </span><span class="nl">"VN"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+                    </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Vietnam"</span><span class="p">,</span><span class="w">
+                    </span><span class="nl">"dial_code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"+84"</span><span class="p">,</span><span class="w">
+                    </span><span class="nl">"flag"</span><span class="p">:</span><span class="w"> </span><span class="s2">"🇻🇳"</span><span class="w">
+                </span><span class="p">},</span><span class="w">
+                </span><span class="nl">"VG"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+                    </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Virgin Islands, British"</span><span class="p">,</span><span class="w">
+                    </span><span class="nl">"dial_code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"+1284"</span><span class="p">,</span><span class="w">
+                    </span><span class="nl">"flag"</span><span class="p">:</span><span class="w"> </span><span class="s2">"🇻🇬"</span><span class="w">
+                </span><span class="p">},</span><span class="w">
+                </span><span class="nl">"VI"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+                    </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Virgin Islands, U.S."</span><span class="p">,</span><span class="w">
+                    </span><span class="nl">"dial_code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"+1340"</span><span class="p">,</span><span class="w">
+                    </span><span class="nl">"flag"</span><span class="p">:</span><span class="w"> </span><span class="s2">"🇻🇮"</span><span class="w">
+                </span><span class="p">},</span><span class="w">
+                </span><span class="nl">"WF"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+                    </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Wallis and Futuna"</span><span class="p">,</span><span class="w">
+                    </span><span class="nl">"dial_code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"+681"</span><span class="p">,</span><span class="w">
+                    </span><span class="nl">"flag"</span><span class="p">:</span><span class="w"> </span><span class="s2">"🇼🇫"</span><span class="w">
+                </span><span class="p">},</span><span class="w">
+                </span><span class="nl">"YE"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+                    </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Yemen"</span><span class="p">,</span><span class="w">
+                    </span><span class="nl">"dial_code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"+967"</span><span class="p">,</span><span class="w">
+                    </span><span class="nl">"flag"</span><span class="p">:</span><span class="w"> </span><span class="s2">"🇾🇪"</span><span class="w">
+                </span><span class="p">},</span><span class="w">
+                </span><span class="nl">"ZM"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+                    </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Zambia"</span><span class="p">,</span><span class="w">
+                    </span><span class="nl">"dial_code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"+260"</span><span class="p">,</span><span class="w">
+                    </span><span class="nl">"flag"</span><span class="p">:</span><span class="w"> </span><span class="s2">"🇿🇲"</span><span class="w">
+                </span><span class="p">},</span><span class="w">
+                </span><span class="nl">"ZW"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+                    </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Zimbabwe"</span><span class="p">,</span><span class="w">
+                    </span><span class="nl">"dial_code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"+263"</span><span class="p">,</span><span class="w">
+                    </span><span class="nl">"flag"</span><span class="p">:</span><span class="w"> </span><span class="s2">"🇿🇼"</span><span class="w">
+                </span><span class="p">}</span><span class="w">
+            </span><span class="p">}</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="nl">"payment_method"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+            </span><span class="p">{</span><span class="w">
+                </span><span class="nl">"Stripe"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+                    </span><span class="nl">"provider"</span><span class="p">:</span><span class="w"> </span><span class="s2">"stripe"</span><span class="p">,</span><span class="w">
+                    </span><span class="nl">"saveble"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+                    </span><span class="nl">"icon"</span><span class="p">:</span><span class="w"> </span><span class="s2">"card.svg"</span><span class="p">,</span><span class="w">
+                    </span><span class="nl">"label"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Credit Card"</span><span class="p">,</span><span class="w">
+                    </span><span class="nl">"processor"</span><span class="p">:</span><span class="w"> </span><span class="s2">"frontend"</span><span class="p">,</span><span class="w">
+                    </span><span class="nl">"fields"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+                    </span><span class="nl">"options "</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="w">
+                </span><span class="p">}</span><span class="w">
+            </span><span class="p">}</span><span class="w">
+        </span><span class="p">]</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="nl">"success"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"errors"</span><span class="p">:</span><span class="w"> </span><span class="p">[],</span><span class="w">
+    </span><span class="nl">"messages"</span><span class="p">:</span><span class="w"> </span><span class="p">[],</span><span class="w">
+    </span><span class="nl">"result_info"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>

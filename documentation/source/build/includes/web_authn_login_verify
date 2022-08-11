@@ -1,0 +1,28 @@
+<h1 id='webauthn-login-verify'>WebAuthn Login Verify</h1><h2 id='endpoint'>Endpoint</h2>
+<p>https://v3-shopper-api.adup.io/api/v1/web_authn/login</p>
+<h2 id='method'>Method</h2>
+<p><code>Method: POST</code></p>
+<h2 id='authorization'>Authorization</h2>
+<p>Type: Bearer Token</p>
+<h2 id='query-parameters'>Query Parameters</h2>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>challenge_data</td>
+<td>text</td>
+<td>Yes</td>
+<td>You need to add challenge data</td>
+</tr>
+<tr>
+<td>challenge_id</td>
+<td>init</td>
+<td>Yes</td>
+<td>Challenge ID</td>
+</tr>
+</tbody></table>
