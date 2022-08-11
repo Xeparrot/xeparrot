@@ -79,9 +79,10 @@
 
     @stack('before-scripts')
 
-    <script src="{{ mix('js/manifest.js') }}"></script>
-    <script src="{{ mix('js/vendor.js') }}"></script>
+    <script src="{{ url('js/manifest.js') }}"></script>
+    <script src="{{ url('js/vendor.js') }}"></script>
     <script src="{{ mix('js/backend.js') }}"></script>
+
 
     <script src="https://cdn.datatables.net/1.10.21/js/jquery.dataTables.min.js"></script>
     <script src="https://cdn.datatables.net/1.10.22/js/dataTables.bootstrap4.min.js"></script>
@@ -89,7 +90,7 @@
     <script src="https://cdn.datatables.net/responsive/2.2.6/js/responsive.bootstrap4.min.js"></script>
 
     <script src="{{url('js/vendors.js')}}"></script>
-    <script src="{{url('js/aiz-core.js')}}"></script>
+    <script src="{{ mix('js/aiz-core.js') }}"></script>
 
     <livewire:scripts />
     @stack('after-scripts')
