@@ -31,9 +31,9 @@ includeRouteFiles(base_path('menu'));
 
 
 
-Route::post('/aiz-uploader', [AizUploadController::class, 'show_uploader']);
-Route::post('/aiz-uploader/upload', [AizUploadController::class, 'upload']);
-Route::get('/aiz-uploader/get_uploaded_files', [AizUploadController::class, 'get_uploaded_files']);
-Route::post('/aiz-uploader/get_file_by_ids', [AizUploadController::class, 'get_preview_files']);
-Route::get('/aiz-uploader/download/{id}', [AizUploadController::class, 'attachment_download'])->name('download_attachment');
+Route::post('/xem-uploader', [AizUploadController::class, 'show_uploader']);
+Route::post('/xem-uploader/upload', [AizUploadController::class, 'upload']);
+Route::get('/xem-uploader/get_uploaded_files', [AizUploadController::class, 'get_uploaded_files']);
+Route::post('/xem-uploader/get_file_by_ids', [AizUploadController::class, 'get_preview_files']);
+Route::get('/xem-uploader/download/{id}', [AizUploadController::class, 'attachment_download'])->name('download_attachment');
 Route::get('uploads/all/{file_name}',[AizUploadController::class,'get_image_content']);
