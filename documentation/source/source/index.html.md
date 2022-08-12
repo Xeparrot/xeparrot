@@ -29,3 +29,7 @@ We have language bindings in curl You can view code examples in the dark area to
 
 
 ## Engine Cores
+
+## XEM - Xe Manager
+
+Xe File manager convertable drang and drop file manager dialog
