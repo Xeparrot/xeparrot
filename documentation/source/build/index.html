@@ -315,11 +315,95 @@
                   <li>
                     <a href="#introduction" class="toc-h2 toc-link" data-title="Introduction">Introduction</a>
                   </li>
+              </ul>
+          </li>
+          <li>
+            <a href="#install" class="toc-h1 toc-link" data-title="Install">Install</a>
+              <ul class="toc-list-h2">
                   <li>
-                    <a href="#engine-cores" class="toc-h2 toc-link" data-title="Engine Cores">Engine Cores</a>
+                    <a href="#download" class="toc-h2 toc-link" data-title="Download">Download</a>
                   </li>
                   <li>
-                    <a href="#xem-xe-manager" class="toc-h2 toc-link" data-title="XEM - Xe Manager">XEM - Xe Manager</a>
+                    <a href="#environment-files" class="toc-h2 toc-link" data-title="Environment Files">Environment Files</a>
+                  </li>
+                  <li>
+                    <a href="#composer" class="toc-h2 toc-link" data-title="Composer">Composer</a>
+                  </li>
+                  <li>
+                    <a href="#npm-or-yarn" class="toc-h2 toc-link" data-title="NPM or YARN">NPM or YARN</a>
+                  </li>
+                  <li>
+                    <a href="#create-database" class="toc-h2 toc-link" data-title="Create Database">Create Database</a>
+                  </li>
+                  <li>
+                    <a href="#artisan-commands" class="toc-h2 toc-link" data-title="Artisan Commands">Artisan Commands</a>
+                  </li>
+                  <li>
+                    <a href="#npm-run-39-39" class="toc-h2 toc-link" data-title="NPM Run '*'">NPM Run '*'</a>
+                  </li>
+                  <li>
+                    <a href="#php-unit" class="toc-h2 toc-link" data-title="PHP Unit">PHP Unit</a>
+                  </li>
+                  <li>
+                    <a href="#storage-link" class="toc-h2 toc-link" data-title="Storage Link">Storage Link</a>
+                  </li>
+              </ul>
+          </li>
+          <li>
+            <a href="#structure" class="toc-h1 toc-link" data-title="Structure">Structure</a>
+              <ul class="toc-list-h2">
+                  <li>
+                    <a href="#domain-structure" class="toc-h2 toc-link" data-title="Domain Structure">Domain Structure</a>
+                  </li>
+                  <li>
+                    <a href="#events" class="toc-h2 toc-link" data-title="Events">Events</a>
+                  </li>
+                  <li>
+                    <a href="#middleware" class="toc-h2 toc-link" data-title="Middleware">Middleware</a>
+                  </li>
+                  <li>
+                    <a href="#requests" class="toc-h2 toc-link" data-title="Requests">Requests</a>
+                  </li>
+                  <li>
+                    <a href="#models" class="toc-h2 toc-link" data-title="Models">Models</a>
+                  </li>
+                  <li>
+                    <a href="#observers" class="toc-h2 toc-link" data-title="Observers">Observers</a>
+                  </li>
+                  <li>
+                    <a href="#rules" class="toc-h2 toc-link" data-title="Rules">Rules</a>
+                  </li>
+                  <li>
+                    <a href="#services" class="toc-h2 toc-link" data-title="Services">Services</a>
+                  </li>
+                  <li>
+                    <a href="#exceptions" class="toc-h2 toc-link" data-title="Exceptions">Exceptions</a>
+                  </li>
+                  <li>
+                    <a href="#helpers" class="toc-h2 toc-link" data-title="Helpers">Helpers</a>
+                  </li>
+              </ul>
+          </li>
+          <li>
+            <a href="#liveware" class="toc-h1 toc-link" data-title="Liveware">Liveware</a>
+          </li>
+          <li>
+            <a href="#configuration" class="toc-h1 toc-link" data-title="Configuration">Configuration</a>
+          </li>
+          <li>
+            <a href="#resource-structure" class="toc-h1 toc-link" data-title="Resource Structure">Resource Structure</a>
+              <ul class="toc-list-h2">
+                  <li>
+                    <a href="#javascript" class="toc-h2 toc-link" data-title="Javascript">Javascript</a>
+                  </li>
+                  <li>
+                    <a href="#language" class="toc-h2 toc-link" data-title="Language">Language</a>
+                  </li>
+                  <li>
+                    <a href="#scss" class="toc-h2 toc-link" data-title="SCSS">SCSS</a>
+                  </li>
+                  <li>
+                    <a href="#view" class="toc-h2 toc-link" data-title="View">View</a>
                   </li>
               </ul>
           </li>
@@ -338,8 +422,233 @@
 <p>Welcome to the Xeparrot Developer Documentation V0.0.1. You can use this API to access XeParrot endpoints, which can get information of various shoppers, products, webauthn, auth, payment details and addresses in the database.</p>
 
 <p>We have language bindings in curl You can view code examples in the dark area to the right, and you can switch the programming language of the examples with the tabs in the top right.</p>
-<h2 id='engine-cores'>Engine Cores</h2><h2 id='xem-xe-manager'>XEM - Xe Manager</h2>
-<p>Xe File manager convertable drang and drop file manager dialog</p>
+<h1 id='install'>Install</h1><h2 id='download'>Download</h2>
+<p>Download the files above and place on your server.</p>
+<h2 id='environment-files'>Environment Files</h2>
+<p>This package ships with a .env.example file in the root of the project.</p>
+
+<p>You must rename this file to just .env</p>
+
+<aside class="success">
+Note: Make sure you have hidden files shown on your system.
+</aside>
+<h2 id='composer'>Composer</h2>
+<p>XeParrot project dependencies are managed through the PHP Composer tool. The first step is to install the depencencies by navigating into your project in terminal and typing this command</p>
+
+<p><code>composer install</code></p>
+<h2 id='npm-or-yarn'>NPM or YARN</h2>
+<p>In order to install the Javascript packages for frontend development, you will need the Node Package Manager, and optionally the Yarn Package Manager by Facebook (Recommended)</p>
+
+<p>If you only have NPM installed you have to run this command from the root of the project:</p>
+
+<p><code>npm install</code></p>
+
+<p>If you have Yarn installed, run this instead from the root of the project:</p>
+
+<p><code>yarn</code></p>
+<h2 id='create-database'>Create Database</h2>
+<p>You must create your database on your server and on your .env file update the following lines:</p>
+<div class="highlight"><pre class="highlight plaintext"><code>
+DB_CONNECTION=mysql
+DB_HOST=127.0.0.1
+DB_PORT=3306
+DB_DATABASE=homestead
+DB_USERNAME=homestead
+DB_PASSWORD=secret
+
+</code></pre></div>
+<p>Change these lines to reflect your new database settings.</p>
+<h2 id='artisan-commands'>Artisan Commands</h2><h3 id='generate-key'>Generate Key</h3>
+<p>The first thing we are going to do is set the key that Laravel will use when doing encryption.</p>
+<div class="highlight"><pre class="highlight plaintext"><code>
+php artisan key:generate
+
+</code></pre></div><h3 id='migrate-database'>Migrate Database</h3>
+<p>You should see a green message stating your key was successfully generated. As well as you should see the APP_KEY variable in your .env file reflected.</p>
+
+<p>It&#39;s time to see if your database credentials are correct.</p>
+
+<p>We are going to run the built in migrations to create the database tables:</p>
+<div class="highlight"><pre class="highlight plaintext"><code>
+php artisan migrate
+
+</code></pre></div><h3 id='seeds-dummy-data'>Seeds Dummy Data</h3>
+<p>You should see a message for each table migrated, if you don&#39;t and see errors, than your credentials are most likely not correct.</p>
+
+<p>We are now going to set the administrator account information. To do this you need to navigate to this file and change the name/email/password of the Administrator account.</p>
+
+<p>You can delete the other dummy users, but do not delete the administrator account or you will not be able to access the backend.</p>
+
+<p>Now seed the database with:</p>
+<div class="highlight"><pre class="highlight plaintext"><code>
+php artisan db:seed
+
+</code></pre></div>
+<p>You should get a message for each file seeded, you should see the information in your database tables.</p>
+<h2 id='npm-run-39-39'>NPM Run &#39;*&#39;</h2>
+<p>Now that you have the database tables and default rows, you need to build the styles and scripts.</p>
+<h3 id='run-npm-on-your-application'>Run NPM on your Application</h3>
+<p>These files are generated using Laravel Mix, which is a wrapper around many tools, and works off the webpack.mix.js in the root of the project.</p>
+
+<p>You can build with:</p>
+<div class="highlight"><pre class="highlight plaintext"><code>
+npm run &lt;command&gt;
+
+</code></pre></div>
+<p>The available commands are listed at the top of the package.json file under the &#39;scripts&#39; key.</p>
+
+<p>You will see a lot of information flash on the screen and then be provided with a table at the end explaining what was compiled and where the files live.</p>
+
+<p>At this point you are done, you should be able to hit the project in your local browser and see the project, as well as be able to log in with the administrator and view the backend</p>
+<h2 id='php-unit'>PHP Unit</h2>
+<p>After your project is installed, make sure you run the test suite to make sure all of the parts are working correctly. From the root of your project run:</p>
+<div class="highlight"><pre class="highlight plaintext"><code>
+php artisan phpunit
+
+</code></pre></div>
+<p>You will see a dot(.) appear for each of the hundreds of tests, and then be provided with the amount of passing tests at the end. There should be no failures with a fresh install.</p>
+<h2 id='storage-link'>Storage Link</h2>
+<p>After your project is installed you must run this command to link your public storage folder for user avatar uploads:</p>
+<div class="highlight"><pre class="highlight plaintext"><code>
+php artisan storage:link
+
+</code></pre></div><h1 id='structure'>Structure</h1><h2 id='domain-structure'>Domain Structure</h2>
+<p>The structure of each domain is up to you, but is good practice to just follow the default Laravel app folder structure.</p>
+
+<p>For example, the Auth domain has code relevant to the <code>authentication/authorization</code> portion of the application, and is broken
+down into all the relevant folders: <code>Events/Http/Listeners/Models/etc</code>. These are just namespaced files placed here instead
+ of normally like <code>App/Http/Auth</code> it&#39;s <code>App/Domains/Auth/Http</code>.</p>
+<h2 id='events'>Events</h2>
+<p>Note: All current events in this project are processed with a like-named listener class that is registered in EventServiceProvider and stored in that domains Listeners directory.</p>
+
+<p>Most events are used to log information using spaties activity-log package.</p>
+
+<p>Some events have extra functionality:</p>
+
+<ul>
+<li>UserLoggedIn: - Sets the users last_login_at and last_login_ip columns.</li>
+<li>PasswordReset: - This one is dispatched from the Laravel core, but is caught to set the password_changed_at column of the current user to now().</li>
+</ul>
+<h2 id='middleware'>Middleware</h2>
+<p>There are many included middleware that are not Laravel default:</p>
+
+<ul>
+<li><p><code>App\Domains\Auth\Http\Middleware\AdminCheck</code> - Passes if the current user is an administrator.</p></li>
+<li><p><code>App\Domains\Auth\Http\Middleware\PasswordExpires</code> - If the users password is expired based on the configs, it sends them to the change password page.</p></li>
+<li><p><code>App\Domains\Auth\Http\Middleware\SuperAdminCheck</code> - Checks to see if the current user is an administrator and has all roles and permissions.</p></li>
+<li><p><code>App\Domains\Auth\Http\Middleware\ToBeLoggedOut</code> - Checks to see if the current users to_be_logged_out boolean is set to true and logs them out if so.</p></li>
+<li><p><code>App\Domains\Auth\Http\Middleware\TwoFactorAuthenticationStatus</code> - Checks to see if 2FA is needed for the current route.</p></li>
+<li><p><code>App\Domains\Auth\Http\Middleware\UserCheck</code> - Passes if the current user is of type user.</p></li>
+<li><p><code>App\Domains\Auth\Http\Middleware\UserTypeCheck</code> - Checks to see if the current user is of the type passed in.</p></li>
+<li><p><code>App\Http\Middleware\LocaleMiddleware</code> - Switches the current locale.</p></li>
+</ul>
+<h2 id='requests'>Requests</h2>
+<p>This method is opinionated, so refactor how you see fit.</p>
+
+<p>Form requests are used where validation or authorization is needed for a request (and a policy isn&#39;t the best choice for the given request) and is injected into the controllers action signature.</p>
+
+<p>Form requests are not used in Laravel&#39;s default auth scaffolding controllers where a validate() method is supplied such as login and register.</p>
+
+<aside class="success">
+Note: Any exceptions thrown by form requests are instances of Laravel's AuthorizationException and are caught in the Exception handler which formats the response.
+</aside>
+<h2 id='models'>Models</h2>
+<p>Models are organized by domain, and furthermore I use traits to organize each model:</p>
+
+<ul>
+<li><code>Attribute/MODELAttribute</code> - Holds all the attribute modifiers for the given model.</li>
+<li><code>Method/MODELMethod</code> - Holds all the methods for the given model. (There are some methods in the User model that must be in the root, please don&#39;t make PRs to move them)</li>
+<li><code>Relationship/MODELRelationship</code> - Holds all the relationships for the given model.</li>
+<li><code>Scope/MODELScope</code> - Holds all the scopes for the given model.</li>
+</ul>
+
+<p>Model properties such as $dates, $casts, $appends, and $with are used where necessary.</p>
+<h2 id='observers'>Observers</h2>
+<p>There is one observer included with the project, that is registered in the ObserverServiceProvider:</p>
+
+<ul>
+<li>UserObserver: - This observer hooks the users created and updated events and logs new password histories if the config allows for it.</li>
+</ul>
+<h2 id='rules'>Rules</h2>
+<p>There is one rule included with the project, that is used in any request dealing with password changes:</p>
+
+<ul>
+<li>UnusedPassword: - Checks to see if the password the user is changing to has not been used for the last X times as defined in the config.</li>
+</ul>
+<h2 id='services'>Services</h2>
+<p>Services are classes to attempt to extract database logic out of the controllers.</p>
+
+<p>There is a BaseService class you can extend, who&#39;s constructor accepts a model and inherits some useful functionality such as get(), count(), find(), etc.</p>
+
+<p>Example:</p>
+
+<p>Instead of duplicating this line everywhere:</p>
+<div class="highlight"><pre class="highlight php tab-php"><code><span class="nv">$user</span> <span class="o">=</span> <span class="nc">User</span><span class="o">::</span><span class="nf">findOrFail</span><span class="p">(</span><span class="nv">$id</span><span class="p">);</span>
+
+</code></pre></div>
+<p>You can use: </p>
+<div class="highlight"><pre class="highlight php tab-php"><code><span class="nv">$user</span> <span class="o">=</span> <span class="nf">resolve</span><span class="p">(</span><span class="nc">UserService</span><span class="o">::</span><span class="n">class</span><span class="p">)</span><span class="o">-&gt;</span><span class="nf">findOrFail</span><span class="p">(</span><span class="nv">$id</span><span class="p">);</span>
+
+</code></pre></div>
+<p>It&#39;s longer, but it&#39;s extracted out to one place in the codebase instead of duplicating logic everywhere. This is just an example, and a one liner usually isn&#39;t a big deal, but extracting out multi-line logic that doesn&#39;t belong in a model or elsewhere is good to have in a service dedicated to one model.</p>
+<h2 id='exceptions'>Exceptions</h2>
+<p>Admittedly, the exception classes could be more descriptive, and that is a goal for the next version.</p>
+
+<p>But for now, there are two non-laravel exceptions that can be used:</p>
+
+<ul>
+<li><p>GeneralException: - I use this when I want to throw an exception and stop the execution of code, usually in a catch block or if an save/update fails. This exception does not report to the log files, instead it redirects back with the message (and old input) in an alert-danger bootstrap alert which is rendered from the messages blade partial using the flash_danger key.</p></li>
+<li><p>ReportableException: - Same functionality as GeneralException except the exceptions get caught by the logger.
+The Exception Handler class also catches a few Laravel/Package exceptions to perform other functionality.</p></li>
+</ul>
+<h2 id='helpers'>Helpers</h2>
+<p>Though some people say it&#39;s not a good design pattern to have helper classes, I found this method easier to organize than just including a helpers.php file in composers file section.</p>
+
+<p>The <code>App\Helpers</code> directory comes with one folder:</p>
+
+<ul>
+<li>Global: - The Global folder is a special helpers directory, any file in this folder is autoloaded and the functions become available globally just like a regular helpers file loaded with composer. The HelperServiceProvider does the loading.
+Any helper class placed outside of the Global folder is just a normal namespaced class that you can resolve normally.</li>
+</ul>
+<h1 id='liveware'>Liveware</h1>
+<p>This project includes Laravel Livewire as a dependency because it makes use of my Laravel Livewire Tables plugin for the datatables functionality.</p>
+
+<p>You can find all Livewire components in the <code>App\Http\Livewire</code> directory.</p>
+
+<aside class="success">
+Note: I used Livewire for the 2FA code box because if the page refreshed, the QR code would change thus invalidating the whole process. I also thought it would be cleaner than Vue since it's such small functionality.
+</aside>
+<h1 id='configuration'>Configuration</h1>
+<p>All of the configurable items of the boilerplate can be found in the config/engine.php file. Each item should have a relevant doc block.</p>
+
+<p>There may be other configuration files published by default from some packages such as activitylog, permission, geoip, etc.</p>
+<h1 id='resource-structure'>Resource Structure</h1>
+<p>This project follows standard Laravel resource folder structure.</p>
+<h2 id='javascript'>Javascript</h2>
+<p>The javascript files are as follows:</p>
+
+<ul>
+<li><p><code>backend/app.js</code> - Compiles the backend javascript</p></li>
+<li><p><code>frontend/app.js</code> - Compiles the frontend javascript</p></li>
+<li><p><code>bootstrap.js</code> - Bootstrap functionality for the frontend</p></li>
+<li><p><code>plugins.js</code> - Random javascript/jQuery functionality used globally</p></li>
+</ul>
+<h2 id='language'>Language</h2>
+<p>All language files for this version of the boilerplate are in JSON format except default Laravel files and package languages if published.</p>
+<h2 id='scss'>SCSS</h2>
+<p>The SCSS files are as follows:</p>
+
+<ul>
+<li><code>backend/app.scss</code> - Compiles the backend CSS</li>
+<li><code>frontend/_global.scss</code> - Frontend global SCSS</li>
+<li><code>frontend/_variables.scss</code> - Frontend Bootstrap overrides</li>
+<li><code>frontend/app.scss</code> - Compiles the frontend CSS</li>
+<li><code>_global.scss</code> - Global styles included in frontend and backend</li>
+</ul>
+<h2 id='view'>View</h2>
+<p>The views are structured much like the rest of the application, frontend/backend/etc. They usually follow the namespace structure.</p>
+
+<p>There&#39;s only one folder to note, and that is components which are blade components used throughout the blade files. At the time of this writing they are all anonymous components, or they don&#39;t have an associated class and just work off of the props passed into them.</p>
 <h1 id='errors'>Errors</h1>
 <p>The AdUp.io Shopper API uses the following error codes:</p>
 
