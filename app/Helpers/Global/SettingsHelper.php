@@ -63,7 +63,15 @@ if (! function_exists('create_settings')) {
     function getSetting($key)
     {
         $getSettings = Settings::where('key',$key)->first();
-        return $getSettings->value;
+
+        if(isset($getSettings))
+        {
+            return $getSettings->value;
+        }else{
+            return null;
+        }
+
+
     }
 
 
