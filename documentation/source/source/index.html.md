@@ -355,7 +355,7 @@ There's only one folder to note, and that is components which are blade componen
 
 ## Quick Example
 
-Generate your first module using `php artisan module:make Blog` . The following structure will be generated.
+Generate your first xemodule using `php artisan xemodule:make Blog` . The following structure will be generated.
 
 ```text
 app/
@@ -398,36 +398,36 @@ Modules/
 
 ## Create Module
 
-Creating a module is simple and straightforward. Run the following command to create a module.
+Creating a xemodule is simple and straightforward. Run the following command to create a xemodule.
 
 ```text
 
-php artisan module:make <module-name>
+php artisan xemodule:make <xemodule-name>
 
 ```
 
 
-Replace <module-name> by your desired name.
+Replace <xemodule-name> by your desired name.
 
-It is also possible to create multiple modules in one command.
+It is also possible to create multiple xemodules in one command.
 
 ```text
-php artisan module:make Blog User Auth
+php artisan xemodule:make Blog User Auth
 
 ```
 
-By default when you create a new module, the command will add some resources like a controller, seed class, service provider, etc. automatically. If you don't want these, you can add --plain flag, to generate a plain module.
+By default when you create a new xemodule, the command will add some resources like a controller, seed class, service provider, etc. automatically. If you don't want these, you can add --plain flag, to generate a plain xemodule.
 
 
 ```text
-php artisan module:make Blog --plain
+php artisan xemodule:make Blog --plain
 # or
-php artisan module:make Blog -p
+php artisan xemodule:make Blog -p
 ```
 
 ## Naming convention
 
-Because we are autoloading the modules using psr-4, we strongly recommend using StudlyCase convention.
+Because we are autoloading the xemodules using psr-4, we strongly recommend using StudlyCase convention.
 
 ## Folder Structure
 
@@ -464,7 +464,7 @@ Modules/
 
 ## Custom Name Spaces
 
-When you create a new module it also registers new custom namespace for Lang, View and Config. For example, if you create a new module named blog, it will also register new namespace/hint blog for that module. Then, you can use that namespace for calling Lang, View or Config. Following are some examples of its usage:
+When you create a new xemodule it also registers new custom namespace for Lang, View and Config. For example, if you create a new xemodule named blog, it will also register new namespace/hint blog for that xemodule. Then, you can use that namespace for calling Lang, View or Config. Following are some examples of its usage:
 
 Calling Lang:
 
@@ -493,7 +493,7 @@ Config::get('blog.name')
 
 ## Default namespace
 
-What the default namespace will be when generating modules.
+What the default namespace will be when generating xemodules.
 
 Key: `namespace`
 
@@ -502,7 +502,7 @@ Default: `Modules`
 
 ## Overwrite the generated files
 
-Overwrite the default generated stubs to be used when generating modules. This can be useful to customise the output of different files.
+Overwrite the default generated stubs to be used when generating xemodules. This can be useful to customise the output of different files.
 
 Key: `stubs`
 
@@ -512,9 +512,9 @@ Overwrite the default paths used throughout the package.
 
 Key: `paths`
 
-## Scan additional folders for modules
+## Scan additional folders for xemodules
 
-This is disabled by default. Once enabled, the package will look for modules in the specified array of paths.
+This is disabled by default. Once enabled, the package will look for xemodules in the specified array of paths.
 
 Key: `scan`
 
@@ -527,7 +527,7 @@ Key: `composer`
 
 ## Caching
 
-If you have many modules it's a good idea to cache this information (like the multiple module.json files for example).
+If you have many xemodules it's a good idea to cache this information (like the multiple xemodule.json files for example).
 
 Key: `cache`
 
@@ -543,7 +543,7 @@ Key: `register`
 
 ### Module path function
 
-Get the path to the given module.
+Get the path to the given xemodule.
 
 ```php
 $path = module_path('Blog');
@@ -554,13 +554,13 @@ $path = module_path('Blog');
 
 ### Installation & Setup
 
-When you create a new module it also create assets for CSS/JS and the webpack.mix.js configuration file.
+When you create a new xemodule it also create assets for CSS/JS and the webpack.mix.js configuration file.
 
 ```text
-php artisan module:make Blog
+php artisan xemodule:make Blog
 ```
 
-Change directory to the module:
+Change directory to the xemodule:
 
 ```text
 cd Modules/Blog
@@ -574,7 +574,7 @@ npm install
 
 ## Running Mix
 
-Mix is a configuration layer on top of Webpack, so to run your Mix tasks you only need to execute one of the NPM scripts that is included with the default laravel-modules package.json file
+Mix is a configuration layer on top of Webpack, so to run your Mix tasks you only need to execute one of the NPM scripts that is included with the default laravel-xemodules package.json file
 
 ```text
 // Run all Mix tasks...
@@ -629,169 +629,169 @@ mix.js('resources/assets/js/app.js', 'public/js')
 You can use the following commands with the --help suffix to find its arguments and options.
 </aside>
 
-Note all the following commands use "Blog" as example module name, and example class/file names
+Note all the following commands use "Blog" as example xemodule name, and example class/file names
 
 
 ### Utility commands
 
-### module:make
+### xemodule:make
 
-Generate a new module.
+Generate a new xemodule.
 
 ```text
-php artisan module:make Blog
+php artisan xemodule:make Blog
 ```
 
-### module:make
+### xemodule:make
 
-Generate multiple modules at once.
+Generate multiple xemodules at once.
 
 ```text
-php artisan module:make Blog User Auth
+php artisan xemodule:make Blog User Auth
 ```
 
-### module:use
+### xemodule:use
 
-Use a given module. This allows you to not specify the module name on other commands requiring the module name as an argument.
+Use a given xemodule. This allows you to not specify the xemodule name on other commands requiring the xemodule name as an argument.
 
 
 ```text
-php artisan module:use
+php artisan xemodule:use
 ```
 
 
-### module:unuse
+### xemodule:unuse
 
-This unsets the specified module that was set with the module:use command.
+This unsets the specified xemodule that was set with the xemodule:use command.
 
 ```text
-php artisan module:unuse
+php artisan xemodule:unuse
 ```
 
-### module:list
-List all available modules.
+### xemodule:list
+List all available xemodules.
 
 ```text
-php artisan module:list
+php artisan xemodule:list
 ```
 
-### module:migrate
+### xemodule:migrate
 
-Migrate the given module, or without a module an argument, migrate all modules.
+Migrate the given xemodule, or without a xemodule an argument, migrate all xemodules.
 
 ```text
-php artisan module:migrate Blog
+php artisan xemodule:migrate Blog
 ```
 
-### module:migrate-rollback
+### xemodule:migrate-rollback
 
-Rollback the given module, or without an argument, rollback all modules.
+Rollback the given xemodule, or without an argument, rollback all xemodules.
 
 ```text
-php artisan module:migrate-rollback Blog
+php artisan xemodule:migrate-rollback Blog
 ```
 
-### module:migrate-refresh
-Refresh the migration for the given module, or without a specified module refresh all modules migrations.
+### xemodule:migrate-refresh
+Refresh the migration for the given xemodule, or without a specified xemodule refresh all xemodules migrations.
 
 
-### module:migrate-reset Blog
-Reset the migration for the given module, or without a specified module reset all modules migrations.
+### xemodule:migrate-reset Blog
+Reset the migration for the given xemodule, or without a specified xemodule reset all xemodules migrations.
 
 ```text
-php artisan module:migrate-reset Blog
+php artisan xemodule:migrate-reset Blog
 ```
 
-### module:seed
-Seed the given module, or without an argument, seed all modules
+### xemodule:seed
+Seed the given xemodule, or without an argument, seed all xemodules
 
 ```text
-php artisan module:seed Blog
+php artisan xemodule:seed Blog
 ```
 
-### module:publish-migration
+### xemodule:publish-migration
 
-Publish the migration files for the given module, or without an argument publish all modules migrations.
+Publish the migration files for the given xemodule, or without an argument publish all xemodules migrations.
 
 ```text
-php artisan module:publish-migration Blog
+php artisan xemodule:publish-migration Blog
 ```
 
-### module:publish-config
-Publish the given module configuration files, or without an argument publish all modules configuration files.
+### xemodule:publish-config
+Publish the given xemodule configuration files, or without an argument publish all xemodules configuration files.
 
 ```text
-php artisan module:publish-config Blog
+php artisan xemodule:publish-config Blog
 ```
 
-### module:publish-translation
-Publish the translation files for the given module, or without a specified module publish all modules migrations.
+### xemodule:publish-translation
+Publish the translation files for the given xemodule, or without a specified xemodule publish all xemodules migrations.
 
 ```text
-php artisan module:publish-translation Blog
+php artisan xemodule:publish-translation Blog
 ```
 
-### module:enable
+### xemodule:enable
 
-Enable the given module.
+Enable the given xemodule.
 
 ```text
-php artisan module:enable Blog
+php artisan xemodule:enable Blog
 ```
 
-### module:disable
+### xemodule:disable
 
-Disable the given module.
+Disable the given xemodule.
 
 ```text
-php artisan module:disable Blog
+php artisan xemodule:disable Blog
 ```
 
-### module:update
-Update the given module.
+### xemodule:update
+Update the given xemodule.
 
 ```text
-php artisan module:update Blog
+php artisan xemodule:update Blog
 ```
 
 ## Generator commands
 
-### module:make-command
-Generate the given console command for the specified module.
+### xemodule:make-command
+Generate the given console command for the specified xemodule.
 
 ```text
-php artisan module:make-command CreatePostCommand Blog
+php artisan xemodule:make-command CreatePostCommand Blog
 ```
 
-### module:make-migration
-Generate a migration for specified module.
+### xemodule:make-migration
+Generate a migration for specified xemodule.
 
 ```text
-php artisan module:make-migration create_posts_table Blog
+php artisan xemodule:make-migration create_posts_table Blog
 ```
 
-### module:make-seed
+### xemodule:make-seed
 
-Generate the given seed name for the specified module.
+Generate the given seed name for the specified xemodule.
 
 ```text
-php artisan module:make-seed seed_fake_blog_posts Blog
+php artisan xemodule:make-seed seed_fake_blog_posts Blog
 ```
 
 
-### module:make-controller
+### xemodule:make-controller
 
-Generate a controller for the specified module.
+Generate a controller for the specified xemodule.
 
 ```text
-php artisan module:make-controller PostsController Blog
+php artisan xemodule:make-controller PostsController Blog
 ```
 
-### module:make-model
-Generate the given model for the specified module.
+### xemodule:make-model
+Generate the given model for the specified xemodule.
 
 ```text
-php artisan module:make-model Post Blog
+php artisan xemodule:make-model Post Blog
 ```
 
 Optional options:
@@ -799,126 +799,126 @@ Optional options:
     *  `--migration, -m:` create the migration file for the given model
 
 
-### module:make-provider
+### xemodule:make-provider
 
-Generate the given service provider name for the specified module.
+Generate the given service provider name for the specified xemodule.
 
 ```text
-php artisan module:make-provider BlogServiceProvider Blog
+php artisan xemodule:make-provider BlogServiceProvider Blog
 ```
 
-### module:make-middleware
-Generate the given middleware name for the specified module.
+### xemodule:make-middleware
+Generate the given middleware name for the specified xemodule.
 
 ```text
-php artisan module:make-middleware CanReadPostsMiddleware Blog
+php artisan xemodule:make-middleware CanReadPostsMiddleware Blog
 ```
 
-### module:make-mail
-Generate the given mail class for the specified module.
+### xemodule:make-mail
+Generate the given mail class for the specified xemodule.
 
 ```text
-php artisan module:make-mail SendWeeklyPostsEmail Blog
+php artisan xemodule:make-mail SendWeeklyPostsEmail Blog
 ```
 
 
-### module:make-mail
-Generate the given mail class for the specified module.
+### xemodule:make-mail
+Generate the given mail class for the specified xemodule.
 
 ```text
-php artisan module:make-mail SendWeeklyPostsEmail Blog
+php artisan xemodule:make-mail SendWeeklyPostsEmail Blog
 ```
 
-### module:make-notification
-Generate the given notification class name for the specified module.
+### xemodule:make-notification
+Generate the given notification class name for the specified xemodule.
 
 ```text
-php artisan module:make-notification NotifyAdminOfNewComment Blog
+php artisan xemodule:make-notification NotifyAdminOfNewComment Blog
 ```
 
-### module:make-listener
-Generate the given listener for the specified module. Optionally you can specify which event class it should listen to. It also accepts a --queued flag allowed queued event listeners.
+### xemodule:make-listener
+Generate the given listener for the specified xemodule. Optionally you can specify which event class it should listen to. It also accepts a --queued flag allowed queued event listeners.
 
 ```text
-php artisan module:make-listener NotifyUsersOfANewPost Blog
-php artisan module:make-listener NotifyUsersOfANewPost Blog --event=PostWasCreated
-php artisan module:make-listener NotifyUsersOfANewPost Blog --event=PostWasCreated --queued
+php artisan xemodule:make-listener NotifyUsersOfANewPost Blog
+php artisan xemodule:make-listener NotifyUsersOfANewPost Blog --event=PostWasCreated
+php artisan xemodule:make-listener NotifyUsersOfANewPost Blog --event=PostWasCreated --queued
 ```
 
-### module:make-request
-Generate the given request for the specified module.
+### xemodule:make-request
+Generate the given request for the specified xemodule.
 
 ```text
-php artisan module:make-request CreatePostRequest Blog
+php artisan xemodule:make-request CreatePostRequest Blog
 ```
 
-### module:make-event
+### xemodule:make-event
 
-Generate the given event for the specified module.
+Generate the given event for the specified xemodule.
 
 ```text
-php artisan module:make-event BlogPostWasUpdated Blog
+php artisan xemodule:make-event BlogPostWasUpdated Blog
 ```
 
-### module:make-job
+### xemodule:make-job
 
-Generate the given job for the specified module.
+Generate the given job for the specified xemodule.
 
 ```text
-php artisan module:make-job JobName Blog
+php artisan xemodule:make-job JobName Blog
 
-php artisan module:make-job JobName Blog --sync # A synchronous job class
+php artisan xemodule:make-job JobName Blog --sync # A synchronous job class
 ```
 
-### module:route-provider
-Generate the given route service provider for the specified module.
+### xemodule:route-provider
+Generate the given route service provider for the specified xemodule.
 
 ```text
-php artisan module:route-provider Blog
+php artisan xemodule:route-provider Blog
 ```
 
-### module:make-factory
-Generate the given database factory for the specified module.
+### xemodule:make-factory
+Generate the given database factory for the specified xemodule.
 
 ```text
-php artisan module:make-factory FactoryName Blog
+php artisan xemodule:make-factory FactoryName Blog
 ```
 
-### module:make-policy
+### xemodule:make-policy
 
-Generate the given policy class for the specified module.
+Generate the given policy class for the specified xemodule.
 
-The Policies is not generated by default when creating a new module. Change the value of paths.generator.policies in modules.php to your desired location.
+The Policies is not generated by default when creating a new xemodule. Change the value of paths.generator.policies in xemodules.php to your desired location.
 
 ```text
-php artisan module:make-policy PolicyName Blog
+php artisan xemodule:make-policy PolicyName Blog
 ```
 
-### module:make-rule
+### xemodule:make-rule
 
-Generate the given validation rule class for the specified module.
+Generate the given validation rule class for the specified xemodule.
 
-The Rules folder is not generated by default when creating a new module. Change the value of paths.generator.rules in modules.php to your desired location.
+The Rules folder is not generated by default when creating a new xemodule. Change the value of paths.generator.rules in xemodules.php to your desired location.
 
 
 ```text
-php artisan module:make-rule ValidationRule Blog
+php artisan xemodule:make-rule ValidationRule Blog
 ```
 
-### module:make-resource
+### xemodule:make-resource
 
-Generate the given resource class for the specified module. It can have an optional --collection argument to generate a resource collection.
+Generate the given resource class for the specified xemodule. It can have an optional --collection argument to generate a resource collection.
 
-The Transformers folder is not generated by default when creating a new module. Change the value of paths.generator.resource in modules.php to your desired location.
+The Transformers folder is not generated by default when creating a new xemodule. Change the value of paths.generator.resource in xemodules.php to your desired location.
 
 ```text
-php artisan module:make-resource PostResource Blog
-php artisan module:make-resource PostResource Blog --collection
+php artisan xemodule:make-resource PostResource Blog
+php artisan xemodule:make-resource PostResource Blog --collection
 ```
 
-### module:make-test
-Generate the given test class for the specified module.
+### xemodule:make-test
+Generate the given test class for the specified xemodule.
 
 ```text
-php artisan module:make-test EloquentPostRepositoryTest Blog
+php artisan xemodule:make-test EloquentPostRepositoryTest Blog
 ```
