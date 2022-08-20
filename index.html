@@ -382,13 +382,13 @@
                   <li>
                     <a href="#helpers" class="toc-h2 toc-link" data-title="Helpers">Helpers</a>
                   </li>
+                  <li>
+                    <a href="#liveware" class="toc-h2 toc-link" data-title="Liveware">Liveware</a>
+                  </li>
+                  <li>
+                    <a href="#configuration" class="toc-h2 toc-link" data-title="Configuration">Configuration</a>
+                  </li>
               </ul>
-          </li>
-          <li>
-            <a href="#liveware" class="toc-h1 toc-link" data-title="Liveware">Liveware</a>
-          </li>
-          <li>
-            <a href="#configuration" class="toc-h1 toc-link" data-title="Configuration">Configuration</a>
           </li>
           <li>
             <a href="#resource-structure" class="toc-h1 toc-link" data-title="Resource Structure">Resource Structure</a>
@@ -404,6 +404,62 @@
                   </li>
                   <li>
                     <a href="#view" class="toc-h2 toc-link" data-title="View">View</a>
+                  </li>
+              </ul>
+          </li>
+          <li>
+            <a href="#xemodule" class="toc-h1 toc-link" data-title="XeModule">XeModule</a>
+              <ul class="toc-list-h2">
+                  <li>
+                    <a href="#quick-example" class="toc-h2 toc-link" data-title="Quick Example">Quick Example</a>
+                  </li>
+                  <li>
+                    <a href="#create-module" class="toc-h2 toc-link" data-title="Create Module">Create Module</a>
+                  </li>
+                  <li>
+                    <a href="#naming-convention" class="toc-h2 toc-link" data-title="Naming convention">Naming convention</a>
+                  </li>
+                  <li>
+                    <a href="#folder-structure" class="toc-h2 toc-link" data-title="Folder Structure">Folder Structure</a>
+                  </li>
+                  <li>
+                    <a href="#custom-name-spaces" class="toc-h2 toc-link" data-title="Custom Name Spaces">Custom Name Spaces</a>
+                  </li>
+                  <li>
+                    <a href="#default-namespace" class="toc-h2 toc-link" data-title="Default namespace">Default namespace</a>
+                  </li>
+                  <li>
+                    <a href="#overwrite-the-generated-files" class="toc-h2 toc-link" data-title="Overwrite the generated files">Overwrite the generated files</a>
+                  </li>
+                  <li>
+                    <a href="#overwrite-the-paths" class="toc-h2 toc-link" data-title="Overwrite the paths">Overwrite the paths</a>
+                  </li>
+                  <li>
+                    <a href="#scan-additional-folders-for-xemodules" class="toc-h2 toc-link" data-title="Scan additional folders for xemodules">Scan additional folders for xemodules</a>
+                  </li>
+                  <li>
+                    <a href="#composer-file-template" class="toc-h2 toc-link" data-title="Composer file template">Composer file template</a>
+                  </li>
+                  <li>
+                    <a href="#caching" class="toc-h2 toc-link" data-title="Caching">Caching</a>
+                  </li>
+                  <li>
+                    <a href="#registering-custom-namespace" class="toc-h2 toc-link" data-title="Registering custom namespace">Registering custom namespace</a>
+                  </li>
+                  <li>
+                    <a href="#helpers-2" class="toc-h2 toc-link" data-title="Helpers">Helpers</a>
+                  </li>
+                  <li>
+                    <a href="#compiling-assets" class="toc-h2 toc-link" data-title="Compiling Assets">Compiling Assets</a>
+                  </li>
+                  <li>
+                    <a href="#running-mix" class="toc-h2 toc-link" data-title="Running Mix">Running Mix</a>
+                  </li>
+                  <li>
+                    <a href="#artisan-commands-2" class="toc-h2 toc-link" data-title="Artisan commands">Artisan commands</a>
+                  </li>
+                  <li>
+                    <a href="#generator-commands" class="toc-h2 toc-link" data-title="Generator commands">Generator commands</a>
                   </li>
               </ul>
           </li>
@@ -610,7 +666,7 @@ The Exception Handler class also catches a few Laravel/Package exceptions to per
 <li>Global: - The Global folder is a special helpers directory, any file in this folder is autoloaded and the functions become available globally just like a regular helpers file loaded with composer. The HelperServiceProvider does the loading.
 Any helper class placed outside of the Global folder is just a normal namespaced class that you can resolve normally.</li>
 </ul>
-<h1 id='liveware'>Liveware</h1>
+<h2 id='liveware'>Liveware</h2>
 <p>This project includes Laravel Livewire as a dependency because it makes use of my Laravel Livewire Tables plugin for the datatables functionality.</p>
 
 <p>You can find all Livewire components in the <code>App\Http\Livewire</code> directory.</p>
@@ -618,7 +674,7 @@ Any helper class placed outside of the Global folder is just a normal namespaced
 <aside class="success">
 Note: I used Livewire for the 2FA code box because if the page refreshed, the QR code would change thus invalidating the whole process. I also thought it would be cleaner than Vue since it's such small functionality.
 </aside>
-<h1 id='configuration'>Configuration</h1>
+<h2 id='configuration'>Configuration</h2>
 <p>All of the configurable items of the boilerplate can be found in the config/engine.php file. Each item should have a relevant doc block.</p>
 
 <p>There may be other configuration files published by default from some packages such as activitylog, permission, geoip, etc.</p>
@@ -649,7 +705,313 @@ Note: I used Livewire for the 2FA code box because if the page refreshed, the QR
 <p>The views are structured much like the rest of the application, frontend/backend/etc. They usually follow the namespace structure.</p>
 
 <p>There&#39;s only one folder to note, and that is components which are blade components used throughout the blade files. At the time of this writing they are all anonymous components, or they don&#39;t have an associated class and just work off of the props passed into them.</p>
-<h1 id='errors'>Errors</h1>
+<h1 id='xemodule'>XeModule</h1><h2 id='quick-example'>Quick Example</h2>
+<p>Generate your first xemodule using <code>php artisan xemodule:make Blog</code> . The following structure will be generated.</p>
+<div class="highlight"><pre class="highlight plaintext"><code>app/
+bootstrap/
+vendor/
+Modules/
+  ├── Blog/
+      ├── Assets/
+      ├── Config/
+      ├── Console/
+      ├── Database/
+          ├── Migrations/
+          ├── Seeders/
+      ├── Entities/
+      ├── Http/
+          ├── Controllers/
+          ├── Middleware/
+          ├── Requests/
+      ├── Providers/
+          ├── BlogServiceProvider.php
+          ├── RouteServiceProvider.php
+      ├── Resources/
+          ├── assets/
+              ├── js/
+                ├── app.js
+              ├── sass/
+                ├── app.scss
+          ├── lang/
+          ├── views/
+      ├── Routes/
+          ├── api.php
+          ├── web.php
+      ├── Repositories/
+      ├── Tests/
+      ├── composer.json
+      ├── module.json
+      ├── package.json
+      ├── webpack.mix.js
+</code></pre></div><h2 id='create-module'>Create Module</h2>
+<p>Creating a xemodule is simple and straightforward. Run the following command to create a xemodule.</p>
+<div class="highlight"><pre class="highlight plaintext"><code>
+php artisan xemodule:make &lt;xemodule-name&gt;
+
+</code></pre></div>
+<p>Replace <xemodule-name> by your desired name.</p>
+
+<p>It is also possible to create multiple xemodules in one command.</p>
+<div class="highlight"><pre class="highlight plaintext"><code>php artisan xemodule:make Blog User Auth
+
+</code></pre></div>
+<p>By default when you create a new xemodule, the command will add some resources like a controller, seed class, service provider, etc. automatically. If you don&#39;t want these, you can add --plain flag, to generate a plain xemodule.</p>
+<div class="highlight"><pre class="highlight plaintext"><code>php artisan xemodule:make Blog --plain
+# or
+php artisan xemodule:make Blog -p
+</code></pre></div><h2 id='naming-convention'>Naming convention</h2>
+<p>Because we are autoloading the xemodules using psr-4, we strongly recommend using StudlyCase convention.</p>
+<h2 id='folder-structure'>Folder Structure</h2><div class="highlight"><pre class="highlight plaintext"><code>app/
+bootstrap/
+vendor/
+Modules/
+  ├── Blog/
+      ├── Assets/
+      ├── Config/
+      ├── Console/
+      ├── Database/
+          ├── Migrations/
+          ├── Seeders/
+      ├── Entities/
+      ├── Http/
+          ├── Controllers/
+          ├── Middleware/
+          ├── Requests/
+          ├── routes.php
+      ├── Providers/
+          ├── BlogServiceProvider.php
+      ├── Resources/
+          ├── lang/
+          ├── views/
+      ├── Repositories/
+      ├── Tests/
+      ├── composer.json
+      ├── module.json
+      ├── start.php
+</code></pre></div><h2 id='custom-name-spaces'>Custom Name Spaces</h2>
+<p>When you create a new xemodule it also registers new custom namespace for Lang, View and Config. For example, if you create a new xemodule named blog, it will also register new namespace/hint blog for that xemodule. Then, you can use that namespace for calling Lang, View or Config. Following are some examples of its usage:</p>
+
+<p>Calling Lang:</p>
+<div class="highlight"><pre class="highlight php tab-php"><code><span class="nc">Lang</span><span class="o">::</span><span class="nf">get</span><span class="p">(</span><span class="s1">'blog::group.name'</span><span class="p">);</span>
+
+<span class="o">@</span><span class="nf">trans</span><span class="p">(</span><span class="s1">'blog::group.name'</span><span class="p">);</span>
+</code></pre></div>
+<p>Calling View:</p>
+<div class="highlight"><pre class="highlight php tab-php"><code><span class="nf">view</span><span class="p">(</span><span class="s1">'blog::index'</span><span class="p">)</span>
+
+<span class="nf">view</span><span class="p">(</span><span class="s1">'blog::partials.sidebar'</span><span class="p">)</span>
+
+</code></pre></div>
+<p>Calling Config:</p>
+<div class="highlight"><pre class="highlight php tab-php"><code>
+<span class="nc">Config</span><span class="o">::</span><span class="nf">get</span><span class="p">(</span><span class="s1">'blog.name'</span><span class="p">)</span>
+
+</code></pre></div><h2 id='default-namespace'>Default namespace</h2>
+<p>What the default namespace will be when generating xemodules.</p>
+
+<p>Key: <code>namespace</code></p>
+
+<p>Default: <code>Modules</code></p>
+<h2 id='overwrite-the-generated-files'>Overwrite the generated files</h2>
+<p>Overwrite the default generated stubs to be used when generating xemodules. This can be useful to customise the output of different files.</p>
+
+<p>Key: <code>stubs</code></p>
+<h2 id='overwrite-the-paths'>Overwrite the paths</h2>
+<p>Overwrite the default paths used throughout the package.</p>
+
+<p>Key: <code>paths</code></p>
+<h2 id='scan-additional-folders-for-xemodules'>Scan additional folders for xemodules</h2>
+<p>This is disabled by default. Once enabled, the package will look for xemodules in the specified array of paths.</p>
+
+<p>Key: <code>scan</code></p>
+<h2 id='composer-file-template'>Composer file template</h2>
+<p>Customise the generated <code>composer.json</code> file.</p>
+
+<p>Key: <code>composer</code></p>
+<h2 id='caching'>Caching</h2>
+<p>If you have many xemodules it&#39;s a good idea to cache this information (like the multiple xemodule.json files for example).</p>
+
+<p>Key: <code>cache</code></p>
+<h2 id='registering-custom-namespace'>Registering custom namespace</h2>
+<p>Decide which custom namespaces need to be registered by the package. If one is set to false, the package won&#39;t handle its registration.</p>
+
+<p>Key: <code>register</code></p>
+<h2 id='helpers-2'>Helpers</h2><h3 id='module-path-function'>Module path function</h3>
+<p>Get the path to the given xemodule.</p>
+<div class="highlight"><pre class="highlight php tab-php"><code><span class="nv">$path</span> <span class="o">=</span> <span class="nf">module_path</span><span class="p">(</span><span class="s1">'Blog'</span><span class="p">);</span>
+</code></pre></div><h2 id='compiling-assets'>Compiling Assets</h2><h3 id='installation-amp-setup'>Installation &amp; Setup</h3>
+<p>When you create a new xemodule it also create assets for CSS/JS and the webpack.mix.js configuration file.</p>
+<div class="highlight"><pre class="highlight plaintext"><code>php artisan xemodule:make Blog
+</code></pre></div>
+<p>Change directory to the xemodule:</p>
+<div class="highlight"><pre class="highlight plaintext"><code>cd Modules/Blog
+</code></pre></div>
+<p>The default package.json file includes everything you need to get started. You may install the dependencies it references by running:</p>
+<div class="highlight"><pre class="highlight plaintext"><code>npm install
+</code></pre></div><h2 id='running-mix'>Running Mix</h2>
+<p>Mix is a configuration layer on top of Webpack, so to run your Mix tasks you only need to execute one of the NPM scripts that is included with the default laravel-xemodules package.json file</p>
+<div class="highlight"><pre class="highlight plaintext"><code>// Run all Mix tasks...
+npm run dev
+
+// Run all Mix tasks and minify output...
+npm run production
+</code></pre></div>
+<p>After generating the versioned file, you won&#39;t know the exact file name. So, you should use Laravel&#39;s global mix function within your views to load the appropriately hashed asset. The mix function will automatically determine the current name of the hashed file:</p>
+<div class="highlight"><pre class="highlight plaintext"><code>// Modules/Blog/Resources/views/layouts/master.blade.php
+
+&lt;link rel="stylesheet" href="{{ mix('css/blog.css') }}"&gt;
+
+&lt;script src="{{ mix('js/blog.js') }}"&gt;&lt;/script&gt;
+</code></pre></div>
+<p>For more info on Laravel Mix view the documentation here: https://laravel.com/docs/mix</p>
+
+<aside class="success">
+Note: to prevent the main Laravel Mix configuration from overwriting the `public/mix-manifest.json` file:
+</aside>
+
+<p>Install <code>laravel-mix-merge-manifest</code></p>
+<div class="highlight"><pre class="highlight plaintext"><code>npm install laravel-mix-merge-manifest --save-dev
+</code></pre></div>
+<p>Modify <code>webpack.mix.js</code> main file</p>
+<div class="highlight"><pre class="highlight javascript tab-javascript"><code><span class="kd">let</span> <span class="nx">mix</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="dl">'</span><span class="s1">laravel-mix</span><span class="dl">'</span><span class="p">);</span>
+
+
+<span class="cm">/* Allow multiple Laravel Mix applications*/</span>
+<span class="nx">require</span><span class="p">(</span><span class="dl">'</span><span class="s1">laravel-mix-merge-manifest</span><span class="dl">'</span><span class="p">);</span>
+<span class="nx">mix</span><span class="p">.</span><span class="nx">mergeManifest</span><span class="p">();</span>
+<span class="cm">/*----------------------------------------*/</span>
+
+<span class="nx">mix</span><span class="p">.</span><span class="nx">js</span><span class="p">(</span><span class="dl">'</span><span class="s1">resources/assets/js/app.js</span><span class="dl">'</span><span class="p">,</span> <span class="dl">'</span><span class="s1">public/js</span><span class="dl">'</span><span class="p">)</span>
+   <span class="p">.</span><span class="nx">sass</span><span class="p">(</span><span class="dl">'</span><span class="s1">resources/assets/sass/app.scss</span><span class="dl">'</span><span class="p">,</span> <span class="dl">'</span><span class="s1">public/css</span><span class="dl">'</span><span class="p">);</span>
+</code></pre></div><h2 id='artisan-commands-2'>Artisan commands</h2>
+<aside class="success">
+You can use the following commands with the --help suffix to find its arguments and options.
+</aside>
+
+<p>Note all the following commands use &quot;Blog&quot; as example xemodule name, and example class/file names</p>
+<h3 id='utility-commands'>Utility commands</h3><h3 id='xemodule-make'>xemodule:make</h3>
+<p>Generate a new xemodule.</p>
+<div class="highlight"><pre class="highlight plaintext"><code>php artisan xemodule:make Blog
+</code></pre></div><h3 id='xemodule-make-2'>xemodule:make</h3>
+<p>Generate multiple xemodules at once.</p>
+<div class="highlight"><pre class="highlight plaintext"><code>php artisan xemodule:make Blog User Auth
+</code></pre></div><h3 id='xemodule-use'>xemodule:use</h3>
+<p>Use a given xemodule. This allows you to not specify the xemodule name on other commands requiring the xemodule name as an argument.</p>
+<div class="highlight"><pre class="highlight plaintext"><code>php artisan xemodule:use
+</code></pre></div><h3 id='xemodule-unuse'>xemodule:unuse</h3>
+<p>This unsets the specified xemodule that was set with the xemodule:use command.</p>
+<div class="highlight"><pre class="highlight plaintext"><code>php artisan xemodule:unuse
+</code></pre></div><h3 id='xemodule-list'>xemodule:list</h3>
+<p>List all available xemodules.</p>
+<div class="highlight"><pre class="highlight plaintext"><code>php artisan xemodule:list
+</code></pre></div><h3 id='xemodule-migrate'>xemodule:migrate</h3>
+<p>Migrate the given xemodule, or without a xemodule an argument, migrate all xemodules.</p>
+<div class="highlight"><pre class="highlight plaintext"><code>php artisan xemodule:migrate Blog
+</code></pre></div><h3 id='xemodule-migrate-rollback'>xemodule:migrate-rollback</h3>
+<p>Rollback the given xemodule, or without an argument, rollback all xemodules.</p>
+<div class="highlight"><pre class="highlight plaintext"><code>php artisan xemodule:migrate-rollback Blog
+</code></pre></div><h3 id='xemodule-migrate-refresh'>xemodule:migrate-refresh</h3>
+<p>Refresh the migration for the given xemodule, or without a specified xemodule refresh all xemodules migrations.</p>
+<h3 id='xemodule-migrate-reset-blog'>xemodule:migrate-reset Blog</h3>
+<p>Reset the migration for the given xemodule, or without a specified xemodule reset all xemodules migrations.</p>
+<div class="highlight"><pre class="highlight plaintext"><code>php artisan xemodule:migrate-reset Blog
+</code></pre></div><h3 id='xemodule-seed'>xemodule:seed</h3>
+<p>Seed the given xemodule, or without an argument, seed all xemodules</p>
+<div class="highlight"><pre class="highlight plaintext"><code>php artisan xemodule:seed Blog
+</code></pre></div><h3 id='xemodule-publish-migration'>xemodule:publish-migration</h3>
+<p>Publish the migration files for the given xemodule, or without an argument publish all xemodules migrations.</p>
+<div class="highlight"><pre class="highlight plaintext"><code>php artisan xemodule:publish-migration Blog
+</code></pre></div><h3 id='xemodule-publish-config'>xemodule:publish-config</h3>
+<p>Publish the given xemodule configuration files, or without an argument publish all xemodules configuration files.</p>
+<div class="highlight"><pre class="highlight plaintext"><code>php artisan xemodule:publish-config Blog
+</code></pre></div><h3 id='xemodule-publish-translation'>xemodule:publish-translation</h3>
+<p>Publish the translation files for the given xemodule, or without a specified xemodule publish all xemodules migrations.</p>
+<div class="highlight"><pre class="highlight plaintext"><code>php artisan xemodule:publish-translation Blog
+</code></pre></div><h3 id='xemodule-enable'>xemodule:enable</h3>
+<p>Enable the given xemodule.</p>
+<div class="highlight"><pre class="highlight plaintext"><code>php artisan xemodule:enable Blog
+</code></pre></div><h3 id='xemodule-disable'>xemodule:disable</h3>
+<p>Disable the given xemodule.</p>
+<div class="highlight"><pre class="highlight plaintext"><code>php artisan xemodule:disable Blog
+</code></pre></div><h3 id='xemodule-update'>xemodule:update</h3>
+<p>Update the given xemodule.</p>
+<div class="highlight"><pre class="highlight plaintext"><code>php artisan xemodule:update Blog
+</code></pre></div><h2 id='generator-commands'>Generator commands</h2><h3 id='xemodule-make-command'>xemodule:make-command</h3>
+<p>Generate the given console command for the specified xemodule.</p>
+<div class="highlight"><pre class="highlight plaintext"><code>php artisan xemodule:make-command CreatePostCommand Blog
+</code></pre></div><h3 id='xemodule-make-migration'>xemodule:make-migration</h3>
+<p>Generate a migration for specified xemodule.</p>
+<div class="highlight"><pre class="highlight plaintext"><code>php artisan xemodule:make-migration create_posts_table Blog
+</code></pre></div><h3 id='xemodule-make-seed'>xemodule:make-seed</h3>
+<p>Generate the given seed name for the specified xemodule.</p>
+<div class="highlight"><pre class="highlight plaintext"><code>php artisan xemodule:make-seed seed_fake_blog_posts Blog
+</code></pre></div><h3 id='xemodule-make-controller'>xemodule:make-controller</h3>
+<p>Generate a controller for the specified xemodule.</p>
+<div class="highlight"><pre class="highlight plaintext"><code>php artisan xemodule:make-controller PostsController Blog
+</code></pre></div><h3 id='xemodule-make-model'>xemodule:make-model</h3>
+<p>Generate the given model for the specified xemodule.</p>
+<div class="highlight"><pre class="highlight plaintext"><code>php artisan xemodule:make-model Post Blog
+</code></pre></div>
+<p>Optional options:
+    * <code>--fillable=field1,field2:</code> set the fillable fields on the generated model
+    *  <code>--migration, -m:</code> create the migration file for the given model</p>
+<h3 id='xemodule-make-provider'>xemodule:make-provider</h3>
+<p>Generate the given service provider name for the specified xemodule.</p>
+<div class="highlight"><pre class="highlight plaintext"><code>php artisan xemodule:make-provider BlogServiceProvider Blog
+</code></pre></div><h3 id='xemodule-make-middleware'>xemodule:make-middleware</h3>
+<p>Generate the given middleware name for the specified xemodule.</p>
+<div class="highlight"><pre class="highlight plaintext"><code>php artisan xemodule:make-middleware CanReadPostsMiddleware Blog
+</code></pre></div><h3 id='xemodule-make-mail'>xemodule:make-mail</h3>
+<p>Generate the given mail class for the specified xemodule.</p>
+<div class="highlight"><pre class="highlight plaintext"><code>php artisan xemodule:make-mail SendWeeklyPostsEmail Blog
+</code></pre></div><h3 id='xemodule-make-mail-2'>xemodule:make-mail</h3>
+<p>Generate the given mail class for the specified xemodule.</p>
+<div class="highlight"><pre class="highlight plaintext"><code>php artisan xemodule:make-mail SendWeeklyPostsEmail Blog
+</code></pre></div><h3 id='xemodule-make-notification'>xemodule:make-notification</h3>
+<p>Generate the given notification class name for the specified xemodule.</p>
+<div class="highlight"><pre class="highlight plaintext"><code>php artisan xemodule:make-notification NotifyAdminOfNewComment Blog
+</code></pre></div><h3 id='xemodule-make-listener'>xemodule:make-listener</h3>
+<p>Generate the given listener for the specified xemodule. Optionally you can specify which event class it should listen to. It also accepts a --queued flag allowed queued event listeners.</p>
+<div class="highlight"><pre class="highlight plaintext"><code>php artisan xemodule:make-listener NotifyUsersOfANewPost Blog
+php artisan xemodule:make-listener NotifyUsersOfANewPost Blog --event=PostWasCreated
+php artisan xemodule:make-listener NotifyUsersOfANewPost Blog --event=PostWasCreated --queued
+</code></pre></div><h3 id='xemodule-make-request'>xemodule:make-request</h3>
+<p>Generate the given request for the specified xemodule.</p>
+<div class="highlight"><pre class="highlight plaintext"><code>php artisan xemodule:make-request CreatePostRequest Blog
+</code></pre></div><h3 id='xemodule-make-event'>xemodule:make-event</h3>
+<p>Generate the given event for the specified xemodule.</p>
+<div class="highlight"><pre class="highlight plaintext"><code>php artisan xemodule:make-event BlogPostWasUpdated Blog
+</code></pre></div><h3 id='xemodule-make-job'>xemodule:make-job</h3>
+<p>Generate the given job for the specified xemodule.</p>
+<div class="highlight"><pre class="highlight plaintext"><code>php artisan xemodule:make-job JobName Blog
+
+php artisan xemodule:make-job JobName Blog --sync # A synchronous job class
+</code></pre></div><h3 id='xemodule-route-provider'>xemodule:route-provider</h3>
+<p>Generate the given route service provider for the specified xemodule.</p>
+<div class="highlight"><pre class="highlight plaintext"><code>php artisan xemodule:route-provider Blog
+</code></pre></div><h3 id='xemodule-make-factory'>xemodule:make-factory</h3>
+<p>Generate the given database factory for the specified xemodule.</p>
+<div class="highlight"><pre class="highlight plaintext"><code>php artisan xemodule:make-factory FactoryName Blog
+</code></pre></div><h3 id='xemodule-make-policy'>xemodule:make-policy</h3>
+<p>Generate the given policy class for the specified xemodule.</p>
+
+<p>The Policies is not generated by default when creating a new xemodule. Change the value of paths.generator.policies in xemodules.php to your desired location.</p>
+<div class="highlight"><pre class="highlight plaintext"><code>php artisan xemodule:make-policy PolicyName Blog
+</code></pre></div><h3 id='xemodule-make-rule'>xemodule:make-rule</h3>
+<p>Generate the given validation rule class for the specified xemodule.</p>
+
+<p>The Rules folder is not generated by default when creating a new xemodule. Change the value of paths.generator.rules in xemodules.php to your desired location.</p>
+<div class="highlight"><pre class="highlight plaintext"><code>php artisan xemodule:make-rule ValidationRule Blog
+</code></pre></div><h3 id='xemodule-make-resource'>xemodule:make-resource</h3>
+<p>Generate the given resource class for the specified xemodule. It can have an optional --collection argument to generate a resource collection.</p>
+
+<p>The Transformers folder is not generated by default when creating a new xemodule. Change the value of paths.generator.resource in xemodules.php to your desired location.</p>
+<div class="highlight"><pre class="highlight plaintext"><code>php artisan xemodule:make-resource PostResource Blog
+php artisan xemodule:make-resource PostResource Blog --collection
+</code></pre></div><h3 id='xemodule-make-test'>xemodule:make-test</h3>
+<p>Generate the given test class for the specified xemodule.</p>
+<div class="highlight"><pre class="highlight plaintext"><code>php artisan xemodule:make-test EloquentPostRepositoryTest Blog
+</code></pre></div><h1 id='errors'>Errors</h1>
 <p>The AdUp.io Shopper API uses the following error codes:</p>
 
 <table><thead>
