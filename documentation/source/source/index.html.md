@@ -2,7 +2,6 @@
 title: XeParrot Shopper API
 
 language_tabs:
-  - curl
 
 toc_footers:
   - <a href='https://xeparrot.io'>Developed by Sanjaya Senevirathne</a>
@@ -308,7 +307,7 @@ Note: I used Livewire for the 2FA code box because if the page refreshed, the QR
 
 ## Configuration
 
-All of the configurable items of the boilerplate can be found in the config/engine.php file. Each item should have a relevant doc block.
+All of the configurable items of the xeparrot can be found in the config/engine.php file. Each item should have a relevant doc block.
 
 There may be other configuration files published by default from some packages such as activitylog, permission, geoip, etc.
 
@@ -331,7 +330,7 @@ The javascript files are as follows:
 
 ## Language
 
-All language files for this version of the boilerplate are in JSON format except default Laravel files and package languages if published.
+All language files for this version of the xeparrot are in JSON format except default Laravel files and package languages if published.
 
 
 ## SCSS
@@ -921,4 +920,433 @@ Generate the given test class for the specified xemodule.
 
 ```text
 php artisan xemodule:make-test EloquentPostRepositoryTest Blog
+```
+
+## Facade methods
+
+### Get all modules.
+
+```php
+Module::all();
+```
+
+### Get all cached modules.
+
+```php
+Module::getCached()
+```
+
+### Get Ordered
+
+Get ordered modules. The modules will be ordered by the priority key in module.json file.
+
+```php
+Module::getOrdered();
+```
+
+### Get Scanned
+
+Get scanned modules.
+
+```php
+Module::scan();
+```
+
+### Find Modules
+
+Find a specific module.
+
+```php
+Module::find('name');
+// OR
+Module::get('name');
+```
+
+### Find a Module
+
+Find a module, if there is one, return the Module instance, otherwise throw Nwidart\Modules\Exeptions\ModuleNotFoundException.
+
+```php
+Module::findOrFail('module-name');
+```
+
+### Scanned Paths
+
+Get scanned paths.
+
+```php
+Module::getScanPaths();
+```
+
+### Collection Modules
+
+Get all modules as a collection instance.
+
+```php
+Module::toCollection();
+```
+
+### Module Status
+
+Get modules by the status. 1 for active and 0 for inactive.
+
+
+```php
+Module::getByStatus(1);
+```
+
+### Check Specific Module
+
+Check the specified module. If it exists, will return true, otherwise false.
+
+```php
+Module::has('blog');
+```
+
+### Get All Enabled Modules
+
+Get all enabled modules.
+
+```php
+Module::allEnabled();
+```
+
+### Get All Disabled Modules
+
+Get all disabled modules.
+
+```php
+Module::allDisabled();
+```
+
+
+### Get Count of all Modules
+
+Get count of all modules.
+
+```php
+Module::count();
+```
+
+### Module Path
+
+Get module path.
+
+```php
+Module::getPath();
+```
+
+### Register Modules
+Register the modules.
+
+```php
+Module::register();
+
+```
+
+## Module Methods
+
+
+### Get an entity from a specific module.
+
+```php
+$module = Module::find('blog');
+```
+
+### Get module name.
+
+```php
+$module->getName();
+```
+
+### Get module name in lowercase.
+
+```php
+$module->getLowerName();
+```
+
+### Get module name in studlycase.
+
+```php
+$module->getStudlyName();
+```
+
+### Get module path.
+
+```php
+$module->getPath();
+```
+
+### Get extra path.
+
+```php
+$module->getExtraPath('Assets');
+```
+
+### Disable the specified module.
+ 
+```php
+$module->disable();
+```
+
+### Enable the specified module.
+
+```php
+$module->enable();
+```
+
+### Delete the specified module.
+
+```php
+$module->delete();
+```
+
+### Get Requires
+
+Get an array of module requirements. Note: these should be aliases of the module.
+
+
+```php
+$module->getRequires();
+```
+
+## Module Resources
+
+Your module will most likely contain what laravel calls resources, those contain configuration, views, translation files, etc. In order for you module to correctly load and if wanted publish them you need to let laravel know about them as in any regular package.
+
+<aside class="success">
+Those resources are loaded in the service provider generated with a module (using module:make), unless the plain flag is used, in which case you will need to handle this logic yourself.
+</aside>
+
+<aside class="success">
+Don't forget to change the paths, in the following code snippets a "Blog" module is assumed.
+</aside>
+
+## Configuration
+
+```php
+$this->publishes([
+    __DIR__.'/../Config/config.php' => config_path('blog.php'),
+], 'config');
+$this->mergeConfigFrom(
+    __DIR__.'/../Config/config.php', 'blog'
+);
+```
+
+## Module Views
+
+```php
+$viewPath = base_path('resources/views/modules/blog');
+
+$sourcePath = __DIR__.'/../Resources/views';
+
+$this->publishes([
+    $sourcePath => $viewPath
+]);
+
+$this->loadViewsFrom(array_merge(array_map(function ($path) {
+    return $path . '/modules/blog';
+}, \Config::get('view.paths')), [$sourcePath]), 'blog');
+```
+
+The main part here is the loadViewsFrom method call. If you don't want your views to be published to the laravel views folder, you can remove the call to the $this->publishes() call.
+
+
+## Language files
+
+```php
+ $langPath = base_path('resources/lang/modules/blog');
+
+if (is_dir($langPath)) {
+    $this->loadTranslationsFrom($langPath, 'blog');
+} else {
+    $this->loadTranslationsFrom(__DIR__ .'/../Resources/lang', 'blog');
+}
+```
+
+### Factories
+If you want to use laravel factories you will have to add the following in your service provider:
+
+```php
+$this->app->singleton(Factory::class, function () {
+    return Factory::construct(__DIR__ . '/Database/factories');
+});
+```
+
+
+## Module Console Commands
+Your module may contain console commands. You can generate these commands manually, or with the following helper:
+
+```text
+php artisan module:make-command CreatePostCommand Blog
+```
+
+This will create a CreatePostCommand inside the Blog module. By default this will be Modules/Blog/Console/CreatePostCommand.
+
+Please refer to the laravel documentation on artisan commands to learn all about them.
+
+
+## Registering the command
+
+You can register the command with the laravel method called commands that is available inside a service provider class.
+
+```php
+$this->commands([
+    \Modules\Blog\Console\CreatePostCommand::class,
+]);
+```
+
+You can now access your command via php artisan in the console.
+
+
+## Registering Module Events
+
+Your module may contain events and event listeners. You can create these classes manually, or with the following helpers:
+
+```text
+php artisan module:make-event BlogPostWasUpdated Blog
+php artisan module:make-listener NotifyAdminOfNewPost Blog
+```
+
+Once those are create you need to register them in laravel. This can be done in 2 ways:
+
+ * Manually calling $this->app['events']->listen(BlogPostWasUpdated::class, NotifyAdminOfNewPost::class); in your module service provider
+ * Or by creating a event service provider for your module which will contain all its events, similar to the EventServiceProvider under the app/ namespace.
+ 
+## Creating an EventServiceProvider 
+
+Once you have multiple events, you might find it easier to have all events and their listeners in a dedicated service provider. This is what the EventServiceProvider is for.
+
+Create a new class called for instance EventServiceProvider in the Modules/Blog/Providers folder (Blog being an example name).
+
+This class needs to look like this:
+
+```php
+<?php
+
+namespace Modules\Blog\Providers;
+
+use Illuminate\Foundation\Support\Providers\EventServiceProvider as ServiceProvider;
+
+class EventServiceProvider extends ServiceProvider
+{
+    protected $listen = [];
+}
+```
+
+
+# Menu Management
+
+## Quick Example
+
+```php
+// Menu.php
+Menu::create('navbar', function($menu) {
+    $menu->url('/', 'Home', 1);
+    $menu->route('/', 'About', ['user' => '1'], 2);
+    $menu->dropdown('Settings', function ($sub) {
+        $sub->header('ACCOUNT');
+        $sub->url('/settings/design', 'Design');
+        $sub->divider();
+        $sub->url('logout', 'Logout');
+    }, 3);
+});
+
+// main.blade.php
+{!! Menu::get('navbar') !!}
+```
+
+## Creating Menu
+
+You can define your menus in your desired file / class, as long as it is autoload by composer.
+
+To create a menu, simply call the create method from Menu facade. The first parameter is the menu name and the second parameter is callback for defining menu items.
+
+
+```php
+Menu::create('navbar', function($menu) {
+    // define your menu items here
+});
+```
+
+## Menu Item
+
+As explained before, we can defining menu item in the callback by accessing $menu variable, which the variable is instance of Nwidart\Menus\MenuBuilder class.
+
+To defining a plain URL, you can use ->url() method.
+
+```php
+Menu::create('navbar', function($menu) {
+    // URL, Title, Attributes
+    $menu->url('home', 'Home', ['target' => 'blank']);
+});
+```
+
+If you have named route, you define the menu item by calling ->route() method.
+
+```php
+Menu::create('navbar', function($menu) {
+	$menu->route(
+        'users.show', // route name
+        'View Profile', // title
+        ['id' => 1], // route parameters
+        ['target' => 'blank'] // attributes
+    );
+});
+```
+
+You can also defining the menu item via array by calling ->add() method.
+
+```php
+Menu::create('navbar', function($menu) {
+    $menu->add([
+        'url' => 'about',
+        'title' => 'About',
+        'attributes' => [
+            'target' => '_blank'
+        ]
+    ]);
+
+    $menu->add([
+        'route' => ['profile', ['user' => 'nwidart']],
+        'title' => 'Visit My Profile',
+        'attributes' => [
+            'target' => '_blank'
+        ]
+    ]);
+});
+```
+
+## Menu Dropdown
+
+To create a dropdown menu, you can call to ->dropdown() method and passing the first parameter by title of dropdown and the second parameter by closure callback that retrieve $sub variable. The $sub variable is the the instance of Nwidart\Menus\MenuItem class.
+
+```php
+Menu::create('navbar', function($menu) {
+    $menu->url('/', 'Home');
+    $menu->dropdown('Settings', function ($sub) {
+        $sub->url('settings/account', 'Account');
+        $sub->url('settings/password', 'Password');
+        $sub->url('settings/design', 'Design');
+    });
+});
+```
+
+## Menu Dropdown Multi Level
+
+You can also create a dropdown inside dropdown by using ->dropdown() method. This will allow to to create a multilevel menu items.
+
+```php
+Menu::create('navbar', function($menu) {
+    $menu->url('/', 'Home');
+    $menu->dropdown('Account', function ($sub) {
+        $sub->url('profile', 'Visit My Profile');
+        $sub->dropdown('Settings', function ($sub) {
+            $sub->url('settings/account', 'Account');
+            $sub->url('settings/password', 'Password');
+            $sub->url('settings/design', 'Design');
+        });
+        $sub->url('logout', 'Logout');
+    });
+});
 ```
