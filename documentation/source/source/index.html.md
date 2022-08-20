@@ -296,7 +296,7 @@ The `App\Helpers` directory comes with one folder:
   Any helper class placed outside of the Global folder is just a normal namespaced class that you can resolve normally.
   
 
-# Liveware
+## Liveware
 
 This project includes Laravel Livewire as a dependency because it makes use of my Laravel Livewire Tables plugin for the datatables functionality.
 
@@ -306,7 +306,7 @@ You can find all Livewire components in the `App\Http\Livewire` directory.
 Note: I used Livewire for the 2FA code box because if the page refreshed, the QR code would change thus invalidating the whole process. I also thought it would be cleaner than Vue since it's such small functionality.
 </aside>
 
-# Configuration
+## Configuration
 
 All of the configurable items of the boilerplate can be found in the config/engine.php file. Each item should have a relevant doc block.
 
@@ -350,3 +350,575 @@ The views are structured much like the rest of the application, frontend/backend
 
 There's only one folder to note, and that is components which are blade components used throughout the blade files. At the time of this writing they are all anonymous components, or they don't have an associated class and just work off of the props passed into them.
 
+
+# XeModule
+
+## Quick Example
+
+Generate your first module using `php artisan module:make Blog` . The following structure will be generated.
+
+```text
+app/
+bootstrap/
+vendor/
+Modules/
+  ├── Blog/
+      ├── Assets/
+      ├── Config/
+      ├── Console/
+      ├── Database/
+          ├── Migrations/
+          ├── Seeders/
+      ├── Entities/
+      ├── Http/
+          ├── Controllers/
+          ├── Middleware/
+          ├── Requests/
+      ├── Providers/
+          ├── BlogServiceProvider.php
+          ├── RouteServiceProvider.php
+      ├── Resources/
+          ├── assets/
+              ├── js/
+                ├── app.js
+              ├── sass/
+                ├── app.scss
+          ├── lang/
+          ├── views/
+      ├── Routes/
+          ├── api.php
+          ├── web.php
+      ├── Repositories/
+      ├── Tests/
+      ├── composer.json
+      ├── module.json
+      ├── package.json
+      ├── webpack.mix.js
+```
+
+## Create Module
+
+Creating a module is simple and straightforward. Run the following command to create a module.
+
+```text
+
+php artisan module:make <module-name>
+
+```
+
+
+Replace <module-name> by your desired name.
+
+It is also possible to create multiple modules in one command.
+
+```text
+php artisan module:make Blog User Auth
+
+```
+
+By default when you create a new module, the command will add some resources like a controller, seed class, service provider, etc. automatically. If you don't want these, you can add --plain flag, to generate a plain module.
+
+
+```text
+php artisan module:make Blog --plain
+# or
+php artisan module:make Blog -p
+```
+
+## Naming convention
+
+Because we are autoloading the modules using psr-4, we strongly recommend using StudlyCase convention.
+
+## Folder Structure
+
+```text
+app/
+bootstrap/
+vendor/
+Modules/
+  ├── Blog/
+      ├── Assets/
+      ├── Config/
+      ├── Console/
+      ├── Database/
+          ├── Migrations/
+          ├── Seeders/
+      ├── Entities/
+      ├── Http/
+          ├── Controllers/
+          ├── Middleware/
+          ├── Requests/
+          ├── routes.php
+      ├── Providers/
+          ├── BlogServiceProvider.php
+      ├── Resources/
+          ├── lang/
+          ├── views/
+      ├── Repositories/
+      ├── Tests/
+      ├── composer.json
+      ├── module.json
+      ├── start.php
+```
+
+
+## Custom Name Spaces
+
+When you create a new module it also registers new custom namespace for Lang, View and Config. For example, if you create a new module named blog, it will also register new namespace/hint blog for that module. Then, you can use that namespace for calling Lang, View or Config. Following are some examples of its usage:
+
+Calling Lang:
+
+```php
+Lang::get('blog::group.name');
+
+@trans('blog::group.name');
+```
+
+Calling View:
+
+```php
+view('blog::index')
+
+view('blog::partials.sidebar')
+
+```
+
+Calling Config:
+
+```php
+
+Config::get('blog.name')
+
+```
+
+## Default namespace
+
+What the default namespace will be when generating modules.
+
+Key: `namespace`
+
+Default: `Modules`
+
+
+## Overwrite the generated files
+
+Overwrite the default generated stubs to be used when generating modules. This can be useful to customise the output of different files.
+
+Key: `stubs`
+
+## Overwrite the paths
+
+Overwrite the default paths used throughout the package.
+
+Key: `paths`
+
+## Scan additional folders for modules
+
+This is disabled by default. Once enabled, the package will look for modules in the specified array of paths.
+
+Key: `scan`
+
+## Composer file template
+
+Customise the generated `composer.json` file.
+
+Key: `composer`
+
+
+## Caching
+
+If you have many modules it's a good idea to cache this information (like the multiple module.json files for example).
+
+Key: `cache`
+
+
+## Registering custom namespace
+
+Decide which custom namespaces need to be registered by the package. If one is set to false, the package won't handle its registration.
+
+Key: `register`
+
+
+## Helpers
+
+### Module path function
+
+Get the path to the given module.
+
+```php
+$path = module_path('Blog');
+```
+
+## Compiling Assets
+
+
+### Installation & Setup
+
+When you create a new module it also create assets for CSS/JS and the webpack.mix.js configuration file.
+
+```text
+php artisan module:make Blog
+```
+
+Change directory to the module:
+
+```text
+cd Modules/Blog
+```
+
+The default package.json file includes everything you need to get started. You may install the dependencies it references by running:
+
+```text
+npm install
+```
+
+## Running Mix
+
+Mix is a configuration layer on top of Webpack, so to run your Mix tasks you only need to execute one of the NPM scripts that is included with the default laravel-modules package.json file
+
+```text
+// Run all Mix tasks...
+npm run dev
+
+// Run all Mix tasks and minify output...
+npm run production
+```
+
+After generating the versioned file, you won't know the exact file name. So, you should use Laravel's global mix function within your views to load the appropriately hashed asset. The mix function will automatically determine the current name of the hashed file:
+
+```text
+// Modules/Blog/Resources/views/layouts/master.blade.php
+
+<link rel="stylesheet" href="{{ mix('css/blog.css') }}">
+
+<script src="{{ mix('js/blog.js') }}"></script>
+```
+
+For more info on Laravel Mix view the documentation here: https://laravel.com/docs/mix
+
+<aside class="success">
+Note: to prevent the main Laravel Mix configuration from overwriting the `public/mix-manifest.json` file:
+</aside>
+
+Install `laravel-mix-merge-manifest`
+
+
+```text
+npm install laravel-mix-merge-manifest --save-dev
+```
+
+Modify `webpack.mix.js` main file
+
+
+```javascript
+let mix = require('laravel-mix');
+
+
+/* Allow multiple Laravel Mix applications*/
+require('laravel-mix-merge-manifest');
+mix.mergeManifest();
+/*----------------------------------------*/
+
+mix.js('resources/assets/js/app.js', 'public/js')
+   .sass('resources/assets/sass/app.scss', 'public/css');
+```
+
+## Artisan commands
+
+<aside class="success">
+You can use the following commands with the --help suffix to find its arguments and options.
+</aside>
+
+Note all the following commands use "Blog" as example module name, and example class/file names
+
+
+### Utility commands
+
+### module:make
+
+Generate a new module.
+
+```text
+php artisan module:make Blog
+```
+
+### module:make
+
+Generate multiple modules at once.
+
+```text
+php artisan module:make Blog User Auth
+```
+
+### module:use
+
+Use a given module. This allows you to not specify the module name on other commands requiring the module name as an argument.
+
+
+```text
+php artisan module:use
+```
+
+
+### module:unuse
+
+This unsets the specified module that was set with the module:use command.
+
+```text
+php artisan module:unuse
+```
+
+### module:list
+List all available modules.
+
+```text
+php artisan module:list
+```
+
+### module:migrate
+
+Migrate the given module, or without a module an argument, migrate all modules.
+
+```text
+php artisan module:migrate Blog
+```
+
+### module:migrate-rollback
+
+Rollback the given module, or without an argument, rollback all modules.
+
+```text
+php artisan module:migrate-rollback Blog
+```
+
+### module:migrate-refresh
+Refresh the migration for the given module, or without a specified module refresh all modules migrations.
+
+
+### module:migrate-reset Blog
+Reset the migration for the given module, or without a specified module reset all modules migrations.
+
+```text
+php artisan module:migrate-reset Blog
+```
+
+### module:seed
+Seed the given module, or without an argument, seed all modules
+
+```text
+php artisan module:seed Blog
+```
+
+### module:publish-migration
+
+Publish the migration files for the given module, or without an argument publish all modules migrations.
+
+```text
+php artisan module:publish-migration Blog
+```
+
+### module:publish-config
+Publish the given module configuration files, or without an argument publish all modules configuration files.
+
+```text
+php artisan module:publish-config Blog
+```
+
+### module:publish-translation
+Publish the translation files for the given module, or without a specified module publish all modules migrations.
+
+```text
+php artisan module:publish-translation Blog
+```
+
+### module:enable
+
+Enable the given module.
+
+```text
+php artisan module:enable Blog
+```
+
+### module:disable
+
+Disable the given module.
+
+```text
+php artisan module:disable Blog
+```
+
+### module:update
+Update the given module.
+
+```text
+php artisan module:update Blog
+```
+
+## Generator commands
+
+### module:make-command
+Generate the given console command for the specified module.
+
+```text
+php artisan module:make-command CreatePostCommand Blog
+```
+
+### module:make-migration
+Generate a migration for specified module.
+
+```text
+php artisan module:make-migration create_posts_table Blog
+```
+
+### module:make-seed
+
+Generate the given seed name for the specified module.
+
+```text
+php artisan module:make-seed seed_fake_blog_posts Blog
+```
+
+
+### module:make-controller
+
+Generate a controller for the specified module.
+
+```text
+php artisan module:make-controller PostsController Blog
+```
+
+### module:make-model
+Generate the given model for the specified module.
+
+```text
+php artisan module:make-model Post Blog
+```
+
+Optional options:
+    * `--fillable=field1,field2:` set the fillable fields on the generated model
+    *  `--migration, -m:` create the migration file for the given model
+
+
+### module:make-provider
+
+Generate the given service provider name for the specified module.
+
+```text
+php artisan module:make-provider BlogServiceProvider Blog
+```
+
+### module:make-middleware
+Generate the given middleware name for the specified module.
+
+```text
+php artisan module:make-middleware CanReadPostsMiddleware Blog
+```
+
+### module:make-mail
+Generate the given mail class for the specified module.
+
+```text
+php artisan module:make-mail SendWeeklyPostsEmail Blog
+```
+
+
+### module:make-mail
+Generate the given mail class for the specified module.
+
+```text
+php artisan module:make-mail SendWeeklyPostsEmail Blog
+```
+
+### module:make-notification
+Generate the given notification class name for the specified module.
+
+```text
+php artisan module:make-notification NotifyAdminOfNewComment Blog
+```
+
+### module:make-listener
+Generate the given listener for the specified module. Optionally you can specify which event class it should listen to. It also accepts a --queued flag allowed queued event listeners.
+
+```text
+php artisan module:make-listener NotifyUsersOfANewPost Blog
+php artisan module:make-listener NotifyUsersOfANewPost Blog --event=PostWasCreated
+php artisan module:make-listener NotifyUsersOfANewPost Blog --event=PostWasCreated --queued
+```
+
+### module:make-request
+Generate the given request for the specified module.
+
+```text
+php artisan module:make-request CreatePostRequest Blog
+```
+
+### module:make-event
+
+Generate the given event for the specified module.
+
+```text
+php artisan module:make-event BlogPostWasUpdated Blog
+```
+
+### module:make-job
+
+Generate the given job for the specified module.
+
+```text
+php artisan module:make-job JobName Blog
+
+php artisan module:make-job JobName Blog --sync # A synchronous job class
+```
+
+### module:route-provider
+Generate the given route service provider for the specified module.
+
+```text
+php artisan module:route-provider Blog
+```
+
+### module:make-factory
+Generate the given database factory for the specified module.
+
+```text
+php artisan module:make-factory FactoryName Blog
+```
+
+### module:make-policy
+
+Generate the given policy class for the specified module.
+
+The Policies is not generated by default when creating a new module. Change the value of paths.generator.policies in modules.php to your desired location.
+
+```text
+php artisan module:make-policy PolicyName Blog
+```
+
+### module:make-rule
+
+Generate the given validation rule class for the specified module.
+
+The Rules folder is not generated by default when creating a new module. Change the value of paths.generator.rules in modules.php to your desired location.
+
+
+```text
+php artisan module:make-rule ValidationRule Blog
+```
+
+### module:make-resource
+
+Generate the given resource class for the specified module. It can have an optional --collection argument to generate a resource collection.
+
+The Transformers folder is not generated by default when creating a new module. Change the value of paths.generator.resource in modules.php to your desired location.
+
+```text
+php artisan module:make-resource PostResource Blog
+php artisan module:make-resource PostResource Blog --collection
+```
+
+### module:make-test
+Generate the given test class for the specified module.
+
+```text
+php artisan module:make-test EloquentPostRepositoryTest Blog
+```
