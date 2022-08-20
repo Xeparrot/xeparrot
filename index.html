@@ -461,6 +461,9 @@
                   <li>
                     <a href="#generator-commands" class="toc-h2 toc-link" data-title="Generator commands">Generator commands</a>
                   </li>
+                  <li>
+                    <a href="#facade-methods" class="toc-h2 toc-link" data-title="Facade methods">Facade methods</a>
+                  </li>
               </ul>
           </li>
           <li>
@@ -675,7 +678,7 @@ Any helper class placed outside of the Global folder is just a normal namespaced
 Note: I used Livewire for the 2FA code box because if the page refreshed, the QR code would change thus invalidating the whole process. I also thought it would be cleaner than Vue since it's such small functionality.
 </aside>
 <h2 id='configuration'>Configuration</h2>
-<p>All of the configurable items of the boilerplate can be found in the config/engine.php file. Each item should have a relevant doc block.</p>
+<p>All of the configurable items of the xeparrot can be found in the config/engine.php file. Each item should have a relevant doc block.</p>
 
 <p>There may be other configuration files published by default from some packages such as activitylog, permission, geoip, etc.</p>
 <h1 id='resource-structure'>Resource Structure</h1>
@@ -690,7 +693,7 @@ Note: I used Livewire for the 2FA code box because if the page refreshed, the QR
 <li><p><code>plugins.js</code> - Random javascript/jQuery functionality used globally</p></li>
 </ul>
 <h2 id='language'>Language</h2>
-<p>All language files for this version of the boilerplate are in JSON format except default Laravel files and package languages if published.</p>
+<p>All language files for this version of the xeparrot are in JSON format except default Laravel files and package languages if published.</p>
 <h2 id='scss'>SCSS</h2>
 <p>The SCSS files are as follows:</p>
 
@@ -1011,6 +1014,50 @@ php artisan xemodule:make-resource PostResource Blog --collection
 </code></pre></div><h3 id='xemodule-make-test'>xemodule:make-test</h3>
 <p>Generate the given test class for the specified xemodule.</p>
 <div class="highlight"><pre class="highlight plaintext"><code>php artisan xemodule:make-test EloquentPostRepositoryTest Blog
+</code></pre></div><h2 id='facade-methods'>Facade methods</h2><h3 id='get-all-modules'>Get all modules.</h3><div class="highlight"><pre class="highlight php tab-php"><code><span class="nc">Module</span><span class="o">::</span><span class="nf">all</span><span class="p">();</span>
+</code></pre></div><h3 id='get-all-cached-modules'>Get all cached modules.</h3><div class="highlight"><pre class="highlight php tab-php"><code><span class="nc">Module</span><span class="o">::</span><span class="nf">getCached</span><span class="p">()</span>
+</code></pre></div><h3 id='get-ordered'>Get Ordered</h3>
+<p>Get ordered modules. The modules will be ordered by the priority key in module.json file.</p>
+<div class="highlight"><pre class="highlight php tab-php"><code><span class="nc">Module</span><span class="o">::</span><span class="nf">getOrdered</span><span class="p">();</span>
+</code></pre></div><h3 id='get-scanned'>Get Scanned</h3>
+<p>Get scanned modules.</p>
+<div class="highlight"><pre class="highlight php tab-php"><code><span class="nc">Module</span><span class="o">::</span><span class="nf">scan</span><span class="p">();</span>
+</code></pre></div><h3 id='find-modules'>Find Modules</h3>
+<p>Find a specific module.</p>
+<div class="highlight"><pre class="highlight php tab-php"><code><span class="nc">Module</span><span class="o">::</span><span class="nf">find</span><span class="p">(</span><span class="s1">'name'</span><span class="p">);</span>
+<span class="c1">// OR</span>
+<span class="nc">Module</span><span class="o">::</span><span class="nf">get</span><span class="p">(</span><span class="s1">'name'</span><span class="p">);</span>
+</code></pre></div><h3 id='find-a-module'>Find a Module</h3>
+<p>Find a module, if there is one, return the Module instance, otherwise throw Nwidart\Modules\Exeptions\ModuleNotFoundException.</p>
+<div class="highlight"><pre class="highlight php tab-php"><code><span class="nc">Module</span><span class="o">::</span><span class="nf">findOrFail</span><span class="p">(</span><span class="s1">'module-name'</span><span class="p">);</span>
+</code></pre></div><h3 id='scanned-paths'>Scanned Paths</h3>
+<p>Get scanned paths.</p>
+<div class="highlight"><pre class="highlight php tab-php"><code><span class="nc">Module</span><span class="o">::</span><span class="nf">getScanPaths</span><span class="p">();</span>
+</code></pre></div><h3 id='collection-modules'>Collection Modules</h3>
+<p>Get all modules as a collection instance.</p>
+<div class="highlight"><pre class="highlight php tab-php"><code><span class="nc">Module</span><span class="o">::</span><span class="nf">toCollection</span><span class="p">();</span>
+</code></pre></div><h3 id='module-status'>Module Status</h3>
+<p>Get modules by the status. 1 for active and 0 for inactive.</p>
+<div class="highlight"><pre class="highlight php tab-php"><code><span class="nc">Module</span><span class="o">::</span><span class="nf">getByStatus</span><span class="p">(</span><span class="mi">1</span><span class="p">);</span>
+</code></pre></div><h3 id='check-specific-module'>Check Specific Module</h3>
+<p>Check the specified module. If it exists, will return true, otherwise false.</p>
+<div class="highlight"><pre class="highlight php tab-php"><code><span class="nc">Module</span><span class="o">::</span><span class="nf">has</span><span class="p">(</span><span class="s1">'blog'</span><span class="p">);</span>
+</code></pre></div><h3 id='get-all-enabled-modules'>Get All Enabled Modules</h3>
+<p>Get all enabled modules.</p>
+<div class="highlight"><pre class="highlight php tab-php"><code><span class="nc">Module</span><span class="o">::</span><span class="nf">allEnabled</span><span class="p">();</span>
+</code></pre></div><h3 id='get-all-disabled-modules'>Get All Disabled Modules</h3>
+<p>Get all disabled modules.</p>
+<div class="highlight"><pre class="highlight php tab-php"><code><span class="nc">Module</span><span class="o">::</span><span class="nf">allDisabled</span><span class="p">();</span>
+</code></pre></div><h3 id='get-count-of-all-modules'>Get Count of all Modules</h3>
+<p>Get count of all modules.</p>
+<div class="highlight"><pre class="highlight php tab-php"><code><span class="nc">Module</span><span class="o">::</span><span class="nb">count</span><span class="p">();</span>
+</code></pre></div><h3 id='module-path'>Module Path</h3>
+<p>Get module path.</p>
+<div class="highlight"><pre class="highlight php tab-php"><code><span class="nc">Module</span><span class="o">::</span><span class="nf">getPath</span><span class="p">();</span>
+</code></pre></div><h3 id='register-modules'>Register Modules</h3>
+<p>Register the modules.</p>
+<div class="highlight"><pre class="highlight php tab-php"><code><span class="nc">Module</span><span class="o">::</span><span class="nf">register</span><span class="p">();</span>
+
 </code></pre></div><h1 id='errors'>Errors</h1>
 <p>The AdUp.io Shopper API uses the following error codes:</p>
 
