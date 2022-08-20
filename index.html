@@ -292,7 +292,7 @@
 
   </head>
 
-  <body class="index" data-languages="[&quot;curl&quot;]">
+  <body class="index" data-languages="[]">
     <a href="#" id="nav-button">
       <span>
         NAV
@@ -301,9 +301,6 @@
     </a>
     <div class="toc-wrapper">
       <img src="images/logo-3c89816f.png" class="logo" alt="" />
-        <div class="lang-selector">
-              <a href="#" data-language-name="curl">curl</a>
-        </div>
         <div class="search">
           <input type="text" class="search" id="input-search" placeholder="Search">
         </div>
@@ -463,6 +460,53 @@
                   </li>
                   <li>
                     <a href="#facade-methods" class="toc-h2 toc-link" data-title="Facade methods">Facade methods</a>
+                  </li>
+                  <li>
+                    <a href="#module-methods" class="toc-h2 toc-link" data-title="Module Methods">Module Methods</a>
+                  </li>
+                  <li>
+                    <a href="#module-resources" class="toc-h2 toc-link" data-title="Module Resources">Module Resources</a>
+                  </li>
+                  <li>
+                    <a href="#configuration-2" class="toc-h2 toc-link" data-title="Configuration">Configuration</a>
+                  </li>
+                  <li>
+                    <a href="#module-views" class="toc-h2 toc-link" data-title="Module Views">Module Views</a>
+                  </li>
+                  <li>
+                    <a href="#language-files" class="toc-h2 toc-link" data-title="Language files">Language files</a>
+                  </li>
+                  <li>
+                    <a href="#module-console-commands" class="toc-h2 toc-link" data-title="Module Console Commands">Module Console Commands</a>
+                  </li>
+                  <li>
+                    <a href="#registering-the-command" class="toc-h2 toc-link" data-title="Registering the command">Registering the command</a>
+                  </li>
+                  <li>
+                    <a href="#registering-module-events" class="toc-h2 toc-link" data-title="Registering Module Events">Registering Module Events</a>
+                  </li>
+                  <li>
+                    <a href="#creating-an-eventserviceprovider" class="toc-h2 toc-link" data-title="Creating an EventServiceProvider">Creating an EventServiceProvider</a>
+                  </li>
+              </ul>
+          </li>
+          <li>
+            <a href="#menu-management" class="toc-h1 toc-link" data-title="Menu Management">Menu Management</a>
+              <ul class="toc-list-h2">
+                  <li>
+                    <a href="#quick-example-2" class="toc-h2 toc-link" data-title="Quick Example">Quick Example</a>
+                  </li>
+                  <li>
+                    <a href="#creating-menu" class="toc-h2 toc-link" data-title="Creating Menu">Creating Menu</a>
+                  </li>
+                  <li>
+                    <a href="#menu-item" class="toc-h2 toc-link" data-title="Menu Item">Menu Item</a>
+                  </li>
+                  <li>
+                    <a href="#menu-dropdown" class="toc-h2 toc-link" data-title="Menu Dropdown">Menu Dropdown</a>
+                  </li>
+                  <li>
+                    <a href="#menu-dropdown-multi-level" class="toc-h2 toc-link" data-title="Menu Dropdown Multi Level">Menu Dropdown Multi Level</a>
                   </li>
               </ul>
           </li>
@@ -1058,6 +1102,182 @@ php artisan xemodule:make-resource PostResource Blog --collection
 <p>Register the modules.</p>
 <div class="highlight"><pre class="highlight php tab-php"><code><span class="nc">Module</span><span class="o">::</span><span class="nf">register</span><span class="p">();</span>
 
+</code></pre></div><h2 id='module-methods'>Module Methods</h2><h3 id='get-an-entity-from-a-specific-module'>Get an entity from a specific module.</h3><div class="highlight"><pre class="highlight php tab-php"><code><span class="nv">$module</span> <span class="o">=</span> <span class="nc">Module</span><span class="o">::</span><span class="nf">find</span><span class="p">(</span><span class="s1">'blog'</span><span class="p">);</span>
+</code></pre></div><h3 id='get-module-name'>Get module name.</h3><div class="highlight"><pre class="highlight php tab-php"><code><span class="nv">$module</span><span class="o">-&gt;</span><span class="nf">getName</span><span class="p">();</span>
+</code></pre></div><h3 id='get-module-name-in-lowercase'>Get module name in lowercase.</h3><div class="highlight"><pre class="highlight php tab-php"><code><span class="nv">$module</span><span class="o">-&gt;</span><span class="nf">getLowerName</span><span class="p">();</span>
+</code></pre></div><h3 id='get-module-name-in-studlycase'>Get module name in studlycase.</h3><div class="highlight"><pre class="highlight php tab-php"><code><span class="nv">$module</span><span class="o">-&gt;</span><span class="nf">getStudlyName</span><span class="p">();</span>
+</code></pre></div><h3 id='get-module-path'>Get module path.</h3><div class="highlight"><pre class="highlight php tab-php"><code><span class="nv">$module</span><span class="o">-&gt;</span><span class="nf">getPath</span><span class="p">();</span>
+</code></pre></div><h3 id='get-extra-path'>Get extra path.</h3><div class="highlight"><pre class="highlight php tab-php"><code><span class="nv">$module</span><span class="o">-&gt;</span><span class="nf">getExtraPath</span><span class="p">(</span><span class="s1">'Assets'</span><span class="p">);</span>
+</code></pre></div><h3 id='disable-the-specified-module'>Disable the specified module.</h3><div class="highlight"><pre class="highlight php tab-php"><code><span class="nv">$module</span><span class="o">-&gt;</span><span class="nf">disable</span><span class="p">();</span>
+</code></pre></div><h3 id='enable-the-specified-module'>Enable the specified module.</h3><div class="highlight"><pre class="highlight php tab-php"><code><span class="nv">$module</span><span class="o">-&gt;</span><span class="nf">enable</span><span class="p">();</span>
+</code></pre></div><h3 id='delete-the-specified-module'>Delete the specified module.</h3><div class="highlight"><pre class="highlight php tab-php"><code><span class="nv">$module</span><span class="o">-&gt;</span><span class="nb">delete</span><span class="p">();</span>
+</code></pre></div><h3 id='get-requires'>Get Requires</h3>
+<p>Get an array of module requirements. Note: these should be aliases of the module.</p>
+<div class="highlight"><pre class="highlight php tab-php"><code><span class="nv">$module</span><span class="o">-&gt;</span><span class="nf">getRequires</span><span class="p">();</span>
+</code></pre></div><h2 id='module-resources'>Module Resources</h2>
+<p>Your module will most likely contain what laravel calls resources, those contain configuration, views, translation files, etc. In order for you module to correctly load and if wanted publish them you need to let laravel know about them as in any regular package.</p>
+
+<aside class="success">
+Those resources are loaded in the service provider generated with a module (using module:make), unless the plain flag is used, in which case you will need to handle this logic yourself.
+</aside>
+
+<aside class="success">
+Don't forget to change the paths, in the following code snippets a "Blog" module is assumed.
+</aside>
+<h2 id='configuration-2'>Configuration</h2><div class="highlight"><pre class="highlight php tab-php"><code><span class="nv">$this</span><span class="o">-&gt;</span><span class="nf">publishes</span><span class="p">([</span>
+    <span class="k">__DIR__</span><span class="mf">.</span><span class="s1">'/../Config/config.php'</span> <span class="o">=&gt;</span> <span class="nf">config_path</span><span class="p">(</span><span class="s1">'blog.php'</span><span class="p">),</span>
+<span class="p">],</span> <span class="s1">'config'</span><span class="p">);</span>
+<span class="nv">$this</span><span class="o">-&gt;</span><span class="nf">mergeConfigFrom</span><span class="p">(</span>
+    <span class="k">__DIR__</span><span class="mf">.</span><span class="s1">'/../Config/config.php'</span><span class="p">,</span> <span class="s1">'blog'</span>
+<span class="p">);</span>
+</code></pre></div><h2 id='module-views'>Module Views</h2><div class="highlight"><pre class="highlight php tab-php"><code><span class="nv">$viewPath</span> <span class="o">=</span> <span class="nf">base_path</span><span class="p">(</span><span class="s1">'resources/views/modules/blog'</span><span class="p">);</span>
+
+<span class="nv">$sourcePath</span> <span class="o">=</span> <span class="k">__DIR__</span><span class="mf">.</span><span class="s1">'/../Resources/views'</span><span class="p">;</span>
+
+<span class="nv">$this</span><span class="o">-&gt;</span><span class="nf">publishes</span><span class="p">([</span>
+    <span class="nv">$sourcePath</span> <span class="o">=&gt;</span> <span class="nv">$viewPath</span>
+<span class="p">]);</span>
+
+<span class="nv">$this</span><span class="o">-&gt;</span><span class="nf">loadViewsFrom</span><span class="p">(</span><span class="nb">array_merge</span><span class="p">(</span><span class="nb">array_map</span><span class="p">(</span><span class="k">function</span> <span class="p">(</span><span class="nv">$path</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="nv">$path</span> <span class="mf">.</span> <span class="s1">'/modules/blog'</span><span class="p">;</span>
+<span class="p">},</span> <span class="err">\</span><span class="nc">Config</span><span class="o">::</span><span class="nf">get</span><span class="p">(</span><span class="s1">'view.paths'</span><span class="p">)),</span> <span class="p">[</span><span class="nv">$sourcePath</span><span class="p">]),</span> <span class="s1">'blog'</span><span class="p">);</span>
+</code></pre></div>
+<p>The main part here is the loadViewsFrom method call. If you don&#39;t want your views to be published to the laravel views folder, you can remove the call to the $this-&gt;publishes() call.</p>
+<h2 id='language-files'>Language files</h2><div class="highlight"><pre class="highlight php tab-php"><code> <span class="nv">$langPath</span> <span class="o">=</span> <span class="nf">base_path</span><span class="p">(</span><span class="s1">'resources/lang/modules/blog'</span><span class="p">);</span>
+
+<span class="k">if</span> <span class="p">(</span><span class="nb">is_dir</span><span class="p">(</span><span class="nv">$langPath</span><span class="p">))</span> <span class="p">{</span>
+    <span class="nv">$this</span><span class="o">-&gt;</span><span class="nf">loadTranslationsFrom</span><span class="p">(</span><span class="nv">$langPath</span><span class="p">,</span> <span class="s1">'blog'</span><span class="p">);</span>
+<span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+    <span class="nv">$this</span><span class="o">-&gt;</span><span class="nf">loadTranslationsFrom</span><span class="p">(</span><span class="k">__DIR__</span> <span class="mf">.</span><span class="s1">'/../Resources/lang'</span><span class="p">,</span> <span class="s1">'blog'</span><span class="p">);</span>
+<span class="p">}</span>
+</code></pre></div><h3 id='factories'>Factories</h3>
+<p>If you want to use laravel factories you will have to add the following in your service provider:</p>
+<div class="highlight"><pre class="highlight php tab-php"><code><span class="nv">$this</span><span class="o">-&gt;</span><span class="n">app</span><span class="o">-&gt;</span><span class="nf">singleton</span><span class="p">(</span><span class="nc">Factory</span><span class="o">::</span><span class="n">class</span><span class="p">,</span> <span class="k">function</span> <span class="p">()</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="nc">Factory</span><span class="o">::</span><span class="nf">construct</span><span class="p">(</span><span class="k">__DIR__</span> <span class="mf">.</span> <span class="s1">'/Database/factories'</span><span class="p">);</span>
+<span class="p">});</span>
+</code></pre></div><h2 id='module-console-commands'>Module Console Commands</h2>
+<p>Your module may contain console commands. You can generate these commands manually, or with the following helper:</p>
+<div class="highlight"><pre class="highlight plaintext"><code>php artisan module:make-command CreatePostCommand Blog
+</code></pre></div>
+<p>This will create a CreatePostCommand inside the Blog module. By default this will be Modules/Blog/Console/CreatePostCommand.</p>
+
+<p>Please refer to the laravel documentation on artisan commands to learn all about them.</p>
+<h2 id='registering-the-command'>Registering the command</h2>
+<p>You can register the command with the laravel method called commands that is available inside a service provider class.</p>
+<div class="highlight"><pre class="highlight php tab-php"><code><span class="nv">$this</span><span class="o">-&gt;</span><span class="nf">commands</span><span class="p">([</span>
+    <span class="err">\</span><span class="nc">Modules\Blog\Console\CreatePostCommand</span><span class="o">::</span><span class="n">class</span><span class="p">,</span>
+<span class="p">]);</span>
+</code></pre></div>
+<p>You can now access your command via php artisan in the console.</p>
+<h2 id='registering-module-events'>Registering Module Events</h2>
+<p>Your module may contain events and event listeners. You can create these classes manually, or with the following helpers:</p>
+<div class="highlight"><pre class="highlight plaintext"><code>php artisan module:make-event BlogPostWasUpdated Blog
+php artisan module:make-listener NotifyAdminOfNewPost Blog
+</code></pre></div>
+<p>Once those are create you need to register them in laravel. This can be done in 2 ways:</p>
+
+<ul>
+<li>Manually calling $this-&gt;app[&#39;events&#39;]-&gt;listen(BlogPostWasUpdated::class, NotifyAdminOfNewPost::class); in your module service provider</li>
+<li>Or by creating a event service provider for your module which will contain all its events, similar to the EventServiceProvider under the app/ namespace.</li>
+</ul>
+<h2 id='creating-an-eventserviceprovider'>Creating an EventServiceProvider</h2>
+<p>Once you have multiple events, you might find it easier to have all events and their listeners in a dedicated service provider. This is what the EventServiceProvider is for.</p>
+
+<p>Create a new class called for instance EventServiceProvider in the Modules/Blog/Providers folder (Blog being an example name).</p>
+
+<p>This class needs to look like this:</p>
+<div class="highlight"><pre class="highlight php tab-php"><code><span class="cp">&lt;?php</span>
+
+<span class="kn">namespace</span> <span class="nn">Modules\Blog\Providers</span><span class="p">;</span>
+
+<span class="kn">use</span> <span class="nc">Illuminate\Foundation\Support\Providers\EventServiceProvider</span> <span class="k">as</span> <span class="nc">ServiceProvider</span><span class="p">;</span>
+
+<span class="kd">class</span> <span class="nc">EventServiceProvider</span> <span class="kd">extends</span> <span class="nc">ServiceProvider</span>
+<span class="p">{</span>
+    <span class="k">protected</span> <span class="nv">$listen</span> <span class="o">=</span> <span class="p">[];</span>
+<span class="p">}</span>
+</code></pre></div><h1 id='menu-management'>Menu Management</h1><h2 id='quick-example-2'>Quick Example</h2><div class="highlight"><pre class="highlight php tab-php"><code><span class="c1">// Menu.php</span>
+<span class="nc">Menu</span><span class="o">::</span><span class="nf">create</span><span class="p">(</span><span class="s1">'navbar'</span><span class="p">,</span> <span class="k">function</span><span class="p">(</span><span class="nv">$menu</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nv">$menu</span><span class="o">-&gt;</span><span class="nf">url</span><span class="p">(</span><span class="s1">'/'</span><span class="p">,</span> <span class="s1">'Home'</span><span class="p">,</span> <span class="mi">1</span><span class="p">);</span>
+    <span class="nv">$menu</span><span class="o">-&gt;</span><span class="nf">route</span><span class="p">(</span><span class="s1">'/'</span><span class="p">,</span> <span class="s1">'About'</span><span class="p">,</span> <span class="p">[</span><span class="s1">'user'</span> <span class="o">=&gt;</span> <span class="s1">'1'</span><span class="p">],</span> <span class="mi">2</span><span class="p">);</span>
+    <span class="nv">$menu</span><span class="o">-&gt;</span><span class="nf">dropdown</span><span class="p">(</span><span class="s1">'Settings'</span><span class="p">,</span> <span class="k">function</span> <span class="p">(</span><span class="nv">$sub</span><span class="p">)</span> <span class="p">{</span>
+        <span class="nv">$sub</span><span class="o">-&gt;</span><span class="nb">header</span><span class="p">(</span><span class="s1">'ACCOUNT'</span><span class="p">);</span>
+        <span class="nv">$sub</span><span class="o">-&gt;</span><span class="nf">url</span><span class="p">(</span><span class="s1">'/settings/design'</span><span class="p">,</span> <span class="s1">'Design'</span><span class="p">);</span>
+        <span class="nv">$sub</span><span class="o">-&gt;</span><span class="nf">divider</span><span class="p">();</span>
+        <span class="nv">$sub</span><span class="o">-&gt;</span><span class="nf">url</span><span class="p">(</span><span class="s1">'logout'</span><span class="p">,</span> <span class="s1">'Logout'</span><span class="p">);</span>
+    <span class="p">},</span> <span class="mi">3</span><span class="p">);</span>
+<span class="p">});</span>
+
+<span class="c1">// main.blade.php</span>
+<span class="p">{</span><span class="o">!!</span> <span class="nc">Menu</span><span class="o">::</span><span class="nf">get</span><span class="p">(</span><span class="s1">'navbar'</span><span class="p">)</span> <span class="o">!!</span><span class="p">}</span>
+</code></pre></div><h2 id='creating-menu'>Creating Menu</h2>
+<p>You can define your menus in your desired file / class, as long as it is autoload by composer.</p>
+
+<p>To create a menu, simply call the create method from Menu facade. The first parameter is the menu name and the second parameter is callback for defining menu items.</p>
+<div class="highlight"><pre class="highlight php tab-php"><code><span class="nc">Menu</span><span class="o">::</span><span class="nf">create</span><span class="p">(</span><span class="s1">'navbar'</span><span class="p">,</span> <span class="k">function</span><span class="p">(</span><span class="nv">$menu</span><span class="p">)</span> <span class="p">{</span>
+    <span class="c1">// define your menu items here</span>
+<span class="p">});</span>
+</code></pre></div><h2 id='menu-item'>Menu Item</h2>
+<p>As explained before, we can defining menu item in the callback by accessing $menu variable, which the variable is instance of Nwidart\Menus\MenuBuilder class.</p>
+
+<p>To defining a plain URL, you can use -&gt;url() method.</p>
+<div class="highlight"><pre class="highlight php tab-php"><code><span class="nc">Menu</span><span class="o">::</span><span class="nf">create</span><span class="p">(</span><span class="s1">'navbar'</span><span class="p">,</span> <span class="k">function</span><span class="p">(</span><span class="nv">$menu</span><span class="p">)</span> <span class="p">{</span>
+    <span class="c1">// URL, Title, Attributes</span>
+    <span class="nv">$menu</span><span class="o">-&gt;</span><span class="nf">url</span><span class="p">(</span><span class="s1">'home'</span><span class="p">,</span> <span class="s1">'Home'</span><span class="p">,</span> <span class="p">[</span><span class="s1">'target'</span> <span class="o">=&gt;</span> <span class="s1">'blank'</span><span class="p">]);</span>
+<span class="p">});</span>
+</code></pre></div>
+<p>If you have named route, you define the menu item by calling -&gt;route() method.</p>
+<div class="highlight"><pre class="highlight php tab-php"><code><span class="nc">Menu</span><span class="o">::</span><span class="nf">create</span><span class="p">(</span><span class="s1">'navbar'</span><span class="p">,</span> <span class="k">function</span><span class="p">(</span><span class="nv">$menu</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nv">$menu</span><span class="o">-&gt;</span><span class="nf">route</span><span class="p">(</span>
+        <span class="s1">'users.show'</span><span class="p">,</span> <span class="c1">// route name</span>
+        <span class="s1">'View Profile'</span><span class="p">,</span> <span class="c1">// title</span>
+        <span class="p">[</span><span class="s1">'id'</span> <span class="o">=&gt;</span> <span class="mi">1</span><span class="p">],</span> <span class="c1">// route parameters</span>
+        <span class="p">[</span><span class="s1">'target'</span> <span class="o">=&gt;</span> <span class="s1">'blank'</span><span class="p">]</span> <span class="c1">// attributes</span>
+    <span class="p">);</span>
+<span class="p">});</span>
+</code></pre></div>
+<p>You can also defining the menu item via array by calling -&gt;add() method.</p>
+<div class="highlight"><pre class="highlight php tab-php"><code><span class="nc">Menu</span><span class="o">::</span><span class="nf">create</span><span class="p">(</span><span class="s1">'navbar'</span><span class="p">,</span> <span class="k">function</span><span class="p">(</span><span class="nv">$menu</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nv">$menu</span><span class="o">-&gt;</span><span class="nf">add</span><span class="p">([</span>
+        <span class="s1">'url'</span> <span class="o">=&gt;</span> <span class="s1">'about'</span><span class="p">,</span>
+        <span class="s1">'title'</span> <span class="o">=&gt;</span> <span class="s1">'About'</span><span class="p">,</span>
+        <span class="s1">'attributes'</span> <span class="o">=&gt;</span> <span class="p">[</span>
+            <span class="s1">'target'</span> <span class="o">=&gt;</span> <span class="s1">'_blank'</span>
+        <span class="p">]</span>
+    <span class="p">]);</span>
+
+    <span class="nv">$menu</span><span class="o">-&gt;</span><span class="nf">add</span><span class="p">([</span>
+        <span class="s1">'route'</span> <span class="o">=&gt;</span> <span class="p">[</span><span class="s1">'profile'</span><span class="p">,</span> <span class="p">[</span><span class="s1">'user'</span> <span class="o">=&gt;</span> <span class="s1">'nwidart'</span><span class="p">]],</span>
+        <span class="s1">'title'</span> <span class="o">=&gt;</span> <span class="s1">'Visit My Profile'</span><span class="p">,</span>
+        <span class="s1">'attributes'</span> <span class="o">=&gt;</span> <span class="p">[</span>
+            <span class="s1">'target'</span> <span class="o">=&gt;</span> <span class="s1">'_blank'</span>
+        <span class="p">]</span>
+    <span class="p">]);</span>
+<span class="p">});</span>
+</code></pre></div><h2 id='menu-dropdown'>Menu Dropdown</h2>
+<p>To create a dropdown menu, you can call to -&gt;dropdown() method and passing the first parameter by title of dropdown and the second parameter by closure callback that retrieve $sub variable. The $sub variable is the the instance of Nwidart\Menus\MenuItem class.</p>
+<div class="highlight"><pre class="highlight php tab-php"><code><span class="nc">Menu</span><span class="o">::</span><span class="nf">create</span><span class="p">(</span><span class="s1">'navbar'</span><span class="p">,</span> <span class="k">function</span><span class="p">(</span><span class="nv">$menu</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nv">$menu</span><span class="o">-&gt;</span><span class="nf">url</span><span class="p">(</span><span class="s1">'/'</span><span class="p">,</span> <span class="s1">'Home'</span><span class="p">);</span>
+    <span class="nv">$menu</span><span class="o">-&gt;</span><span class="nf">dropdown</span><span class="p">(</span><span class="s1">'Settings'</span><span class="p">,</span> <span class="k">function</span> <span class="p">(</span><span class="nv">$sub</span><span class="p">)</span> <span class="p">{</span>
+        <span class="nv">$sub</span><span class="o">-&gt;</span><span class="nf">url</span><span class="p">(</span><span class="s1">'settings/account'</span><span class="p">,</span> <span class="s1">'Account'</span><span class="p">);</span>
+        <span class="nv">$sub</span><span class="o">-&gt;</span><span class="nf">url</span><span class="p">(</span><span class="s1">'settings/password'</span><span class="p">,</span> <span class="s1">'Password'</span><span class="p">);</span>
+        <span class="nv">$sub</span><span class="o">-&gt;</span><span class="nf">url</span><span class="p">(</span><span class="s1">'settings/design'</span><span class="p">,</span> <span class="s1">'Design'</span><span class="p">);</span>
+    <span class="p">});</span>
+<span class="p">});</span>
+</code></pre></div><h2 id='menu-dropdown-multi-level'>Menu Dropdown Multi Level</h2>
+<p>You can also create a dropdown inside dropdown by using -&gt;dropdown() method. This will allow to to create a multilevel menu items.</p>
+<div class="highlight"><pre class="highlight php tab-php"><code><span class="nc">Menu</span><span class="o">::</span><span class="nf">create</span><span class="p">(</span><span class="s1">'navbar'</span><span class="p">,</span> <span class="k">function</span><span class="p">(</span><span class="nv">$menu</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nv">$menu</span><span class="o">-&gt;</span><span class="nf">url</span><span class="p">(</span><span class="s1">'/'</span><span class="p">,</span> <span class="s1">'Home'</span><span class="p">);</span>
+    <span class="nv">$menu</span><span class="o">-&gt;</span><span class="nf">dropdown</span><span class="p">(</span><span class="s1">'Account'</span><span class="p">,</span> <span class="k">function</span> <span class="p">(</span><span class="nv">$sub</span><span class="p">)</span> <span class="p">{</span>
+        <span class="nv">$sub</span><span class="o">-&gt;</span><span class="nf">url</span><span class="p">(</span><span class="s1">'profile'</span><span class="p">,</span> <span class="s1">'Visit My Profile'</span><span class="p">);</span>
+        <span class="nv">$sub</span><span class="o">-&gt;</span><span class="nf">dropdown</span><span class="p">(</span><span class="s1">'Settings'</span><span class="p">,</span> <span class="k">function</span> <span class="p">(</span><span class="nv">$sub</span><span class="p">)</span> <span class="p">{</span>
+            <span class="nv">$sub</span><span class="o">-&gt;</span><span class="nf">url</span><span class="p">(</span><span class="s1">'settings/account'</span><span class="p">,</span> <span class="s1">'Account'</span><span class="p">);</span>
+            <span class="nv">$sub</span><span class="o">-&gt;</span><span class="nf">url</span><span class="p">(</span><span class="s1">'settings/password'</span><span class="p">,</span> <span class="s1">'Password'</span><span class="p">);</span>
+            <span class="nv">$sub</span><span class="o">-&gt;</span><span class="nf">url</span><span class="p">(</span><span class="s1">'settings/design'</span><span class="p">,</span> <span class="s1">'Design'</span><span class="p">);</span>
+        <span class="p">});</span>
+        <span class="nv">$sub</span><span class="o">-&gt;</span><span class="nf">url</span><span class="p">(</span><span class="s1">'logout'</span><span class="p">,</span> <span class="s1">'Logout'</span><span class="p">);</span>
+    <span class="p">});</span>
+<span class="p">});</span>
 </code></pre></div><h1 id='errors'>Errors</h1>
 <p>The AdUp.io Shopper API uses the following error codes:</p>
 
@@ -1115,9 +1335,6 @@ php artisan xemodule:make-resource PostResource Blog --collection
 
       </div>
       <div class="dark-box">
-          <div class="lang-selector">
-                <a href="#" data-language-name="curl">curl</a>
-          </div>
       </div>
     </div>
   </body>
