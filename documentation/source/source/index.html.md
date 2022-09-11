@@ -1402,3 +1402,81 @@ value | string | field values
 data | array | external data list
 
 
+## Form component types
+
+
+Type | Description
+--------- | -------
+text |  text components
+select | drop down component
+textarea | text area field
+file | file uploader field
+
+
+## Example Form
+
+Following this example
+
+```php
+
+$settingPageGenerator = new SettingPageGeneratorBackend('FileManager','values','https://hellocom.com');
+
+
+
+        $settingPageGenerator->addController(
+            'project_name',
+                true,
+                'Project Name',
+                'Please enter your project name',
+                'Projects',
+                'text',
+                'hello');
+
+
+        $settingPageGenerator->addController(
+            'project_example',
+            true,
+            'Project Example',
+            'This is best example label',
+            'Hello',
+            'select',
+                'values2',[
+            [
+                'name' => 'Sanjaya Senevirathne',
+                'value' => 'values'
+
+            ],
+            [
+                'name' => 'Kumara Bandara',
+                'value' => 'values2'
+            ]
+        ]);
+
+        $settingPageGenerator->addController(
+            'project_name',
+            false,
+            'Project Name',
+            'Please enter your project name',
+            'Projects',
+            'textarea',
+            'hello');
+
+
+        $settingPageGenerator->addController(
+            'project_name',
+            true,
+            'Project Name',
+            'Please enter your project name',
+            'Projects',
+            'file',
+            'hello');
+
+        $settingPageGenerator->renderControllers();
+        $category = $settingPageGenerator->getContent();
+
+        return view($settingPageGenerator->renderPage(),[
+            'formData' => $category,
+            'formURL' => ''
+        ]);
+
+```

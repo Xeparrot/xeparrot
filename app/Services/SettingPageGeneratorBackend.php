@@ -74,8 +74,8 @@ class SettingPageGeneratorBackend {
 
           $outData = '<label>'.$label.$requeredElement.'  : </label><br>
                          <label><small>'.$description.'</small></label>
-                         <input type="'.$type.'" class="form-control" value="'.$value.'" name="'.$name.'" '.$requiredParams.' autocomplete="off">';
-          $formGroup = '<div class="form-group">'.$outData.'</div>';
+                         <input type="'.$type.'" class="form-control" value="'.$value.'" name="'.$name.'" '.$requiredParams.' autocomplete="off"><br>';
+          $formGroup = '<div class="form-group">'.$outData.'</div><br>';
           $this->controls .= $formGroup;
 
           $arrayDetails = [
@@ -109,8 +109,8 @@ class SettingPageGeneratorBackend {
             }
             $outData = '<label>'.$label.$requeredElement.'  : </label><br>
                          <label><small>'.$description.'</small></label>            
-                         <select type="'.$type.'" class="form-control" value="'.$value.'" name="'.$name.'" '.$requiredParams.'>'.$drowdownData.'</select>';
-            $formGroup = '<div class="form-group">'.$outData.'</div>';
+                         <select type="'.$type.'" class="form-control" value="'.$value.'" name="'.$name.'" '.$requiredParams.'>'.$drowdownData.'</select><br>';
+            $formGroup = '<div class="form-group">'.$outData.'</div><br>';
             $this->controls .= $formGroup;
 
             /*
@@ -128,8 +128,8 @@ class SettingPageGeneratorBackend {
         {
             $outData = '<label>'.$label.$requeredElement.'  : </label><br>
                          <label><small>'.$description.'</small></label>
-                         <textarea type="'.$type.'" class="form-control" name="'.$name.'" '.$requiredParams.' autocomplete="off">'.$value.'</textarea>';
-            $formGroup = '<div class="form-group">'.$outData.'</div>';
+                         <textarea type="'.$type.'" class="form-control" name="'.$name.'" '.$requiredParams.' autocomplete="off">'.$value.'</textarea><br>';
+            $formGroup = '<div class="form-group">'.$outData.'</div><br>';
             $this->controls .= $formGroup;
 
              /*
@@ -154,7 +154,7 @@ class SettingPageGeneratorBackend {
                                         <input type="hidden" name="'.$name.'" class="selected-files" value="'.$value.'">
                                     </div>
                                     <div class="file-preview box sm">
-                                    </div>';
+                                    </div><br>';
             $formGroup = '<div class="form-group">'.$outData.'</div>';
             $this->controls .= $formGroup;
 
