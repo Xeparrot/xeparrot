@@ -31,6 +31,9 @@
                                 </div>
 
 
+                                {!! $returnGenerator !!}
+
+
                             </div>
                         </div>
                         <button type="submit" class="btn btn-success pull-right">Create New Project</button><br>

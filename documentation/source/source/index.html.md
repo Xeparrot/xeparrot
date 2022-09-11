@@ -1350,3 +1350,55 @@ Menu::create('navbar', function($menu) {
     });
 });
 ```
+
+# Admin Pages
+
+## Define Controllers
+
+Xeparrot allows to create backend level admin pages, so first thing you should add this service on your created controller
+ 
+```php
+use App\Services\SettingPageGeneratorBackend;
+```
+
+Now you can define forms controllers components
+ 
+ ```php
+  $adminPage = new SettingPageGeneratorBackend('title','views','post_url');
+ ```
+
+Parameter | Type | Description
+--------- | ------- | -----------
+title | string | Title of setting pages.
+views | string | Return view page name.
+post_url | string | form post route
+
+
+
+## Add form controllers
+
+Follow this example, you can define form components
+
+```php
+ $adminPage->addController(
+            'name',
+            'is_required,
+            'label',
+            'description',
+            'category',
+            'type',
+            'value');
+```
+
+Parameter | Type | Description
+--------- | ------- | -----------
+name | string | component name.
+is_required | bool | Return view page name.
+label | string | form post route
+description | text | description 
+category | string | category name
+type | string | controller components types
+value | string | field values
+data | array | external data list
+
+
