@@ -511,6 +511,23 @@
               </ul>
           </li>
           <li>
+            <a href="#admin-pages" class="toc-h1 toc-link" data-title="Admin Pages">Admin Pages</a>
+              <ul class="toc-list-h2">
+                  <li>
+                    <a href="#define-controllers" class="toc-h2 toc-link" data-title="Define Controllers">Define Controllers</a>
+                  </li>
+                  <li>
+                    <a href="#add-form-controllers" class="toc-h2 toc-link" data-title="Add form controllers">Add form controllers</a>
+                  </li>
+                  <li>
+                    <a href="#form-component-types" class="toc-h2 toc-link" data-title="Form component types">Form component types</a>
+                  </li>
+                  <li>
+                    <a href="#example-form" class="toc-h2 toc-link" data-title="Example Form">Example Form</a>
+                  </li>
+              </ul>
+          </li>
+          <li>
             <a href="#errors" class="toc-h1 toc-link" data-title="Errors">Errors</a>
           </li>
       </ul>
@@ -1278,6 +1295,182 @@ php artisan module:make-listener NotifyAdminOfNewPost Blog
         <span class="nv">$sub</span><span class="o">-&gt;</span><span class="nf">url</span><span class="p">(</span><span class="s1">'logout'</span><span class="p">,</span> <span class="s1">'Logout'</span><span class="p">);</span>
     <span class="p">});</span>
 <span class="p">});</span>
+</code></pre></div><h1 id='admin-pages'>Admin Pages</h1><h2 id='define-controllers'>Define Controllers</h2>
+<p>Xeparrot allows to create backend level admin pages, so first thing you should add this service on your created controller</p>
+<div class="highlight"><pre class="highlight php tab-php"><code><span class="kn">use</span> <span class="nc">App\Services\SettingPageGeneratorBackend</span><span class="p">;</span>
+</code></pre></div>
+<p>Now you can define forms controllers components</p>
+<div class="highlight"><pre class="highlight php tab-php"><code>  <span class="nv">$adminPage</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">SettingPageGeneratorBackend</span><span class="p">(</span><span class="s1">'title'</span><span class="p">,</span><span class="s1">'views'</span><span class="p">,</span><span class="s1">'post_url'</span><span class="p">);</span>
+</code></pre></div>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>title</td>
+<td>string</td>
+<td>Title of setting pages.</td>
+</tr>
+<tr>
+<td>views</td>
+<td>string</td>
+<td>Return view page name.</td>
+</tr>
+<tr>
+<td>post_url</td>
+<td>string</td>
+<td>form post route</td>
+</tr>
+</tbody></table>
+<h2 id='add-form-controllers'>Add form controllers</h2>
+<p>Follow this example, you can define form components</p>
+<div class="highlight"><pre class="highlight php tab-php"><code> <span class="nv">$adminPage</span><span class="o">-&gt;</span><span class="nf">addController</span><span class="p">(</span>
+            <span class="s1">'name'</span><span class="p">,</span>
+            <span class="s1">'is_required,
+            '</span><span class="n">label</span><span class="s1">',
+            '</span><span class="n">description</span><span class="s1">',
+            '</span><span class="n">category</span><span class="s1">',
+            '</span><span class="n">type</span><span class="s1">',
+            '</span><span class="n">value</span><span class="err">'</span><span class="p">);</span>
+</code></pre></div>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>name</td>
+<td>string</td>
+<td>component name.</td>
+</tr>
+<tr>
+<td>is_required</td>
+<td>bool</td>
+<td>Return view page name.</td>
+</tr>
+<tr>
+<td>label</td>
+<td>string</td>
+<td>form post route</td>
+</tr>
+<tr>
+<td>description</td>
+<td>text</td>
+<td>description</td>
+</tr>
+<tr>
+<td>category</td>
+<td>string</td>
+<td>category name</td>
+</tr>
+<tr>
+<td>type</td>
+<td>string</td>
+<td>controller components types</td>
+</tr>
+<tr>
+<td>value</td>
+<td>string</td>
+<td>field values</td>
+</tr>
+<tr>
+<td>data</td>
+<td>array</td>
+<td>external data list</td>
+</tr>
+</tbody></table>
+<h2 id='form-component-types'>Form component types</h2>
+<table><thead>
+<tr>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>text</td>
+<td>text components</td>
+</tr>
+<tr>
+<td>select</td>
+<td>drop down component</td>
+</tr>
+<tr>
+<td>textarea</td>
+<td>text area field</td>
+</tr>
+<tr>
+<td>file</td>
+<td>file uploader field</td>
+</tr>
+</tbody></table>
+<h2 id='example-form'>Example Form</h2>
+<p>Following this example</p>
+<div class="highlight"><pre class="highlight php tab-php"><code>
+<span class="nv">$settingPageGenerator</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">SettingPageGeneratorBackend</span><span class="p">(</span><span class="s1">'FileManager'</span><span class="p">,</span><span class="s1">'values'</span><span class="p">,</span><span class="s1">'https://hellocom.com'</span><span class="p">);</span>
+
+
+
+        <span class="nv">$settingPageGenerator</span><span class="o">-&gt;</span><span class="nf">addController</span><span class="p">(</span>
+            <span class="s1">'project_name'</span><span class="p">,</span>
+                <span class="kc">true</span><span class="p">,</span>
+                <span class="s1">'Project Name'</span><span class="p">,</span>
+                <span class="s1">'Please enter your project name'</span><span class="p">,</span>
+                <span class="s1">'Projects'</span><span class="p">,</span>
+                <span class="s1">'text'</span><span class="p">,</span>
+                <span class="s1">'hello'</span><span class="p">);</span>
+
+
+        <span class="nv">$settingPageGenerator</span><span class="o">-&gt;</span><span class="nf">addController</span><span class="p">(</span>
+            <span class="s1">'project_example'</span><span class="p">,</span>
+            <span class="kc">true</span><span class="p">,</span>
+            <span class="s1">'Project Example'</span><span class="p">,</span>
+            <span class="s1">'This is best example label'</span><span class="p">,</span>
+            <span class="s1">'Hello'</span><span class="p">,</span>
+            <span class="s1">'select'</span><span class="p">,</span>
+                <span class="s1">'values2'</span><span class="p">,[</span>
+            <span class="p">[</span>
+                <span class="s1">'name'</span> <span class="o">=&gt;</span> <span class="s1">'Sanjaya Senevirathne'</span><span class="p">,</span>
+                <span class="s1">'value'</span> <span class="o">=&gt;</span> <span class="s1">'values'</span>
+
+            <span class="p">],</span>
+            <span class="p">[</span>
+                <span class="s1">'name'</span> <span class="o">=&gt;</span> <span class="s1">'Kumara Bandara'</span><span class="p">,</span>
+                <span class="s1">'value'</span> <span class="o">=&gt;</span> <span class="s1">'values2'</span>
+            <span class="p">]</span>
+        <span class="p">]);</span>
+
+        <span class="nv">$settingPageGenerator</span><span class="o">-&gt;</span><span class="nf">addController</span><span class="p">(</span>
+            <span class="s1">'project_name'</span><span class="p">,</span>
+            <span class="kc">false</span><span class="p">,</span>
+            <span class="s1">'Project Name'</span><span class="p">,</span>
+            <span class="s1">'Please enter your project name'</span><span class="p">,</span>
+            <span class="s1">'Projects'</span><span class="p">,</span>
+            <span class="s1">'textarea'</span><span class="p">,</span>
+            <span class="s1">'hello'</span><span class="p">);</span>
+
+
+        <span class="nv">$settingPageGenerator</span><span class="o">-&gt;</span><span class="nf">addController</span><span class="p">(</span>
+            <span class="s1">'project_name'</span><span class="p">,</span>
+            <span class="kc">true</span><span class="p">,</span>
+            <span class="s1">'Project Name'</span><span class="p">,</span>
+            <span class="s1">'Please enter your project name'</span><span class="p">,</span>
+            <span class="s1">'Projects'</span><span class="p">,</span>
+            <span class="s1">'file'</span><span class="p">,</span>
+            <span class="s1">'hello'</span><span class="p">);</span>
+
+        <span class="nv">$settingPageGenerator</span><span class="o">-&gt;</span><span class="nf">renderControllers</span><span class="p">();</span>
+        <span class="nv">$category</span> <span class="o">=</span> <span class="nv">$settingPageGenerator</span><span class="o">-&gt;</span><span class="nf">getContent</span><span class="p">();</span>
+
+        <span class="k">return</span> <span class="nf">view</span><span class="p">(</span><span class="nv">$settingPageGenerator</span><span class="o">-&gt;</span><span class="nf">renderPage</span><span class="p">(),[</span>
+            <span class="s1">'formData'</span> <span class="o">=&gt;</span> <span class="nv">$category</span><span class="p">,</span>
+            <span class="s1">'formURL'</span> <span class="o">=&gt;</span> <span class="s1">''</span>
+        <span class="p">]);</span>
+
 </code></pre></div><h1 id='errors'>Errors</h1>
 <p>The AdUp.io Shopper API uses the following error codes:</p>
 
