@@ -20,19 +20,20 @@
 
                                 @if(Module::find($moduleItem->name))
                                     <input type="hidden" name="install_status" value="uninstall">
-                                    <button type="submit" class="btn btn-primary">Uninstall</button>
+                                    <button type="submit" class="btn btn-danger btn-sm">Uninstall</button>
                                 @else
                                     @if(config('app.developer_mode') == true)
                                         <input type="hidden" name="install_status" value="install">
-                                        <button type="submit" class="btn btn-primary" disabled>Download</button>
+                                        <button type="submit" class="btn btn-primary btn-sm" disabled>Download</button>
                                     @else
                                         <input type="hidden" name="install_status" value="install">
-                                        <button type="submit" class="btn btn-primary">Download</button>
+                                        <button type="submit" class="btn btn-primary btn-sm">Download</button>
                                     @endif
 
                                 @endif
 
-                                <a href="#" class="btn btn-primary">Documentation</a>
+                                <a href="#" class="btn btn-primarybtn btn-secondary btn-sm" style="background: #09326e">Documentation</a>
+                                <a href="{{route('admin.module.migration')}}" class="btn btn-secondary btn-sm" style="background: #09326e">DB Update</a>
                             </form>
                         </div>
                     </div>

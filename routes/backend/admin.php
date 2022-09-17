@@ -21,3 +21,4 @@ Route::get('customers',[CustomerController::class,'index'])->name('customer.inde
 
 Route::get('module-explorer',[ModuleExplorer::class,'explorer'])->name('module.explorer');
 Route::post('module-download',[ModuleExplorer::class,'module_download'])->name('module.download');
+Route::get('module-migration',[ModuleExplorer::class,'migration'])->name('module.migration');

@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use Http;
 use App\Services\GitService;
 use Module;
+use Illuminate\Support\Facades\Artisan;
 class ModuleExplorer extends Controller
 {
     public function explorer(){
@@ -17,6 +18,12 @@ class ModuleExplorer extends Controller
         return view('backend.module_manager.index',[
                 'module_explorer' => $jsonDecoded
             ]);
+    }
+
+    public function migration (Request $request)
+    {
+        Artisan::call('migrate');
+        return back();
     }
 
     public function module_download(Request $request)
@@ -33,7 +40,10 @@ class ModuleExplorer extends Controller
             $branch     = 'main';
             $path = $git->clone($author, $repository, $branch);
             $module = Module::find($moduleName);
+            $module->boot();
             $module->enable();
+
+
 
         }else{
             $module = Module::find($moduleName);
@@ -41,9 +51,7 @@ class ModuleExplorer extends Controller
             $module->delete();
         }
 
-
-
-
+      Artisan::call('migrate');
       return back();
     }
 }
