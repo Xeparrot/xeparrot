@@ -91,9 +91,9 @@
             <div class="content">
                 @include('includes.partials.messages')
 
-                <div class="title m-b-md">
-                    <example-component></example-component>
-                </div><!--title-->
+                <h1 style="font-size: 110px;padding-bottom: 100px;">
+                    Xeparrot
+                </h1>
 
                 <div class="links">
                     <a href="https://xeparrot.github.io/xeparrot/#api-reference" target="_blank"><i class="fa fa-book"></i> @lang('Docs')</a>
