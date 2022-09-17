@@ -37,7 +37,7 @@ class ModuleExplorer extends Controller
 
         }else{
             $module = Module::find($moduleName);
-            $module->disabled();
+            $module->disable();
             $module->delete();
         }
 

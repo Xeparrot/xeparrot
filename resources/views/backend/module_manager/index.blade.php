@@ -22,8 +22,14 @@
                                     <input type="hidden" name="install_status" value="uninstall">
                                     <button type="submit" class="btn btn-primary">Uninstall</button>
                                 @else
-                                    <input type="hidden" name="install_status" value="install">
-                                    <button type="submit" class="btn btn-primary">Download</button>
+                                    @if(config('app.developer_mode') == true)
+                                        <input type="hidden" name="install_status" value="install">
+                                        <button type="submit" class="btn btn-primary" disabled>Download</button>
+                                    @else
+                                        <input type="hidden" name="install_status" value="install">
+                                        <button type="submit" class="btn btn-primary">Download</button>
+                                    @endif
+
                                 @endif
 
                                 <a href="#" class="btn btn-primary">Documentation</a>

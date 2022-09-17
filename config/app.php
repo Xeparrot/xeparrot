@@ -30,6 +30,18 @@ return [
 
     /*
     |--------------------------------------------------------------------------
+    | Developer Mode
+    |--------------------------------------------------------------------------
+    |
+    | When your application is in developer mode, disable module explorer
+    | download function. If disabled, a simple generic error page is shown.
+    |
+    */
+
+    'developer_mode' => env('DEVELOPER_MODE',false),
+
+    /*
+    |--------------------------------------------------------------------------
     | Application Debug Mode
     |--------------------------------------------------------------------------
     |
