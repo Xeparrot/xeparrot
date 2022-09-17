@@ -32,7 +32,7 @@
 
                                 @endif
 
-                                <a href="#" class="btn btn-primarybtn btn-secondary btn-sm" style="background: #09326e">Documentation</a>
+                                <a href="#" class="btn btn-primarybtn btn-secondary btn-sm" style="background: #09326e"aut>Documentation</a>
                                 <a href="{{route('admin.module.migration')}}" class="btn btn-secondary btn-sm" style="background: #09326e">DB Update</a>
                             </form>
                         </div>
