@@ -27,7 +27,7 @@
                                         <button type="submit" class="btn btn-primary btn-sm" disabled>Download</button>
                                     @else
                                         <input type="hidden" name="install_status" value="install">
-                                        <button type="submit" class="btn btn-primary btn-sm">Download</button>
+                                        <a href="{{route('admin.module.install',['git',$moduleItem->author,$moduleItem->name,'install'])}}" class="btn btn-primary btn-sm">Download</a>
                                     @endif
 
                                 @endif

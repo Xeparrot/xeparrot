@@ -18,6 +18,7 @@
 
     @stack('before-styles')
     <link href="{{ mix('css/backend.css') }}" rel="stylesheet">
+    <link href="{{url('css/loader.css')}}" rel="stylesheet">
     <livewire:styles />
 
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
@@ -68,7 +69,13 @@
                 <div class="container-fluid">
                     <div class="fade-in">
                         @include('includes.partials.messages')
+                        <div id="loader" style="position: fixed;background: #ededed;z-index: 100;width: calc(100% - 316px);height: 70%;display: flex;">
+                            <div class="load">
+                                <hr><hr><hr><hr>
+                            </div>
+                        </div>
                         @yield('content')
+
                     </div><!--fade-in-->
                 </div><!--container-fluid-->
             </main>
