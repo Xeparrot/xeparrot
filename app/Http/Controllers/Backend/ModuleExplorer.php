@@ -20,6 +20,12 @@ class ModuleExplorer extends Controller
             ]);
     }
 
+
+    public function install_page($repo,$author,$name,$function)
+    {
+        return view('backend.module_manager.install_wizard');
+    }
+
     public function migration (Request $request)
     {
         Artisan::call('migrate');
@@ -28,7 +34,6 @@ class ModuleExplorer extends Controller
 
     public function module_download(Request $request)
     {
-        $moduleRepo = $request->module_repo;
         $moduleName = $request->module_name;
         $moduleAuthor = $request->module_author;
 
