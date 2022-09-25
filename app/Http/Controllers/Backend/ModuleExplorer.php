@@ -23,7 +23,12 @@ class ModuleExplorer extends Controller
 
     public function install_page($repo,$author,$name,$function)
     {
-        return view('backend.module_manager.install_wizard');
+        return view('backend.module_manager.install_wizard',[
+            'repo' => $repo,
+            'author' => $author,
+            'name' => $name,
+            'function' => $function
+        ]);
     }
 
     public function migration (Request $request)
@@ -59,4 +64,36 @@ class ModuleExplorer extends Controller
       Artisan::call('migrate');
       return back();
     }
+
+
+    public function module_content($idx,$repo,$author_name,Request $request)
+    {
+        if($idx == 1)
+        {
+            $retunData = view('backend.module_manager.module_licenses.gnu_public');
+            return $retunData;
+        }elseif ($idx == 2)
+        {
+            $moduleName = $repo;
+            $moduleAuthor = $author_name;
+
+            $git = new GitService(base_path('Modules'));
+
+            $author     = $moduleAuthor;
+            $repository = $moduleName;
+            $branch     = 'main';
+            $path = $git->clone($author, $repository, $branch);
+            $module = Module::find($moduleName);
+            $module->boot();
+            $module->enable();
+
+            Artisan::call('migrate');
+
+            $retunData = view('backend.includes.partials.process_bar');
+            return $retunData;
+        }
+    }
+
 }
+
+

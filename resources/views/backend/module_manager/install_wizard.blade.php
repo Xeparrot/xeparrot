@@ -3,34 +3,37 @@
 @section('title', __('Dashboard'))
 
 @section('content')
-
+    <input type="hidden" value="{{$name}}" name="name" id="name">
+    <input type="hidden" value="{{$author}}" name="name" id="author_name">
+    <input type="hidden" value="{{$repo}}" name="name" id="repo">
     <div class="card">
         <div class="card-body">
             <!-- SmartWizard html -->
+
             <div id="smartwizard">
                 <ul class="nav">
                     <li class="nav-item">
                         <a class="nav-link" href="#step-1">
                             <div class="num">1</div>
-                            Step Title
+                            Get Stared
                         </a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="#step-2">
                             <span class="num">2</span>
-                            Step Title
+                            License/Agreement
                         </a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="#step-3">
                             <span class="num">3</span>
-                            Step Title
+                            Install Option
                         </a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link " href="#step-4">
                             <span class="num">4</span>
-                            Step Title
+                            Finish
                         </a>
                     </li>
                 </ul>
@@ -50,7 +53,9 @@
                         </div>
                     </div>
                     <div id="step-3" class="tab-pane" role="tabpanel" aria-labelledby="step-3">
-                        Step content
+                       <div class="container">
+
+                       </div>
                     </div>
                     <div id="step-4" class="tab-pane" role="tabpanel" aria-labelledby="step-4">
                         Step content
@@ -65,6 +70,50 @@
         </div>
     </div>
 
+    <script>
 
+        function processBarRotate( percent ){
+            var processBarHalfMove = '.processBarHalfMove';
+            var processBarHalfLeft = '.processBarHalfLeft';
+            var processBarHalfRight = '.processBarHalfRight';
+            //
+            //---按角度转动
+            function barRotate( angle ){
+                $(processBarHalfMove).css('transform', 'rotate(' + angle + 'deg)');
+            }
+            var angle = 3.6 * percent + 90;
+            //小于50度，直接转到目标角度
+            if ( percent <= 50 ){
+                barRotate( angle );
+            }
+            //大于50度，则先转到一半，等事件结束
+            else{
+                var stopAtHalfAngle = 270;
+                barRotate( stopAtHalfAngle );
+                $(processBarHalfMove).one("webkitTransitionEnd", function(){ //监听动画结束时事件
+                    barRotate( angle ); //完成剩余的角度
+                    $(processBarHalfLeft).addClass('not-display');
+                    $(processBarHalfRight).removeClass('not-display');
+                });
+            }
+        }
 
+        function percentNumAdd( num ){
+            var span = '.processBarInner i span';
+            //
+            var cnt = 0;
+            var timer = setInterval(function(){
+                if ( cnt <= num ){
+                    $(span).text( cnt ++ );
+                }else{
+                    clearInterval( timer );
+                }
+            }, 8 );
+        }
+
+        $(function(){
+            processBarRotate( 87 );
+            percentNumAdd( 87 );
+        });
+    </script>
 @endsection

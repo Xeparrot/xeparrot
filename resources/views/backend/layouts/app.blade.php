@@ -11,6 +11,7 @@
     <meta name="csrf-token" content="{{csrf_token()}}">
     <meta name="app-url" content="{{config('app.url')}}">
     <meta name="file-base-url" content="{{config('app.url')}}/public/">
+    <meta name="dynamic_url" content="{{url('')}}">
 
     @yield('meta')
 
