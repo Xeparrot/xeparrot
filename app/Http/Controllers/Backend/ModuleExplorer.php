@@ -34,7 +34,7 @@ class ModuleExplorer extends Controller
     public function migration (Request $request)
     {
         Artisan::call('migrate');
-        return back();
+        return redirect()->route('admin.module.explorer')->withFlashSuccess('DB migrated and Module Installed');
     }
 
     public function module_download(Request $request)
@@ -53,16 +53,18 @@ class ModuleExplorer extends Controller
             $module->boot();
             $module->enable();
 
-
+            Artisan::call('migrate');
+            return back()->withFlashSuccess('Module install success');
 
         }else{
             $module = Module::find($moduleName);
             $module->disable();
             $module->delete();
+            Artisan::call('migrate');
+            return back()->withFlashSuccess('Module uninstalled success');
         }
 
-      Artisan::call('migrate');
-      return back();
+
     }
 
 
