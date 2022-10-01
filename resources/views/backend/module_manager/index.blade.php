@@ -3,8 +3,45 @@
 @section('title', __('Module Explorer'))
 
 @section('content')
+    {{$loader=true}}
     <div class="card">
         <div class="card-body">
+            <div class="swiper mySwiper" style="height: 300px">
+                <div class="swiper-wrapper">
+                    <div class="swiper-slide" style="background-image: url('{{url('img/sliders/1.jpg')}}');height: 380px;background-size: cover;background-repeat: no-repeat;background-position: center;">
+                        <div style=""></div>
+                    </div>
+                    <div class="swiper-slide" style="background-image: url('{{url('img/sliders/2.webp')}}');height: 380px;background-size: cover;background-repeat: no-repeat;background-position: center;">Slide 2</div>
+                    <div class="swiper-slide" style="background-image: url('{{url('img/sliders/3.jpg')}}');height: 380px;background-size: cover;background-repeat: no-repeat;background-position: center;">Slide 3</div>
+                   
+                </div>
+                <div class="swiper-pagination"></div>
+            </div>
+            <!-- SmartWizard html -->
+        </div>
+    </div>
+
+    <div class="card">
+        <div class="card-body">
+
+
+
+            <!-- Swiper JS -->
+            <script src="https://cdn.jsdelivr.net/npm/swiper/swiper-bundle.min.js"></script>
+            <!-- Initialize Swiper -->
+            <script>
+                var swiper = new Swiper(".mySwiper", {
+                    pagination: {
+                        el: ".swiper-pagination",
+                        clickable: true,
+                        renderBullet: function (index, className) {
+                            return '<span class="' + className + '">' + (index + 1) + "</span>";
+                        },
+                    },
+                });
+            </script>
+
+
             <div class="row">
                 @foreach($module_explorer as $moduleItem)
                 <div class="col-md-4">
@@ -33,7 +70,6 @@
                                 @endif
 
                                 <a href="#" class="btn btn-primarybtn btn-secondary btn-sm" style="background: #09326e"aut>Documentation</a>
-                                <a href="{{route('admin.module.migration')}}" class="btn btn-secondary btn-sm" style="background: #09326e">DB Update</a>
                             </form>
                         </div>
                     </div>

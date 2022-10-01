@@ -28,6 +28,25 @@
     <link rel="stylesheet" href="{{url('css/aiz-core.css')}}">
     <link rel="stylesheet" href="{{url('css/vendors.css')}}">
 
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper/swiper-bundle.min.css"/>
+
+    <style>
+        .swiper-pagination-bullet {
+            width: 20px;
+            height: 20px;
+            text-align: center;
+            line-height: 20px;
+            font-size: 12px;
+            color: #000;
+            opacity: 1;
+            background: rgba(0, 0, 0, 0.2);
+        }
+
+        .swiper-pagination-bullet-active {
+            color: #fff;
+        }
+    </style>
+
     <script>
         var XEM = XEM || {};
         XEM.local = {
@@ -70,11 +89,16 @@
                 <div class="container-fluid">
                     <div class="fade-in">
                         @include('includes.partials.messages')
-                        <div id="loader" style="position: fixed;background: #ededed;z-index: 100;width: calc(100% - 316px);height: 70%;display: flex;">
-                            <div class="load">
-                                <hr><hr><hr><hr>
+                        @if(isset($loader))
+
+                        @else
+                            <div id="loader" style="position: fixed;background: #ededed;z-index: 100;width: calc(100% - 316px);height: 70%;display: flex;">
+                                <div class="load">
+                                    <img src="{{url('spinner.gif')}}">
+                                </div>
                             </div>
-                        </div>
+                        @endif
+
                         @yield('content')
 
                     </div><!--fade-in-->

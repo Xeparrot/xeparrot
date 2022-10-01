@@ -27,7 +27,7 @@
                     <li class="nav-item">
                         <a class="nav-link" href="#step-3">
                             <span class="num">3</span>
-                            Install Option
+                            Install
                         </a>
                     </li>
                     <li class="nav-item">
@@ -58,7 +58,7 @@
                        </div>
                     </div>
                     <div id="step-4" class="tab-pane" role="tabpanel" aria-labelledby="step-4">
-                        Step content
+                       @include('backend.module_manager.module_wizard_partials.module_wizard_finish')
                     </div>
                 </div>
 

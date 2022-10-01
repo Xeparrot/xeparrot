@@ -5,6 +5,6 @@
         </div>
         <div><br><br>
             <h2 style="text-align: center;">Plugin Installed Success</h2></div>
-            <p>This is ques installed functions</p><br>
+            <p style="text-align: center;">This is ques installed functions</p><br>
     </div>
 </div>
