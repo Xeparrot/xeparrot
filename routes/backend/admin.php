@@ -17,9 +17,10 @@ Route::get('dashboard', [DashboardController::class, 'index'])
 Route::get('settings/{setting_type}',[SettingsController::class,'index'])->name('settings.index');
 Route::post('settings-store',[SettingsController::class,'store'])->name('settings.store');
 
+
 Route::get('customers',[CustomerController::class,'index'])->name('customer.index');
 
 Route::get('module-explorer',[ModuleExplorer::class,'explorer'])->name('module.explorer');
 Route::get('module-install/{repo?}/{author}/{name}/{function}',[ModuleExplorer::class,'install_page'])->name('module.install');
 Route::post('module-download',[ModuleExplorer::class,'module_download'])->name('module.download');
-Route::get('module-migration',[ModuleExplorer::class,'migration'])->name('module.migration');
+Route::post('module-migration',[ModuleExplorer::class,'migration'])->name('module.migration');

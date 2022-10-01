@@ -79,6 +79,7 @@ function onCancel(){
 }
 
 $(function() {
+    const dynamic_url = $('meta[name=dynamic_url]').attr('content');
     $('#smartwizard').smartWizard({
         selected: 0, // Initial selected step, 0 = first step
         justified: true, // Nav menu justification. true/false
@@ -100,8 +101,7 @@ $(function() {
             position: 'bottom', // none|top|bottom|both
             showNextButton: true, // show/hide a Next button
             showPreviousButton: false, // show/hide a Previous button
-            extraHtml: '<button class="btn sw-btn success" onclick="onFinish()">Finish</button>' +
-                '<button class="btn sw-btn success" onclick="onCancel()">Cancel</button>'
+            extraHtml: '<a href="'+ dynamic_url + 'admin/module-explorer" class="btn sw-btn success" >Cancel</a>'
         },
         anchor: {
             enableNavigation: false, // Enable/Disable anchor navigation

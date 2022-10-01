@@ -33,6 +33,7 @@
         "vue-template-compiler": "^2.6.10"
     },
     "dependencies": {
-        "smartwizard": "^6.0.5"
+        "smartwizard": "^6.0.5",
+        "swiper": "^8.4.2"
     }
 }
